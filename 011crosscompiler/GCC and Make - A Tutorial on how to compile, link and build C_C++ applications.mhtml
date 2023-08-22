@@ -1,0 +1,1761 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html
+Subject: GCC and Make - A Tutorial on how to compile, link and build C/C++ applications
+Date: Tue, 1 Aug 2023 13:55:48 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--C93TDuKI44rEYrRlVZoP4eMgzMFKcgv0TMKNPFdZrz----"
+
+
+------MultipartBoundary--C93TDuKI44rEYrRlVZoP4eMgzMFKcgv0TMKNPFdZrz----
+Content-Type: text/html
+Content-ID: <frame-0C17A11D172D8F917C470E005402E2B3@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.html
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org=
+/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns=3D"http://www.w3.org/1999/xht=
+ml"><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8">
+
+<title>GCC and Make - A Tutorial on how to compile, link and build C/C++ ap=
+plications</title>
+<link href=3D"https://www3.ntu.edu.sg/home/ehchua/programming/css/programmi=
+ng_notes_v1.css" rel=3D"stylesheet" type=3D"text/css">
+
+<link rel=3D"shortcut icon" href=3D"https://www3.ntu.edu.sg/home/ehchua/pro=
+gramming/favicon.ico" type=3D"image/x-icon"></head>
+
+<body>
+
+<div id=3D"wrap-outer">
+
+<!-- header filled by JavaScript -->
+<div id=3D"header" class=3D"header-footer"><p>yet another insignificant pro=
+gramming notes... &nbsp;&nbsp;| &nbsp;&nbsp;<a href=3D"https://www3.ntu.edu=
+.sg/home/ehchua/programming/index.html">HOME</a></p></div>
+
+<div id=3D"wrap-inner">
+
+<div id=3D"wrap-toc">
+<h5>TABLE OF CONTENTS <a id=3D"show-toc" href=3D"https://www3.ntu.edu.sg/ho=
+me/ehchua/programming/cpp/gcc_make.html#show-toc">(HIDE)</a></h5>
+<div id=3D"toc"><a class=3D"toc-H3" href=3D"https://www3.ntu.edu.sg/home/eh=
+chua/programming/cpp/gcc_make.html#zz-1.">1.&nbsp;&nbsp;GCC (GNU Compiler C=
+ollection)</a><br><a class=3D"toc-H4" href=3D"https://www3.ntu.edu.sg/home/=
+ehchua/programming/cpp/gcc_make.html#zz-1.1">1.1&nbsp;&nbsp;A Brief History=
+ and Introduction to GCC</a><br><a class=3D"toc-H4" href=3D"https://www3.nt=
+u.edu.sg/home/ehchua/programming/cpp/gcc_make.html#zz-1.2">1.2&nbsp;&nbsp;I=
+nstalling GCC on Unixes</a><br><a class=3D"toc-H4" href=3D"https://www3.ntu=
+.edu.sg/home/ehchua/programming/cpp/gcc_make.html#zz-1.3">1.3&nbsp;&nbsp;In=
+stalling GCC on Mac OS X</a><br><a class=3D"toc-H4" href=3D"https://www3.nt=
+u.edu.sg/home/ehchua/programming/cpp/gcc_make.html#zz-1.4">1.4&nbsp;&nbsp;I=
+nstalling GCC on Windows</a><br><a class=3D"toc-H4" href=3D"https://www3.nt=
+u.edu.sg/home/ehchua/programming/cpp/gcc_make.html#zz-1.5">1.5&nbsp;&nbsp;P=
+ost Installation</a><br><a class=3D"toc-H4" href=3D"https://www3.ntu.edu.sg=
+/home/ehchua/programming/cpp/gcc_make.html#zz-1.6">1.6&nbsp;&nbsp;Getting S=
+tarted</a><br><a class=3D"toc-H4" href=3D"https://www3.ntu.edu.sg/home/ehch=
+ua/programming/cpp/gcc_make.html#zz-1.7">1.7&nbsp;&nbsp;GCC Compilation Pro=
+cess</a><br><a class=3D"toc-H4" href=3D"https://www3.ntu.edu.sg/home/ehchua=
+/programming/cpp/gcc_make.html#zz-1.8">1.8&nbsp;&nbsp;Headers (<span class=
+=3D"font-code">.h</span>), Static Libraries (<span class=3D"font-code">.lib=
+</span>, <span class=3D"font-code">.a</span>) and Shared Library (<span cla=
+ss=3D"font-code">.dll</span>, <span class=3D"font-code">.so</span>)</a><br>=
+<a class=3D"toc-H4" href=3D"https://www3.ntu.edu.sg/home/ehchua/programming=
+/cpp/gcc_make.html#zz-1.9">1.9&nbsp;&nbsp;GCC Environment Variables</a><br>=
+<a class=3D"toc-H4" href=3D"https://www3.ntu.edu.sg/home/ehchua/programming=
+/cpp/gcc_make.html#zz-1.10">1.10&nbsp;&nbsp;Utilities for Examining the Com=
+piled Files</a><br><a class=3D"toc-H3" href=3D"https://www3.ntu.edu.sg/home=
+/ehchua/programming/cpp/gcc_make.html#zz-2.">2.&nbsp;&nbsp;GNU Make</a><br>=
+<a class=3D"toc-H4" href=3D"https://www3.ntu.edu.sg/home/ehchua/programming=
+/cpp/gcc_make.html#zz-2.1">2.1&nbsp;&nbsp;First Makefile By Example</a><br>=
+<a class=3D"toc-H4" href=3D"https://www3.ntu.edu.sg/home/ehchua/programming=
+/cpp/gcc_make.html#zz-2.2">2.2&nbsp;&nbsp;More on Makefile</a><br><a class=
+=3D"toc-H4" href=3D"https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc=
+_make.html#zz-2.3">2.3&nbsp;&nbsp;A Sample Makefile</a><br><a class=3D"toc-=
+H4" href=3D"https://www3.ntu.edu.sg/home/ehchua/programming/cpp/gcc_make.ht=
+ml#zz-2.4">2.4&nbsp;&nbsp;Brief Summary</a><br><br></div>  <!-- for showing=
+ the "Table of Content" -->
+</div>
+
+<div id=3D"content-header">
+<h1>GCC and Make</h1>
+<h2>Compiling, Linking and Building<br>C/C++ Applications</h2>
+</div>
+
+<div id=3D"content-main">
+
+
+<h3>1.&nbsp;&nbsp;GCC (GNU Compiler Collection)<a id=3D"zz-1."></a></h3>
+
+<h4>1.1&nbsp;&nbsp;A Brief History and Introduction to GCC<a id=3D"zz-1.1">=
+</a></h4>
+
+<p>The original <em>GNU C Compiler</em> (GCC) is developed by Richard Stall=
+man, the founder of the <em>GNU Project</em>. Richard Stallman founded the =
+GNU project in 1984 to create a complete Unix-like operating system as free=
+ software, to promote freedom and cooperation among computer users and prog=
+rammers.</p>
+
+<p>GCC, formerly for "<em>GNU C Compiler</em>", has grown over times to sup=
+port many languages such as C (<code>gcc</code>), C++ (<code>g++</code>), O=
+bjective-C, Objective-C++, Java (<code>gcj</code>), Fortran (<code>gfortran=
+</code>), Ada (<code>gnat</code>), Go (<code>gccgo</code>), OpenMP, Cilk Pl=
+us, and OpenAcc. It is now referred to as "<em>GNU Compiler Collection</em>=
+". The mother site for GCC is <a href=3D"http://gcc.gnu.org/">http://gcc.gn=
+u.org/</a>. The current version is GCC 7.3, released on 2018-01-25.</p>
+
+<p>GCC is a key component of so-called "<em>GNU Toolchain</em>", for develo=
+ping applications and writing operating systems. The GNU Toolchain includes=
+:</p>
+
+<ol>
+<li>GNU Compiler Collection (GCC): a compiler suite that supports many lang=
+uages, such as C/C++ and Objective-C/C++.</li>
+<li>GNU Make: an automation tool for compiling and building applications.</=
+li>
+<li>GNU Binutils: a suite of binary utility tools, including linker and ass=
+embler.</li>
+<li>GNU Debugger (GDB).</li>
+<li>GNU Autotools: A build system including Autoconf, Autoheader, Automake =
+and Libtool.</li>
+<li>GNU Bison: a parser generator (similar to lex and yacc).</li>
+</ol>
+
+<p>GCC is <em>portable</em> and run in many operating platforms. GCC (and G=
+NU Toolchain) is currently available on all Unixes. They are also ported to=
+ Windows (by Cygwin, MinGW and MinGW-W64). GCC is also a <em>cross-compiler=
+</em>, for producing executables on different platform.</p>
+
+<h5>GCC Versions</h5>
+<p>The various GCC versions are:</p>
+<ul>
+<li>GCC version 1 (1987): Initial version that support C.</li>
+<li>GCC version 2 (1992): supports C++.</li>
+<li>GCC version 3 (2001): incorporating ECGS (Experimental GNU Compiler Sys=
+tem), with improve optimization.</li>
+<li>GCC version 4 (2005):</li>
+<li>GCC version 5 (2015):</li>
+<li>GCC Version 6 (2016):</li>
+<li>GCC Version 7 (2017):</li>
+</ul>
+
+<h5>C++ Standard Support</h5>
+<p>There are various C++ standards:</p>
+<ul>
+<li>C++98</li>
+<li>C++11 (aka C++0x)</li>
+<li>C++14 (aka C++1y)</li>
+<li>C++17 (aka C++1z)</li>
+<li>C++2a (next planned standard in 2020)</li>
+</ul>
+
+<p>The default mode is C++98 for GCC versions prior to 6.1, and C++14 for G=
+CC 6.1 and above. You can use command-line flag <code>-std</code> to explic=
+itly specify the C++ standard. For example,</p>
+
+<ul>
+<li><code>-std=3Dc++98</code>, or <code>-std=3Dgnu++98</code> (C++98 with G=
+NU extensions)</li>
+<li><code>-std=3Dc++11</code>, or <code>-std=3Dgnu++11</code> (C++11 with G=
+NU extensions)</li>
+<li><code>-std=3Dc++14</code>, or <code>-std=3Dgnu++14</code> (C++14 with G=
+NU extensions), default mode for GCC 6.1 and above.</li>
+<li><code>-std=3Dc++17</code>, or <code>-std=3Dgnu++17</code> (C++17 with G=
+NU extensions), experimental.</li>
+<li><code>-std=3Dc++2a</code>, or <code>-std=3Dgnu++2a</code> (C++2a with G=
+NU extensions), experimental.</li>
+
+</ul>
+
+
+<h4>1.2&nbsp;&nbsp;Installing GCC on Unixes<a id=3D"zz-1.2"></a></h4>
+
+<p>GNU Toolchain, including GCC, is included in all Unixes. It is the stand=
+ard compiler for most Unix-like operating systems.</p>
+
+<h4>1.3&nbsp;&nbsp;Installing GCC on Mac OS X<a id=3D"zz-1.3"></a></h4>
+<p>Open a Terminal, and enter "<code>gcc --version</code>". If <code>gcc</c=
+ode> is not installed, the system will prompt you to install <code>gcc</cod=
+e>.</p>
+
+<pre class=3D"color-command">$ <strong>gcc --version</strong>
+......
+Target: x86_64-apple-darwin14.5.0   <span class=3D"color-comment">// 64-bit=
+ target codes</span>
+Thread model: posix</pre>
+
+
+
+<h4>1.4&nbsp;&nbsp;Installing GCC on Windows<a id=3D"zz-1.4"></a></h4>
+
+<p>For Windows, you could either install Cygwin GCC, MinGW GCC or MinGW-W64=
+ GCC. Read "<a href=3D"https://www3.ntu.edu.sg/home/ehchua/programming/howt=
+o/Cygwin_HowTo.html">How to install Cygwin and MinGW</a>".</p>
+<ul>
+<li>Cygwin GCC: Cygwin is a Unix-like environment and command-line interfac=
+e for Microsoft Windows. Cygwin is huge and includes most of the Unix tools=
+ and utilities. It also included the commonly-used Bash shell.</li>
+<li>MinGW: MinGW (Minimalist GNU for Windows) is a port of the GNU Compiler=
+ Collection (GCC) and GNU Binutils for use in  Windows. It also included MS=
+YS (Minimal System), which is basically a Bourne shell (<code>bash<span cla=
+ss=3D"color-comment"></span></code>).</li>
+<li>MinGW-W64: a fork of MinGW that supports both 32-bit and 64-bit windows=
+.</li>
+</ul>
+
+<h5>Various GCCs under Cygwin</h5>
+
+<p>There are many GCCs under Cygain/MinGW. To differentiate these variation=
+s, you need to understand the followings:</p>
+<ul>
+<li>Windows/Intel uses these instruction sets: x86 is a 32-bit instruction =
+set; i868 is a 32-bit enhanced version of x86; x86_64 (or amd64) is a 64-bi=
+t instruction set.</li>
+<li>32-bit compilers/programs can run on 32-bit or 64-bit (backward compati=
+ble) Windows, but 64-bit compiler can only run on 64-bit Windows.</li>
+<li>64-bit compilers may produce target of 32-bit or 64-bit.</li>
+<li>If you use Cygwin's GCC, the target could be native Windows or Cygwin. =
+If the target is native Windows, the code can be distributed and run under =
+Windows. However, if the target is Cygwin, to distribute, you need to distr=
+ibute Cygwin runtime environment (<code>cygwin1.dll</code>). This is becaus=
+e Cygwin is a Unix emulator under Windows.</li>
+</ul>
+
+
+
+<h5>MinGW-W64 Target 32/64-bit Native Windows</h5>
+<p>The MinGW-W64 (a fork of MinGW, available at <a href=3D"http://mingw-w64=
+.org/doku.php">http://mingw-w64.org/doku.php</a>) supports target of both 3=
+2-bit and 64-bit native Windows. You can install "MinGW-W64" under "Cygwin"=
+ by selecting these packages (under "devel" category):</p>
+<ul>
+<li><code>mingw64-x86_64-gcc-core</code>: 64-bit C compiler for target of n=
+ative 64-bit Windows. The executable is "<code>x86_64-w64-mingw32-gcc</code=
+>".</li>
+<li><code>mingw64-x86_64-gcc-g++</code>: 64-bit C++ compiler for target of =
+native 64-bit Windows. The executable is "<code>x86_64-w64-mingw32-g++</cod=
+e>".</li>
+<li><code>mingw64-i686-gcc-core</code>: 64-bit C compiler for target of nat=
+ive 32-bit Windows. The executable is "<code>i686-w64-mingw32-gcc</code>".<=
+/li>
+<li><code>mingw64-i686-gcc-g++</code>: 64-bit C++ compiler for target of na=
+tive 32-bit Windows. The executable is "<code>i686-w64-mingw32-g++</code>".=
+</li>
+</ul>
+
+<p>Notes:</p>
+<ul>
+<li>I suggest you install "<code>mingw64-x86_64-gcc-core</code>" and "<code=
+>mingw64-x86_64-gcc-g++</code>" to provide native 64-bit Windows codes, but=
+ skip "<code>mingw64-i686-gcc-core</code>" and "<code>mingw64-i686-gcc-g++<=
+/code>", unless you need to produce 32-bit Windows applications.</li>
+
+<li>For JNI (Java Native Interface) in 64-bit Java, you need to use "<code>=
+x86_64-w64-mingw32-gcc</code>" or "<code>x86_64-w64-mingw32-g++</code>" to =
+produce 64-bit native Windows code.</li>
+</ul>
+
+<p>Run the executables and check the versions:</p>
+
+<pre class=3D"color-command"><span class=3D"color-comment">// Target 64-bit=
+ native Windows</span>
+$ <strong>x86_64-w64-mingw32-gcc --version</strong><br>x86_64-w64-mingw32-g=
+cc (GCC) 6.4.0
+
+$ <strong>x86_64-w64-mingw32-gcc -v</strong><br>Using built-in specs.<br>CO=
+LLECT_GCC=3Dx86_64-w64-mingw32-gcc<br>COLLECT_LTO_WRAPPER=3D/usr/lib/gcc/x8=
+6_64-w64-mingw32/6.4.0/lto-wrapper.exe<br>Target: x86_64-w64-mingw32<br>Con=
+figured with: .....<br>Thread model: posix<br>gcc version 6.4.0 (GCC)
+
+$ <strong>x86_64-w64-mingw32-g++ --version</strong><br>x86_64-w64-mingw32-g=
+++ (GCC) 6.4.0
+
+<span class=3D"color-comment">// Target 32-bit native Windows</span>
+$ <strong>i686-w64-mingw32-gcc --version</strong><br>i686-w64-mingw32-gcc (=
+GCC) 6.4.0<br>
+$ <strong>i686-w64-mingw32-g++ --version</strong><br>i686-w64-mingw32-g++ (=
+GCC) 6.4.0</pre>
+
+
+<h5>Other GCCs in Cygwin</h5>
+
+<p>Other GCC packages in Cygwin are:</p>
+
+<ul>
+<li><code>gcc-core, gcc-g++</code>: Basic 64-bit C/C++ compiler target 64-b=
+it Cygwin. You probably should install these two packages too. However, to =
+distribute the code produced, you need to distribute Cygwin Runtime Environ=
+ment (<code>cygwin1.dll</code>). This is because Cygwin is a Unix emulator =
+under Windows.</li>
+<li><code>cygwin32-gcc-core, cygwin32-gcc-g++</code>: Older 32-bit C/C++ co=
+mpiler for target 32-bit Cygwin (Obsoleted by <code>gcc-code</code> and <co=
+de>gcc-g++</code>?).</li>
+<li><code>mingw-gcc-core, mingw-gcc-g++</code>: Older MinGW 32-bit C/C++ co=
+mpiler for 32-bit Windows (Obsoleted by MinGW-W64 packages?).</li>
+</ul>
+
+<h4>1.5&nbsp;&nbsp;Post Installation<a id=3D"zz-1.5"></a></h4>
+
+<h5>Versions</h5>
+<p>You could display the version of GCC via <code>--version</code> option:<=
+/p>
+
+<pre class=3D"color-command"><span class=3D"color-comment"></span>$ <strong=
+>gcc --version</strong>
+gcc (GCC) 6.4.0
+
+$ <strong>g++ --version</strong>=20
+g++ (GCC) 6.4.0</pre>
+
+<p>More details can be obtained via <code>-v</code> option, for example,</p=
+>
+<pre class=3D"color-command">$ <strong>gcc -v</strong>
+Using built-in specs.<br>COLLECT_GCC=3Dgcc<br>COLLECT_LTO_WRAPPER=3D/usr/li=
+b/gcc/x86_64-pc-cygwin/6.4.0/lto-wrapper.exe<br>Target: x86_64-pc-cygwin<br=
+>Configured with: ......<br>Thread model: posix<br>gcc version 6.4.0 (GCC)
+
+$ <strong>g++ -v</strong><br>Using built-in specs.<br>COLLECT_GCC=3Dg++<br>=
+COLLECT_LTO_WRAPPER=3D/usr/lib/gcc/x86_64-pc-cygwin/6.4.0/lto-wrapper.exe<b=
+r>Target: x86_64-pc-cygwin<br>Configured with: ......<br>Thread model: posi=
+x<br>gcc version 6.4.0 (GCC)</pre>
+
+
+<h5>Help</h5>
+<p>You can get the help manual via the <code>--help</code> option. For exam=
+ple,</p>
+<pre class=3D"color-command">$ <strong>gcc --help</strong>
+</pre>
+
+<h5>Man Pages</h5>
+<p>You can read the GCC manual pages (or <em>man pages</em>) via the <code>=
+man</code> utility:</p>
+<pre class=3D"color-command">$ <strong>man gcc</strong>
+<span class=3D"color-comment">// or</span>
+$ <strong>man g++</strong>
+<span class=3D"color-comment">// Press space key for next page, or 'q' to q=
+uit.</span></pre>
+
+<p>Reading man pages under CMD or Bash shell can be difficult. You could ge=
+nerate a text file via:</p>
+<pre class=3D"color-command">$ <strong>man gcc | col -b &gt; gcc.txt</stron=
+g>
+</pre>
+
+<p>The <code>col</code> utility is needed to strip the backspace. (For Cygw=
+in, it is available in  "Utils", "util-linux" package.)</p>
+<p>Alternatively, you could look for an online man pages, e.g., <a href=3D"=
+http://linux.die.net/man/1/gcc">http://linux.die.net/man/1/gcc</a>.</p>
+
+<p>The GCC man pages are kept under "<code>usr/share/man/man1</code>".</p>
+<pre class=3D"color-command">$ <strong>whereis gcc</strong>
+gcc: /usr/bin/gcc.exe /usr/lib/gcc /usr/share/man/man1/gcc.1.gz</pre>
+
+
+<h4>1.6&nbsp;&nbsp;Getting Started<a id=3D"zz-1.6"></a></h4>
+
+<p>The GNU C and C++ compiler are called <code>gcc</code> and <code>g++</co=
+de>, respectively.</p>
+
+<h5>Compile/Link a Simple C Program - <span class=3D"font-code">hello.c</sp=
+an></h5>
+
+<p>Below is the Hello-world C program <code>hello.c</code>:</p>
+
+<table class=3D"table-program">
+<colgroup><col class=3D"col-line-number">
+<col class=3D"col-program">
+</colgroup><tbody>
+<tr>
+<td>
+<pre class=3D"text-right">1
+2
+3
+4
+5
+6
+7</pre>
+</td>
+<td>
+<pre><span class=3D"color-comment">// hello.c</span>
+#include &lt;stdio.h&gt;
+=20
+int main() {
+    printf("Hello, world!\n");
+    return 0;
+}</pre>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>To compile the <code>hello.c</code>:</p>
+<pre class=3D"color-command">&gt; <strong>gcc hello.c</strong>
+  <span class=3D"color-comment">// Compile and link source file hello.c int=
+o executable a.exe (Windows) or a (Unixes)</span></pre>
+
+<p>The default output executable is called "<code>a.exe</code>" (Windows) o=
+r "<code>a.out</code>" (Unixes and Mac OS X).</p>
+<p>To run the program:</p>
+
+<pre class=3D"color-command"><span class=3D"color-comment">// (Windows) In =
+CMD shell</span>
+&gt; <strong>a</strong>
+<span class=3D"color-comment">
+// (Unixes / Mac OS X) In Bash Shell - include the current path (./)</span>
+$ <strong>chmod a+x a.out</strong>
+$ <strong>./a.out</strong></pre>
+
+<p>Notes for Unixes and Bash Shell:</p>
+<ul>
+<li>In Bash shell, the default PATH does not include the current working di=
+rectory. Hence, you need to include the current path (<code>./</code>) in t=
+he command. (Windows include the current directory in the PATH automaticall=
+y; whereas Unixes do not - you need to include the current directory explic=
+itly in the PATH.)</li>
+<li>You also need to include the file extension, if any, i.e., "<code>./a.o=
+ut</code>".</li>
+<li> In Unixes, the output file could be "<code>a.out</code>" or simply "<c=
+ode>a</code>". Furthermore, you need to assign <em>executable file-mode</em=
+> (<em>x</em>) to the executable file "<code>a.out</code>", via command "<c=
+ode>chmod a+x <em>filename</em></code>" (add executable file-mode "<code>+x=
+</code>" to all users "<code>a+x</code>").</li>
+</ul>
+
+<p>To specify the output filename, use <code>-o</code> option:</p>
+<pre class=3D"color-command"><span class=3D"color-comment">// (Windows) In =
+CMD shell</span>
+&gt; <strong>gcc -o hello.exe hello.c</strong>
+  <span class=3D"color-comment">// Compile and link source file hello.c int=
+o executable hello.exe</span>
+&gt; <strong>hello</strong>
+  <span class=3D"color-comment">// Execute hello.exe under CMD shell</span>
+
+<span class=3D"color-comment">// (Unixes / Mac OS X) In Bash shell</span>
+$ <strong>gcc -o hello hello.c</strong>
+$ <strong>chmod a+x hello</strong>
+$ <strong>./hello</strong>
+</pre>
+
+<p>NOTE for Unixes:</p>
+<ul>
+<li>In Unixes, we typically omit the <code>.exe</code> file extension (mean=
+t for Windows only), and simply name the output executable as <code>hello</=
+code> (via command "<code>gcc -o hello hello.c</code>".</li>
+<li>You need to assign executable file mode via command "<code>chmod a+x he=
+llo</code>".</li>
+</ul>
+
+<h5>Compile/Link a Simple C++ Program - <span class=3D"font-code">hello.cpp=
+</span></h5>
+
+<table class=3D"table-program">
+<colgroup><col class=3D"col-line-number">
+<col class=3D"col-program">
+</colgroup><tbody>
+<tr>
+<td>
+<pre class=3D"text-right">1
+2
+3
+4
+5
+6
+7
+8</pre>
+</td>
+<td>
+<pre><span class=3D"color-comment">// hello.cpp
+</span>#include &lt;iostream&gt;
+using namespace std;
+=20
+int main() {
+   cout &lt;&lt; "Hello, world!" &lt;&lt; endl;
+   return 0;
+}</pre>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>You need to use g++ to compile C++ program, as follows. We use the <code=
+>-o</code> option to specify the output file name.</p>
+<pre class=3D"color-command"><span class=3D"color-comment">// (Windows) In =
+CMD shell</span>
+&gt; <strong>g++ -o hello.exe hello.cpp</strong>
+   <span class=3D"color-comment">// Compile and link source hello.cpp into =
+executable hello.exe</span>
+&gt; <strong>hello</strong>
+   <span class=3D"color-comment">// Execute under CMD shell</span>
+
+<span class=3D"color-comment">// (Unixes / Mac OS X) In Bash shell</span>
+$ <strong>g++ -o hello hello.cpp</strong>
+$ <strong>chmod a+x hello</strong>
+$ <strong>./hello</strong>
+</pre>
+
+<h5>More GCC Compiler Options</h5>
+
+<p>A few commonly-used GCC compiler options are:</p>
+<pre class=3D"color-command">$ g++ <strong>-Wall -g -o Hello.exe</strong> H=
+ello.cpp</pre>
+
+<ul>
+<li><code>-o</code>: specifies the <span class=3D"underline">o</span>utput =
+executable filename.</li>
+<li><code>-Wall</code>: prints "<code>all</code>" <span class=3D"underline"=
+>W</span>arning messages.</li>
+<li><code>-g</code>: generates additional symbolic debug<span class=3D"unde=
+rline">g</span>ging information for use with <code>gdb</code> debugger.</li=
+>
+</ul>
+
+<h5>Compile and Link Separately</h5>
+
+<p>The above command <em>compile</em> the source file into object file and =
+<code>link</code> with other object files and system libraries into executa=
+ble in one step. You may separate compile and link in two steps as follows:=
+</p>
+
+<pre class=3D"color-command"><span class=3D"color-comment">// Compile-only =
+with -c option</span>
+&gt; <strong>g++ -c -Wall -g Hello.cpp</strong>
+<span class=3D"color-comment">// Link object file(s) into an executable</sp=
+an>
+&gt; <strong>g++ -g -o Hello.exe Hello.o</strong></pre>
+
+<p>The options are:</p>
+<ul>
+<li><code>-c</code>: <span class=3D"underline">C</span>ompile into object f=
+ile "<code>Hello.o</code>". By default, the object file has the same name a=
+s the source file with extension of "<code>.o</code>" (there is no need to =
+specify <code>-o</code> option). No linking with other object files or libr=
+aries.</li>
+<li>Linking is performed when the input file are object files "<code>.o</co=
+de>" (instead of source file "<code>.cpp</code>" or "<code>.c</code>"). GCC=
+ uses a separate linker program (called <code>ld.exe</code>) to perform the=
+ linking.</li>
+</ul>
+
+<h5>Compile and Link Multiple Source Files</h5>
+<p>Suppose that your program has two source files: <code>file1.cpp</code>, =
+<code>file2.cpp</code>. You could compile all of them in a single command:<=
+/p>
+<pre class=3D"color-command">&gt; g<strong>++ -o myprog.exe file1.cpp file2=
+.cpp</strong> </pre>
+
+<p>However, we usually compile each of the source files separately into obj=
+ect file, and link them together in the later stage. In this case, changes =
+in one file does not require re-compilation of the other files.</p>
+<pre class=3D"color-command">&gt; <strong>g++ -c file1.cpp</strong>
+&gt; <strong>g++ -c file2.cpp</strong>
+&gt; <strong>g++ -o myprog.exe file1.o file2.o</strong></pre>
+
+<h5>Compile into a Shared Library</h5>
+
+<p>To compile and link C/C++ program into a shared library (<code>".dll"</c=
+ode> in Windows, <code>".so"</code> in Unixes), use <code>-shared</code> op=
+tion. Read "<a href=3D"https://www3.ntu.edu.sg/home/ehchua/programming/java=
+/JavaNativeInterface.html">Java Native Interface</a>" for example.</p>
+
+<h4>1.7&nbsp;&nbsp;GCC Compilation Process<a id=3D"zz-1.7"></a></h4>
+
+<img class=3D"image-center" src=3D"https://www3.ntu.edu.sg/home/ehchua/prog=
+ramming/cpp/images/GCC_CompilationProcess.png">
+
+<p>GCC compiles a C/C++ program into executable in 4 steps as shown in the =
+above diagram. For example, a "<code>gcc -o hello.exe hello.c</code>" is ca=
+rried out as follows:</p>
+<ol>
+<li>Pre-processing: via the GNU C Preprocessor (<code>cpp.exe</code>), whic=
+h includes the headers (<code>#include</code>) and expands the macros (<cod=
+e>#define</code>).
+
+<pre class=3D"color-command">&gt; <strong>cpp hello.c &gt; hello.i</strong>=
+</pre>
+
+The resultant intermediate file "<code>hello.i</code>" contains the expande=
+d source code.</li>
+
+<li>Compilation: The compiler compiles the pre-processed source code into a=
+ssembly code for a specific processor.
+  <pre class=3D"color-command">&gt; <strong>gcc -S hello.i</strong></pre>
+The <code>-S</code> option specifies to produce assembly code, instead of o=
+bject code. The resultant assembly file is "<code>hello.s</code>".</li>
+
+<li>Assembly: The assembler (<code>as.exe</code>) converts the assembly cod=
+e into machine code in the object file "<code>hello.o</code>".
+<pre class=3D"color-command">&gt; <strong>as -o hello.o hello.s</strong></p=
+re></li>
+
+<li>Linker: Finally, the linker (<code>ld.exe</code>) links the object code=
+ with the library code to produce an executable file "<code>hello.exe</code=
+>".
+<pre class=3D"color-command">&gt; <strong>ld -o hello.exe hello.o ...librar=
+ies...</strong></pre></li>
+</ol>
+
+<h5>Verbose Mode (<span class=3D"font-code">-v</span>)</h5>
+
+<p>You can see the detailed compilation process by enabling <code>-v</code>=
+ (verbose) option. For example,</p>
+<pre class=3D"color-command">&gt; <strong>gcc -v -o hello.exe hello.c</stro=
+ng></pre>
+
+<h5>Defining Macro (<span class=3D"font-code">-D</span>)</h5>
+
+<p>You can use the <code>-D<em>name</em></code> option to define a macro, o=
+r <code>-D<em>name</em>=3D<em>value</em></code> to define a macro with a va=
+lue. The <code><em>value</em></code> should be enclosed in double quotes if=
+ it contains spaces.</p>
+
+
+
+<h4>1.8&nbsp;&nbsp;Headers (<span class=3D"font-code">.h</span>), Static Li=
+braries (<span class=3D"font-code">.lib</span>, <span class=3D"font-code">.=
+a</span>) and Shared Library (<span class=3D"font-code">.dll</span>, <span =
+class=3D"font-code">.so</span>)<a id=3D"zz-1.8"></a></h4>
+
+<h5>Static Library vs. Shared Library</h5>
+
+<p>A library is a collection of pre-compiled object files that can be linke=
+d into your programs via the linker. Examples are the system functions such=
+ as <code>printf()</code> and <code>sqrt()</code>.</p>
+
+<p>There are two types of external libraries: <em>static library</em> and <=
+em>shared library</em>.</p>
+
+<ol>
+<li>A static library has file extension of "<code>.a</code>" (archive file)=
+ in Unixes or "<code>.lib</code>" (library) in Windows. When your program i=
+s linked against a static library, the machine code of external functions u=
+sed in your program is copied into the executable. A static library can be =
+created via the <em>archive</em> program "<code>ar.exe</code>".</li>
+
+<li>A shared library has file extension of "<code>.so</code>" (shared objec=
+ts) in Unixes or "<code>.dll</code>" (dynamic link library) in Windows. Whe=
+n your program is linked against a shared library, only a small table is cr=
+eated in the executable. Before the executable starts running, the operatin=
+g system loads the machine code needed for the external functions - a proce=
+ss known as <em>dynamic linking</em>. Dynamic linking makes executable file=
+s smaller and saves disk space, because one copy of a library can be shared=
+ between multiple programs. Furthermore, most operating systems allows one =
+copy of a shared library in memory to be used by all running programs, thus=
+, saving memory. The shared library codes can be upgraded without the need =
+to recompile your program.</li>
+</ol>
+
+<p>Because of the advantage of dynamic linking, GCC, by default, links to t=
+he shared library if it is available.</p>
+
+<p>You can list the contents of a library via "<code>nm <em>filename</em></=
+code>".</p>
+
+<h5>Searching for Header Files and Libraries (<span class=3D"font-code">-I<=
+/span>, <span class=3D"font-code">-L</span> and <span class=3D"font-code">-=
+l</span>)</h5>
+
+<p>When compiling the program, the <em>compiler</em> needs the <em>header f=
+iles</em> to compile the source codes; the <em>linker</em> needs the <em>li=
+braries</em> to resolve external references from other object files or libr=
+aries. The compiler and linker will not find the headers/libraries unless y=
+ou set the appropriate options, which is not obvious for first-time user.</=
+p>
+<p>For each of the headers used in your source (via <code>#include</code> d=
+irectives), the compiler searches the so-called <em>include-paths</em> for =
+these headers. The include-paths are specified via <code>-I<em>dir</em></co=
+de> option (or environment variable <code>CPATH</code>). Since the header's=
+ filename is known (e.g., <code>iostream.h</code>, <code>stdio.h</code>), t=
+he compiler only needs the directories.</p>
+<p>The linker searches the so-called <em>library-paths</em> for libraries n=
+eeded to link the program into an executable. The library-path is specified=
+ via <code>-L<em>dir</em></code> option (uppercase <code>'L'</code> followe=
+d by the directory path) (or environment variable <code>LIBRARY_PATH</code>=
+). In addition, you also have to specify the library name. In Unixes, the l=
+ibrary <code>lib<em>xxx</em>.a</code> is specified via <code>-l<em>xxx</em>=
+</code> option (lowercase letter <code>'l'</code>, without the prefix "<cod=
+e>lib</code>" and <code>".a</code>" extension). In Windows, provide the ful=
+l name such as <code>-lxxx.lib</code>. The linker needs to know both the di=
+rectories as well as the library names. Hence, two options need to be speci=
+fied.</p>
+
+<h5>Default Include-paths, Library-paths and Libraries</h5>
+
+<p>Try list the default include-paths in your system used by the "GNU C Pre=
+processor" via "<code>cpp -v</code>":</p>
+<pre class=3D"color-command">&gt; <strong>cpp -v</strong>
+......
+#include "..." search starts here:
+#include &lt;...&gt; search starts here:
+ /usr/lib/gcc/x86_64-pc-cygwin/6.4.0/include<br> /usr/include<br> /usr/lib/=
+gcc/x86_64-pc-cygwin/6.4.0/../../../../lib/../include/w32api<span class=3D"=
+color-comment"></span></pre>
+
+<p>Try running the compilation in verbose mode (<code>-v</code>) to study t=
+he library-paths (<code>-L</code>) and libraries (<code>-l</code>) used in =
+your system:</p>
+<pre class=3D"color-command">&gt; <strong>gcc -v -o hello.exe hello.c</stro=
+ng>
+......
+-L/usr/lib/gcc/x86_64-pc-cygwin/6.4.0
+-L/usr/x86_64-pc-cygwin/lib
+-L/usr/lib
+-L/lib
+-lgcc_s     <span class=3D"color-comment">// libgcc_s.a</span>
+-lgcc       <span class=3D"color-comment">// libgcc.a</span>
+-lcygwin    <span class=3D"color-comment">// libcygwin.a</span>
+-ladvapi32  <span class=3D"color-comment">// libadvapi32.a</span>
+-lshell32   <span class=3D"color-comment">// libshell32.a</span>
+-luser32    <span class=3D"color-comment">// libuser32.a</span>
+-lkernel32  <span class=3D"color-comment">// libkernel32.a</span></pre>
+
+
+<p><br>
+  <span class=3D"line-heading">Eclipse CDT:</span> In Eclipse CDT, you can =
+set the include paths, library paths and libraries by right-click on the pr=
+oject  =E2=87=92 Properties =E2=87=92 C/C++ General  =E2=87=92 Paths and Sy=
+mbols =E2=87=92 Under tabs "Includes", "Library Paths" and "Libraries". The=
+ settings are applicable to the selected project only.</p>
+ =20
+<h4>1.9&nbsp;&nbsp;GCC Environment Variables<a id=3D"zz-1.9"></a></h4>
+<p>GCC uses the following environment variables:</p>
+<ul>
+  <li><code>PATH</code>: For searching the executables and run-time shared =
+libraries (<code>.dll</code>, <code>.so</code>).</li>
+  <li><code>CPATH</code>: For searching the <em>include-paths</em> for head=
+ers. It is searched after paths specified in <code>-I&lt;<em>dir</em>&gt;</=
+code> options. <code>C_INCLUDE_PATH</code> and <code>CPLUS_INCLUDE_PATH</co=
+de> can be used to specify C and C++ headers if the  particular language wa=
+s indicated in pre-processing.</li>
+  <li><code>LIBRARY_PATH</code>: For searching <em>library-paths</em> for l=
+ink libraries. It is searched after paths specified in  -<code>L&lt;<em>dir=
+</em>&gt;</code> options.</li>
+</ul>
+
+<h4>1.10&nbsp;&nbsp;Utilities for Examining the Compiled Files<a id=3D"zz-1=
+.10"></a></h4>
+
+<p>For all the GNU utilities, you can use "<code><em>command</em> --help</c=
+ode>" to list the help menu; or "<code>man <em>command</em></code>" to disp=
+lay the man pages.</p>
+
+<h5>"<span class=3D"font-code">file</span>" Utility - Determine File Type</=
+h5>
+
+<p>The utility "<code>file</code>" can be used to display the type of objec=
+t files and executable files. For example,</p>
+
+<pre class=3D"color-command">$ <strong>gcc -c hello.c</strong>
+$ <strong>gcc -o hello.exe hello.o</strong>
+=20
+$ <strong>file hello.c</strong><br>hello.c: C source, ASCII text, with CRLF=
+ line terminators
+
+$ <strong>file hello.o</strong>
+hello.o: data
+=20
+&gt; <strong>file hello.exe</strong>
+hello.exe: PE32 executable (console) x86-64, for MS Windows</pre>
+
+<h5>"<span class=3D"font-code">nm</span>" Utility - List Symbol Table of Ob=
+ject Files</h5>
+
+<p>The utility "<code>nm</code>" lists symbol table of object files. For ex=
+ample,</p>
+<pre class=3D"color-command">$ <strong>nm hello.o
+</strong>0000000000000000 b .bss<br>0000000000000000 d .data<br>00000000000=
+00000 p .pdata<br>0000000000000000 r .rdata<br>0000000000000000 r .rdata$zz=
+z<br>0000000000000000 t .text<br>0000000000000000 r .xdata<br>             =
+    U __main<br>0000000000000000 T main<br>                 U puts
+
+$ <strong>nm hello.exe | grep main</strong><br>00000001004080cc I __imp___m=
+ain<br>0000000100401120 T __main<br>00000001004010e0 T main<br>......</pre>
+
+<p>"nm" is commonly-used to check if a particular function is defined in an=
+ object file. A <code>'T'</code> in the second column indicates a function =
+that is <em>defined</em>, while a <code>'U'</code> indicates a function whi=
+ch is <em>undefined</em> and should be resolved by the linker.</p>
+
+<h5>"<span class=3D"font-code">ldd</span>" Utility - List Dynamic-Link Libr=
+aries</h5>
+
+<p>The utility "<code>ldd</code>" examines an executable and displays a lis=
+t of the shared libraries that it needs. For example,</p>
+<pre class=3D"color-command">&gt; <strong>ldd hello.exe</strong>
+ntdll.dll =3D&gt; /cygdrive/c/WINDOWS/SYSTEM32/ntdll.dll (0x7ff9ba3c0000)<b=
+r>KERNEL32.DLL =3D&gt; /cygdrive/c/WINDOWS/System32/KERNEL32.DLL (0x7ff9b98=
+80000)<br>KERNELBASE.dll =3D&gt; /cygdrive/c/WINDOWS/System32/KERNELBASE.dl=
+l (0x7ff9b6a60000)<br>SYSFER.DLL =3D&gt; /cygdrive/c/WINDOWS/System32/SYSFE=
+R.DLL (0x6ec90000)<br>ADVAPI32.dll =3D&gt; /cygdrive/c/WINDOWS/System32/ADV=
+API32.dll (0x7ff9b79a0000)<br>msvcrt.dll =3D&gt; /cygdrive/c/WINDOWS/System=
+32/msvcrt.dll (0x7ff9b9100000)<br>sechost.dll =3D&gt; /cygdrive/c/WINDOWS/S=
+ystem32/sechost.dll (0x7ff9b9000000)<br>RPCRT4.dll =3D&gt; /cygdrive/c/WIND=
+OWS/System32/RPCRT4.dll (0x7ff9b9700000)<br>cygwin1.dll =3D&gt; /usr/bin/cy=
+gwin1.dll (0x180040000)
+</pre>
+
+<h3>2.&nbsp;&nbsp;GNU Make<a id=3D"zz-2."></a></h3>
+<p>The "<code>make</code>" utility automates the mundane aspects of buildin=
+g executable from source code. "<code>make</code>" uses a so-called <code>m=
+akefile</code>, which contains rules on how to build the executables.</p>
+
+<p>You can issue "<code>make --help</code>" to list the command-line option=
+s; or "<code>man make</code>" to display the man pages.</p>
+
+<h4>2.1&nbsp;&nbsp;First Makefile By Example<a id=3D"zz-2.1"></a></h4>
+
+<p>Let's begin with a simple example to build the Hello-world program (<cod=
+e>hello.c</code>) into executable (<code>hello.exe</code>) via make utility=
+.</p>
+
+<table class=3D"table-program">
+<colgroup><col class=3D"col-line-number">
+<col class=3D"col-program">
+</colgroup><tbody>
+<tr>
+<td>
+<pre class=3D"text-right">1
+2
+3
+4
+5
+6
+7</pre>
+</td>
+<td>
+<pre><span class=3D"color-comment">// hello.c</span>
+#include &lt;stdio.h&gt;
+=20
+int main() {
+    printf("Hello, world!\n");
+    return 0;
+}</pre>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p>Create the following file named "makefile" (without any file extension),=
+ which contains rules to build the executable, and save in the same directo=
+ry as the source file. Use "tab" to indent the command (NOT spaces).</p>
+
+<pre class=3D"color-example">all: hello.exe
+
+hello.exe: hello.o
+	 gcc -o hello.exe hello.o
+
+hello.o: hello.c
+	 gcc -c hello.c
+    =20
+clean:
+	 rm hello.o hello.exe</pre>
+   =20
+<p>Run the "<code>make</code>" utility as follows:</p>
+
+<pre class=3D"color-command">&gt; <strong>make</strong>
+gcc -c hello.c
+gcc -o hello.exe hello.o</pre>
+
+<p>Running <code>make</code> without argument starts the target "<code>all<=
+/code>" in the <code>makefile</code>. A makefile consists of a set of rules=
+. A rule consists of 3 parts: a target, a list of pre-requisites and a comm=
+and, as follows:</p>
+
+<pre class=3D"color-syntax"><em>target</em>: <em>pre-req-1</em> <em>pre-req=
+-2</em> ...
+	<em>command</em></pre>
+
+<p>The <em>target</em> and <em>pre-requisites</em> are separated by a colon=
+ (<code>:</code>). The <em>command</em> must be preceded by a tab (NOT spac=
+es).</p>
+
+<p>When <code>make</code> is asked to evaluate a rule, it begins by finding=
+ the files in the prerequisites. If any of the prerequisites has an associa=
+ted rule, make attempts to update those first.</p>
+<p>In the above example, the rule "<code>all</code>" has a pre-requisite "<=
+code>hello.exe</code>". <code>make</code> cannot find the file "<code>hello=
+.exe</code>", so it looks for a rule to create it. The rule "<code>hello.ex=
+e</code>" has a pre-requisite "<code>hello.o</code>". Again, it does not ex=
+ist, so <code>make</code> looks for a rule to create it. The rule "<code>he=
+llo.o</code>" has a pre-requisite "<code>hello.c</code>". <code>make</code>=
+ checks that "<code>hello.c</code>" exists and it is newer than the target =
+(which does not exist). It runs the command "<code>gcc -c hello.c</code>". =
+The rule "<code>hello.exe</code>" then run its command "<code>gcc -o hello.=
+exe hello.o</code>". Finally, the rule "<code>all</code>" does nothing.</p>
+
+<p>More importantly, if the pre-requisite is not newer than than target, th=
+e command will not be run. In other words, the command will be run only if =
+the target is out-dated compared with its pre-requisite. For example, if we=
+ re-run the make command:</p>
+
+<pre class=3D"color-command">&gt; <strong>make</strong>
+make: Nothing to be done for `all'.</pre>
+
+<p>You can also specify the target to be made in the <code>make</code> comm=
+and. For example, the target "<code>clean</code>" removes the "<code>hello.=
+o</code>" and "<code>hello.exe</code>". You can then run the <code>make</co=
+de> without target, which is the same as "<code>make all</code>".</p>
+<pre class=3D"color-command">&gt; <strong>make clean</strong>
+rm hello.o hello.exe
+=20
+&gt; <strong>make</strong>
+gcc -c hello.c
+gcc -o hello.exe hello.o</pre>
+
+<p>Try modifying the "<code>hello.c</code>" and run <code>make</code>.</p>
+
+<p>NOTES:</p>
+
+<ul>
+<li>If the <em>command</em> is not preceded by a tab, you get an error mess=
+age "makefile:4: *** missing separator.  Stop."</li>
+<li>If there is no <code>makefile</code> in the current directory, you get =
+an error message "make: *** No targets specified and no makefile found.  St=
+op."</li>
+<li>The makefile can be named "<code>makefile</code>", "<code>Makefile</cod=
+e>" or "<code>GNUMakefile</code>", without file extension.</li>
+</ul>
+
+<h4>2.2&nbsp;&nbsp;More on Makefile<a id=3D"zz-2.2"></a></h4>
+
+<h5>Comment &amp; Continuation</h5>
+<p>A comment begins with a <code>#</code> and lasts till the end of the lin=
+e. Long line can be broken and continued in several lines via a back-slash =
+(<code>\</code>).</p>
+
+<h5>Syntax of Rules</h5>
+<p>A general syntax for the rules is:</p>
+
+<pre class=3D"color-syntax"><em>target1</em> [<em>target2</em> ...]: [<em>p=
+re-req-1</em> <em>pre-req-2</em> ...]
+	[<em>command1</em>
+	 <em>command2</em>
+	 ......]</pre>
+
+<p>The rules are usually organized in such as way the more general rules co=
+me first. The overall rule is often name "<code>all</code>", which is the d=
+efault target for <code>make</code>.</p>
+
+<h5>Phony Targets (or Artificial Targets)</h5>
+<p>A target that does not represent a file is called a phony target. For ex=
+ample, the "<code>clean</code>" in the above example, which is just a label=
+ for a command. If the target is a file, it will be checked against its pre=
+-requisite for out-of-date-ness. Phony target is always out-of-date and its=
+ command will be run. The standard phony targets are: <code>all</code>, <co=
+de>clean</code>, <code>install</code>.</p>
+
+<h5>Variables</h5>
+<p>A variable begins with a <code>$</code> and is enclosed within parenthes=
+es <code>(...)</code> or braces <code>{...}</code>. Single character variab=
+les do not need the parentheses. For example, <code>$(CC)</code>, <code>$(C=
+C_FLAGS)</code>, <code>$@</code>, <code>$^</code>.</p>
+
+<h5>Automatic Variables</h5>
+
+<p>Automatic variables are set by make after a rule is matched. There inclu=
+de:</p>
+<ul>
+<li><code>$@</code>: the target filename.</li>
+<li><code>$*</code>: the target filename without the file extension.</li>
+<li><code>$&lt;</code>: the first prerequisite filename.</li>
+<li><code>$^</code>: the filenames of all the prerequisites, separated by s=
+paces, discard duplicates.</li>
+<li><code>$+</code>: similar to <code>$^</code>, but includes duplicates.</=
+li>
+<li><code>$?</code>: the names of all prerequisites that are newer than the=
+ target, separated by spaces.</li>
+</ul>
+
+<p>For example, we can rewrite the earlier makefile as:</p>
+<pre class=3D"color-example">all: hello.exe
+=20
+# $@ matches the target; $&lt; matches the first dependent
+hello.exe: hello.o
+	gcc -o $@ $&lt;
+
+hello.o: hello.c
+	gcc -c $&lt;
+    =20
+clean:
+	rm hello.o hello.exe</pre>
+
+<h5>Virtual Path - <span class=3D"font-code">VPATH</span> &amp; <span class=
+=3D"font-code">vpath</span></h5>
+
+<p>You can use <code>VPATH</code> (uppercase) to specify the directory to s=
+earch for dependencies and target files. For example,</p>
+
+<pre class=3D"color-example"><span class=3D"color-comment"># Search for dep=
+endencies and targets from "src" and "include" directories
+# The directories are separated by space</span>
+VPATH =3D src include</pre>
+
+<p>You can also use <code>vpath</code> (lowercase) to be more precise about=
+ the file type and its search directory. For example,</p>
+
+<pre class=3D"color-example"><span class=3D"color-comment"># Search for .c =
+files in "src" directory; .h files in "include" directory
+# The pattern matching character '%' matches filename without the extension=
+</span>
+vpath %.c src
+vpath %.h include</pre>
+
+<h5>Pattern Rules</h5>
+
+<p>A pattern rule, which uses pattern matching character <code>'%'</code> a=
+s the filename, can be applied to create a target, if there is no explicit =
+rule. For example,</p>
+
+<pre class=3D"color-example"><span class=3D"color-comment"># Applicable for=
+ create .o object file.
+# '%' matches filename.
+# $&lt; is the first pre-requisite
+# $(COMPILE.c) consists of compiler name and compiler options
+# $(OUTPUT_OPTIONS) could be -o $@</span>
+%.o: %.c
+	$(COMPILE.c) $(OUTPUT_OPTION) $&lt;
+=20
+<span class=3D"color-comment"># Applicable for create executable (without e=
+xtension) from object .o object file
+# $^ matches all the pre-requisites (no duplicates)</span>
+%: %.o
+$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@</pre>
+
+<h5>Implicit Pattern Rules</h5>
+<p>Make comes with a huge set of implicit pattern rules. You can list all t=
+he rule via <code>--print-data-base</code> option.</p>
+
+
+<h4>2.3&nbsp;&nbsp;A Sample Makefile<a id=3D"zz-2.3"></a></h4>
+<p>This sample makefile is extracted from Eclipse's "C/C++ Development Guid=
+e -Makefile".</p>
+
+<pre class=3D"color-example"><span class=3D"color-comment"># A sample Makef=
+ile
+# This Makefile demonstrates and explains=20
+# Make Macros, Macro Expansions,
+# Rules, Targets, Dependencies, Commands, Goals
+# Artificial Targets, Pattern Rule, Dependency Rule.</span>
+
+<span class=3D"color-comment"># Comments start with a # and go to the end o=
+f the line.</span>
+
+<span class=3D"color-comment"># Here is a simple Make Macro.</span>
+LINK_TARGET =3D test_me.exe
+
+<span class=3D"color-comment"># Here is a Make Macro that uses the backslas=
+h to extend to multiple lines.
+</span>OBJS =3D  \
+ Test1.o \
+ Test2.o \
+ Main.o
+
+<span class=3D"color-comment"># Here is a Make Macro defined by two Macro E=
+xpansions.
+# A Macro Expansion may be treated as a textual replacement of the Make Mac=
+ro.
+# Macro Expansions are introduced with $ and enclosed in (parentheses).</sp=
+an>
+REBUILDABLES =3D $(OBJS) $(LINK_TARGET)
+
+<span class=3D"color-comment"># Here is a simple Rule (used for "cleaning" =
+your build environment).
+# It has a Target named "clean" (left of the colon ":" on the first line),
+# no Dependencies (right of the colon),
+# and two Commands (indented by tabs on the lines that follow).
+# The space before the colon is not required but added here for clarity.</s=
+pan>
+clean :=20
+  rm -f $(REBUILDABLES)
+  echo Clean done
+
+<span class=3D"color-comment"># There are two standard Targets your Makefil=
+e should probably have:
+# "all" and "clean", because they are often command-line Goals.
+# Also, these are both typically Artificial Targets, because they don't typ=
+ically
+# correspond to real files named "all" or "clean".</span> =20
+
+<span class=3D"color-comment"># The rule for "all" is used to incrementally=
+ build your system.
+# It does this by expressing a dependency on the results of that system,
+# which in turn have their own rules and dependencies.</span>
+all : $(LINK_TARGET)
+  echo All done
+
+<span class=3D"color-comment"># There is no required order to the list of r=
+ules as they appear in the Makefile.
+# Make will build its own dependency tree and only execute each rule only o=
+nce
+# its dependencies' rules have been executed successfully.</span>
+
+<span class=3D"color-comment"># Here is a Rule that uses some built-in Make=
+ Macros in its command:
+# $@ expands to the rule's target, in this case "test_me.exe".
+# $^ expands to the rule's dependencies, in this case the three files
+# main.o, test1.o, and  test2.o.</span>
+$(LINK_TARGET) : $(OBJS)
+  g++ -g -o $@ $^
+
+<span class=3D"color-comment"># Here is a Pattern Rule, often used for comp=
+ile-line.
+# It says how to create a file with a .o suffix, given a file with a .cpp s=
+uffix.
+# The rule's command uses some built-in Make Macros:
+# $@ for the pattern-matched target
+# $&lt; for the pattern-matched dependency</span>
+%.o : %.cpp
+  g++ -g -o $@ -c $&lt;
+
+<span class=3D"color-comment"># These are Dependency Rules, which are rules=
+ without any command.
+# Dependency Rules indicate that if any file to the right of the colon chan=
+ges,
+# the target to the left of the colon should be considered out-of-date.
+# The commands for making an out-of-date target up-to-date may be found els=
+ewhere
+# (in this case, by the Pattern Rule above).
+# Dependency Rules are often used to capture header file dependencies.</spa=
+n>
+Main.o : Main.h Test1.h Test2.h
+Test1.o : Test1.h Test2.h
+Test2.o : Test2.h
+
+<span class=3D"color-comment"># Alternatively to manually capturing depende=
+ncies, several automated
+# dependency generators exist.  Here is one possibility (commented out)...<=
+/span>
+# %.dep : %.cpp
+#   g++ -M $(FLAGS) $&lt; &gt; $@
+# include $(OBJS:.o=3D.dep)</pre>
+
+<h4>2.4&nbsp;&nbsp;Brief Summary<a id=3D"zz-2.4"></a></h4>
+
+<p>I have presented the basic make features here so that you can read and u=
+nderstand simple makefiles for building C/C++ applications. Make is actuall=
+y quite complex, and can be considered as a programming language by itself!=
+!</p>
+
+<p class=3D"references">REFERENCES &amp; RESOURCES</p>
+<ol>
+<li>GCC Manual "Using the GNU Compiler Collection (GCC)" @ <a href=3D"http:=
+//gcc.gnu.org/onlinedocs">http://gcc.gnu.org/onlinedocs</a>.</li>
+<li>GNU 'make' manual @ <a href=3D"http://www.gnu.org/software/make/manual/=
+make.html">http://www.gnu.org/software/make/manual/make.html</a>.</li>
+<li>Robert Mecklenburg, "Managing Projects with GNU Make", 3rd Edition, 200=
+4.</li>
+</ol>
+
+
+</div> <!-- End the content-main division -->
+
+<div id=3D"content-footer">
+<p>Latest version tested: CygWin GCC  6.4.0, MinGW-W64 GCC 6.4.0<br>
+Last modified: March, 2018</p>
+</div>
+
+</div>  <!-- End the wrap-inner division -->
+
+<!-- footer filled by JavaScript -->
+<div id=3D"footer" class=3D"header-footer"><p>Feedback, comments, correctio=
+ns, and errata can be sent to Chua Hock-Chuan (ehchua@ntu.edu.sg) &nbsp;&nb=
+sp;|&nbsp;&nbsp; <a href=3D"https://www3.ntu.edu.sg/home/ehchua/programming=
+/index.html">HOME</a></p></div>
+
+</div>  <!-- End the wrap-outer division -->
+<a href=3D"https://www3.ntu.edu.sg/f61217a453d065015090cd27fd6fb2c2"> </a>
+
+</body></html>
+------MultipartBoundary--C93TDuKI44rEYrRlVZoP4eMgzMFKcgv0TMKNPFdZrz----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www3.ntu.edu.sg/home/ehchua/programming/css/programming_notes_v1.css
+
+@charset "utf-8";
+
+* { margin: 0px; padding: 0px; }
+
+body { background-color: rgb(202, 251, 237); color: rgb(0, 0, 0); font-fami=
+ly: "Segoe UI", Segoe, Calibri, "Nimbus Sans L", Ubuntu, Tahoma, Arial, Hel=
+vetica, Verdana, sans-serif; font-size: 14px; text-align: justify; line-hei=
+ght: 1.5; }
+
+#wrap-outer { margin: 20px; padding: 0px; }
+
+#wrap-inner { background-color: rgb(255, 255, 255); margin: 0px; border: 1p=
+x solid rgb(221, 221, 221); padding: 25px 15px; box-shadow: rgb(221, 221, 2=
+21) 5px 5px 0px; }
+
+#content-header { margin: 0px; padding: 50px 0px 10px; }
+
+#content-main { margin: 0px; padding: 30px 0px 20px; }
+
+#content-footer { font-family: "Century Gothic", "Segoe UI", Segoe, "Nimbus=
+ Sans L", Ubuntu, Verdana, Tahoma, Arial, Helvetica, sans-serif; font-size:=
+ 13px; text-align: right; color: rgb(192, 80, 77); margin: 30px 0px 0px; pa=
+dding: 0px; border-top: 4px solid rgb(12, 155, 116); }
+
+.header-footer { font-family: "Century Gothic", "Segoe UI", Segoe, "Nimbus =
+Sans L", Ubuntu, Verdana, Tahoma, Arial, Helvetica, sans-serif; color: rgb(=
+192, 80, 77); font-size: 13px; text-align: right; margin: 10px 0px 5px; pad=
+ding: 5px 4px; }
+
+.header-footer a { color: rgb(192, 80, 77); text-decoration: underline; }
+
+.header-footer a:focus, .header-footer a:hover { text-decoration: none; col=
+or: rgb(11, 83, 149); }
+
+h1, h2, h3, h4, h5, h6 { font-family: "Century Gothic", "Trebuchet MS", "Se=
+goe UI", Segoe, "Nimbus Sans L", Ubuntu, Verdana, Tahoma, Arial, Helvetica,=
+ sans-serif; margin: 0px; color: rgb(10, 132, 100); letter-spacing: 1px; li=
+ne-height: 1.2; text-align: left; }
+
+h1 { font-size: 40px; font-weight: 400; padding: 0.2em 0px; }
+
+h2 { font-size: 36px; font-weight: 400; padding: 0.2em 0px; }
+
+h3 { font-size: 22px; border-bottom: thin solid rgb(12, 155, 116); padding:=
+ 1.5em 0px 0.3em; }
+
+h4 { font-family: "Segoe UI", Segoe, "Nimbus Sans L", Ubuntu, Verdana, Taho=
+ma, Arial, Helvetica, sans-serif; font-size: 18px; padding: 1.3em 0px 0.2em=
+; border-bottom: thin dotted rgb(12, 155, 116); }
+
+h5, h6 { font-family: "Segoe UI", Segoe, "Nimbus Sans L", Ubuntu, Verdana, =
+Tahoma, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(68, 68, 6=
+8); padding: 1.2em 0px 0px; letter-spacing: 1px; }
+
+.line-heading { color: rgb(68, 68, 68); font-size: 15px; font-weight: bold;=
+ letter-spacing: 1px; padding: 0.2em 0px; }
+
+.line-heading-code-new { font-family: Consolas, "DejaVu Sans Mono", "Lucida=
+ Console", "Courier New", Courier, monospace; color: rgb(227, 27, 35); font=
+-size: 15px; font-weight: normal; }
+
+p { margin-top: 0.6em; margin-bottom: 0.4em; }
+
+pre { font-family: Consolas, "DejaVu Sans Mono", "Lucida Console", "Courier=
+ New", Courier, monospace; font-size: 13px; margin: 5px 0px 8px; border: 2p=
+x solid rgb(248, 248, 248); padding: 5px 10px; line-height: 135%; }
+
+code { font-family: Consolas, "DejaVu Sans Mono", "Lucida Console", "Courie=
+r New", Courier, monospace; }
+
+ul { margin: 0.3em 0px 0.2em 1.8em; padding: 0px; list-style-image: url("im=
+ages/BulletSquare.png"); }
+
+ul ul li { list-style-image: url("images/BulletRound.png"); }
+
+ul ul u1 li { list-style-type: circle; list-style-image: none; }
+
+ol { list-style-type: decimal; margin: 0.3em 0px 0.2em 2.5em; padding: 0px;=
+ }
+
+ol ol li { list-style-type: lower-alpha; }
+
+ol ol o1 li { list-style-type: lower-roman; }
+
+li { margin: 0.4em 0px; }
+
+.float-left-ol-ul { overflow: hidden; }
+
+.float-left-li { position: relative; left: 20px; margin-right: 20px; }
+
+a { color: rgb(11, 83, 149); text-decoration: none; }
+
+a:hover, a:focus { color: rgb(192, 80, 77); text-decoration: underline; }
+
+a.references { display: block; width: 30em; font-size: 18px; font-weight: b=
+old; margin: 4em 0px 0px; }
+
+p.references { font-size: 18px; font-weight: bold; margin: 4em 0px 0px; }
+
+.center-block { margin: 10px auto; }
+
+.text-center { text-align: center; }
+
+.text-right { text-align: right; }
+
+.underline { text-decoration: underline; }
+
+.font-code { font-family: Consolas, "DejaVu Sans Mono", "Lucida Console", "=
+Courier New", Courier, monospace; }
+
+.font-code-text { font-family: Consolas, "DejaVu Sans Mono", "Lucida Consol=
+e", "Courier New", Courier, monospace; font-size: 14px; }
+
+.font-code-smaller { font-family: Consolas, "DejaVu Sans Mono", "Lucida Con=
+sole", "Courier New", Courier, monospace; font-size: 13px; }
+
+.font-normal { font-family: "Segoe UI", Segoe, Calibri, "Nimbus Sans L", Ub=
+untu, Tahoma, Arial, Helvetica, Verdana, sans-serif; }
+
+.pre { white-space: pre; }
+
+.color-example { background-color: rgb(215, 236, 211); }
+
+.color-example-light { background-color: rgb(236, 246, 234); }
+
+.color-syntax, .color-command { background-color: rgb(204, 238, 241); }
+
+.color-explanation { background-color: rgb(238, 238, 238); }
+
+.color-comment { color: rgb(0, 153, 0); }
+
+.color-output { color: rgb(0, 82, 162); }
+
+.color-new { color: rgb(227, 27, 35); }
+
+.color-error { color: rgb(231, 84, 128); }
+
+.color-plain { background-color: rgb(255, 255, 255); }
+
+.color-highlight { background-color: rgb(238, 238, 68); }
+
+.color-highlight-new { background-color: rgb(255, 255, 204); }
+
+.output { background-color: rgb(236, 246, 234); border: 2px solid rgb(248, =
+248, 248); padding: 4px 8px; }
+
+.side-note { margin-top: 15px; margin-left: 40px; padding: 3px 8px; backgro=
+und-color: rgb(231, 231, 231); }
+
+img.image-center { display: block; margin: 10px auto; }
+
+img.image-border { border: thin solid rgb(221, 221, 221); }
+
+img.image-float-left { float: left; margin: 8px 15px 15px 0px; border: thin=
+ solid rgb(221, 221, 221); }
+
+img.image-float-right { float: right; margin: 8px 0px 15px 15px; border: th=
+in solid rgb(221, 221, 221); }
+
+.float-clear { clear: both; }
+
+.table-zebra, .table-program { border-collapse: collapse; border: 0px; marg=
+in: 0px auto; padding: 0px; width: 100%; background-color: rgb(231, 240, 24=
+8); text-align: left; vertical-align: top; }
+
+.table-zebra tr > th { color: rgb(255, 255, 255); background-color: rgb(0, =
+157, 217); margin: 0px; border: 2px solid white; padding: 4px 10px; font-si=
+ze: 15px; letter-spacing: 1px; text-align: center; }
+
+.table-zebra tr > td { margin: 0px; border: 2px solid white; padding: 2px 8=
+px; vertical-align: top; }
+
+.table-zebra tr:nth-child(2n+1) > td { background-color: rgb(203, 223, 241)=
+; }
+
+td > pre { font-family: Consolas, "DejaVu Sans Mono", "Lucida Console", "Co=
+urier New", Courier, monospace; font-size: 14px; margin: 0px; border: none;=
+ padding: 2px 0px 5px; line-height: 135%; }
+
+.table-program th { color: rgb(255, 255, 255); background-color: rgb(0, 157=
+, 217); margin: 0px; border: 2px solid white; padding: 4px 10px; font-size:=
+ 15px; letter-spacing: 1px; text-align: center; }
+
+.table-program td { margin: 0px; border: 0px; padding: 0px; }
+
+.table-program td pre { margin: 0px; border: 2px solid rgb(248, 248, 248); =
+padding: 5px 10px; }
+
+.table-program td pre.text-right { text-align: right; }
+
+.col-desc { background-color: rgb(231, 240, 248); }
+
+.col-code, .tr-alt { background-color: rgb(203, 223, 241); }
+
+.col-example { background-color: rgb(238, 238, 238); }
+
+.col-line-number { width: 40px; background-color: rgb(225, 233, 207); }
+
+.col-program { background-color: rgb(240, 244, 233); }
+
+#wrap-toc { display: block; background: none 0px 0px repeat scroll rgb(231,=
+ 246, 239); float: right; width: 230px; z-index: 100; line-height: 1.5; mar=
+gin: 0px 0px 0px 15px; padding: 5px 8px 10px; text-align: left; white-space=
+: nowrap; }
+
+#wrap-toc h5 { letter-spacing: 1px; margin: 0px; text-transform: uppercase;=
+ color: rgb(68, 68, 68); padding: 0.5em 0px; }
+
+a#show-toc { color: rgb(192, 80, 77); text-decoration: none; letter-spacing=
+: 1px; }
+
+#toc { overflow: auto; }
+
+#toc a.toc-H3 { margin-left: 0px; font-size: 15px; }
+
+#toc a.toc-H4 { margin-left: 20px; font-size: 14px; }
+
+#toc a.toc-H5 { margin-left: 40px; font-size: 14px; }
+------MultipartBoundary--C93TDuKI44rEYrRlVZoP4eMgzMFKcgv0TMKNPFdZrz----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://www3.ntu.edu.sg/home/ehchua/programming/css/images/BulletSquare.png
+
+iVBORw0KGgoAAAANSUhEUgAAAAkAAAANAQMAAABBztZFAAAABlBMVEUAAwBjjJzG2b5OAAAAAXRS
+TlMAQObYZgAAABBJREFUCNdjYMAG7FARAwMADXkBNzRuJgIAAAAASUVORK5CYII=
+
+------MultipartBoundary--C93TDuKI44rEYrRlVZoP4eMgzMFKcgv0TMKNPFdZrz----
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Location: https://www3.ntu.edu.sg/home/ehchua/programming/cpp/images/GCC_CompilationProcess.png
+
+iVBORw0KGgoAAAANSUhEUgAAAmcAAAEgCAYAAADxB9RYAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
+jwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAE5nSURBVHhe7Z1tkCXVed9vuVAVH1IlqhInfJOq
+VOVSyoKC3YVi5xOJ8sEqUoqQQYB2eRHUTmxjxdhrC0lkxatBCLIzUrArOIoQAlmw2JKdyR3W1saw
+SGhZyQJvHMR4JoDEu5DNyghrgZ2ZJ/3e57XPc7pP9+2+979VXbD3nj7nOb9z7u3fPud03xHhDwiA
+AAiAAAiAAAiAQG8IjHoTCQIBARAAARAAARAAARAgyBkmAQiAAAiAAAiAAAj0iADkrEeDgVBAAARA
+AARAAARAAHKGOQACIAACIAACIAACPSIAOevRYCAUEAABEAABEAABEICcYQ6AAAiAAAiAAAiAQI8I
+QM56NBgIBQRAAARAAARAAAQgZ5gDIAACIAACIAACINAjApCzHg0GQgEBEAABEAABEAAByBnmAAiA
+AAhkBJ566in6xje+AR4gAAIgMFECkLOJ4kfjIAACfSJw11130bvf/e4+hYRYQAAEZpAA5GwGBx1d
+BgEQMBOAnGFmgAAI9IEA5KwPo4AYQAAEekEActaLYUAQIDDzBCBnMz8FAAAEQCAnADnDXAABEOgD
+AchZH0YBMYAACPSCAOSsF8OAIEBg5glAzmZ+CgAACIAAMmeYAyAAAn0iADnr02ggFhAAgYkSQOZs
+ovjROAiAQEYAcoapAAIgAAIZAcgZpgIIgEAfCEDO+jAKiKG/BJbnaTSao8W1piEu0/xoRPPLTevB
++SKB5fkRjeYWyT48a7Q4N6I55gBCzjC/QAAE+kAActaHUegghuQiFslBfkyTJKwtzkl9CyNT2aAE
+krMkxkqJ6GASTGETbjmLOp2M4TxxvBhyNoWTBF0CgQESgJwNcND8Qk4zB7IYxFkc3sXKr63uS6fS
+qWS21hZpLlT/gsiZX/ame4rDbZElZ5GWcbOWkLPhzgVEDgLTRAByNk2jaexLemHiLusMCUeaMQux
+5FjR6xBylshiy3EOaeACxsqTszh5Fkk8I10MOQs4OKgKBECgNgHIWW10QzkxlTPnhSmREHHpU8+s
+GS+EirzkF8FyqbGsR11+1K6VagyVF1NTRtAlWdX9i8+WY4xiN8mZV5x5nfUzlfKSdPuSV9VeITkS
+AzkmTplQnx5zWzrrdFzdYwA5CzUyqAcEQKAJAchZE3oDObcUDvOF3ZSBMi0XsuUsljxlf5Xehry0
+ql88M/myCho/I8jtn1auEJCSm3+cWdam1n6zjIEkFdFr81Ub4JtMSnd7pbiVopO+pv7d9Jpbjnyj
+L+Ip+FqknZkBhZz5jgDKgwAItEEActYG1T7WmSytmW4IsEmO/jpfztSLsEukLHuCqjZyZ/1xL9dy
++2cpJ13Ua8QZ3UeY7PljLKmp06aTZVuhUU57qoglp2djkXeRUybUR8Q0J41ZMiVGW/uQs1Ajg3pA
+AASaEICcNaE3yHOzZc78sQ7Wi5YuFWw5U7NErgujIo7y8qplGY8rZ9z+2cqJclYnzgZyxt1PFWoa
+ctozl5HFllOmzZghZ6Hooh4QAIFJEYCcTYr8RNsV9qFx5SWKt20580suMTNS3P55yFmtOGssa3Jk
+KeQ04rRXJV5S5kzrL/+OSZ8+IXPmQwtlQQAEhkIAcjaUkQoap5jp4C77NZCz7FEG9iVI17KnufOc
+Zbgoasvdqurr/GVN91KqHC9Hekw95G5iDzU1OO0Z+6LcjcopEypmtpxhz1ko5KgHBECgAwKQsw4g
+T7SJ+KKkZDHUzf7Wzf/q3W3qBc6wYd4mInobphsClCVMQ+yK9qR3omqPqYjrLuvi9k8rZ70hwC/O
+KukpbtYwZtayDKf0nnJDAFM6cm5N29PHV78bmFMmfTAs787Tqpi5csYRz5gR9pxN9NsKjYMACGQE
+IGczMBX0J+jbHjUgPGrCsgxX3q2X3ZHJyZpkjKVzDT9lpMXJXApU6zVd9Ll1u/oXd4VbVzG1KkRE
+v9tQnZD5HZT52MhCw8selnU2bU9nrT9Dj1PGJ+6qmLlyZvtHQyxjZ599dnG8973vpRNPPFF67Vd+
+5Vfo2LFjM/BNgS6CAAj0hQDkrC8jgTimmEC9ZVsOkLpLppy6TWU47YUqUzdG/Tw7/5dffjmRMfkm
+FPmnzq666qpwoaAmEAABEGAQgJwxIKEICDQl0M5va7azyb6qr2HEq+O4Hb+tGcuXTc5icYsFDn9A
+AARAoEsCkLMuaaOtGSYQXkgS4fO7dbQx/xBy1m3c7t81rcqeIWvWeMqgAhAAgRoEIGc1oOEUEACB
+6SJgyp4hazZdY4zegMCQCEDOhjRaiBUEQKAVAqbsGbJmraBGpSAAAgwCkDMGJBQBARCYfgJi9gxZ
+s+kfb/QQBPpMAHLW59FBbCAAAp0RELNnyJp1hh0NgQAIGAhAzjAtQAAEQCAjEEsZsmaYDiAAApMm
+ADmb9AigfRCYAIGNl5+k9WcP4VAYvPDd/0VX//ol4FIxN+K5gz8gAALtEoCctcsXtYNALwmsP/EA
+vf3QAg4w8J4D8dzBHxAAgXYJQM7a5YvaQaCXBHI523ztOcIBBtw5EAs95KyXH2kENWUEIGdTNqDo
+DghwCORyRpubhAMMuHMAcsb5dKEMCDQnADlrzhA1gMDgCBRytrFOhAMMmHMglrO3Dt9Db71xdHBz
+HgGDwJAIQM6GNFqIFQQCESjl7HgkJjjAgDcHYjk7uv92evHIwUAzEdWAAAiYCEDOMC9AYAYJFHK2
+/hYRDjBgzgHI2Qx+WaDLEyEAOZsIdjQKApMlUMjZ8TeJcIABcw5Azib7uUXrs0MAcjY7Y42egkBB
+oLhb862f0yYOMGDOAcgZvkRAoBsCkLNuOKMVEOgVgULO3vwZbeLoCYMjtHDWiEZn3UprPR0TyFmv
+PsYIZooJQM6meHDRNRCwESjk7Oc/pc2Ax9rnzqTRKBIM6biMxgHbCBlvv+p6PJOzW2itp7wgZ/hO
+AYFuCEDOuuGMVkCgVwQKOXvjH2gz4LF26xmRmF1K46LOv6aFM2NZE18L22bI+FFX9dhAznr1MUYw
+RgJP0u4P7KHdh7rG8yrdeeUeOuf+V4M0DDkLghGVgMCwCBRy9vqrtBnwWPvstkjELqGxWOcTN9L2
+KJO2/bOHg7YVMm7UxZsHPnJ24LY99K7oIlkct/XjNzmfuf+OLKY76M7n631uyzrEPu6jA/Wqw1kB
+CSRjc+VBeiZgneyqDu2L5laYeQA5Y1NHQRCYHgK5nG389CUKeazeEsvZThqL9T5+fSpntzyatDW+
+LMqkXXYvpWXjrJpQ/oGd8pJoVE6MLz93Qym364GyH171q7FmcZexpUu0Yv1JPI44N7I+58u70vkV
+7yWxn3k9rWZxmPu7jRYeF8ft0Sw7qS4nK+MQYKx5cpZmECQxyyRNzGYUgtOVtCUXTjGupnImXoTz
+Poe5ME/PN03XPQmbvfKPPlzWDnLmTx9ngMDgCRRy9g/P0UbAY/X3t0Yys4PGYp3370gF5/60rfGl
+mUSccR2tCuX0cx+hhTOispfeXcRoOjc9byst/DWn/rJcGYv8mlrfxj/cTbuEPrnjjMtHMvr7j2Rx
+x/3ImVS9l7ERuJj6m7xWlLExUsYg0Biz5Oz5g3ROIkGi/KQXzUnKWZLJizMqxvj8PtKpWCoiltUb
+alnLLyKUTggkY1BfukNQTOZZgH9wQM5CjAbqAIGBESjk7CdP00bAY/WmLZEoXUTjos7/kYjK6Iw9
+tJq9Nr4kljOxTBxDWm7XfUo8910klU3OFepKY0/P3X7TXyV9qao/L1P2WT5XrUtnw4lTrVPsU9V7
+WewqK7W/CZMttHDYwk16P+z4+smZbd+PJbMmXNC0ZUNpmUrMUqWZCq+l0yo5y7JrLsHiyFl+kS77
+IsicmsVTLubFBV4pJ8qtV/2WpTaVs7ZPyxFnKkMlf+n8qvfi70stk6lnHSv7aPjONY5LVk5eZpcF
+zszbv0zcVFUMPpcJyJkPLZQFgSkhUMjZK39HGwGP1RtO1+/WvPi/S22ML44Ea9unaVVs97FPJ0uf
++p2e8Wun08JjaZzGc1/5S1rYFpXL2qmqf9cfq/2Vz93I4tDLZecx4yw5lLHnnKveU2M39uWPLxCY
+KPHnjEYX0DjguOaxs+SMVPlSMxnVcqbtVcsv/oWg2ZdNY0lziVUpFIYMSxM5y87NBaXoh7L/Sb94
+Z/0RBM10bnpeGXN1/QaxUDJKan1EseiWguSOMxXjknfcj/z8qvdygXHHaOuj7Wu4yI5KBUxLztFr
+t5X70so5V/Y/fU39u+k1RSqTedA8ewc5m5KLLboBAj4ECjl76UnaCHisXn9aJA7n07iizvHOWM4+
+SatimUc/mcjZrnur4zGe+9KDqZzt/G9JX/zql8/dcMXhel/pdxJLIp06E9N7auzGvtx7flTfabTw
+aMwqi18S22r+TcabJ2fxTDQJlHwRM+85yzNh+pJoecET6nYIjfEz0cqyZha3IGLqxT2NxbInSdlI
+bpYMWXiq6tcFVZUl9e8qKU6cVXXUeU8/x9xH2zedLrllJqtaloztZPNElm3zUrYpY9j0blHImc8V
+DWVBYEoI5HK2/vzfUMhj5bpTI3E4j5Yq6l3aEcnK1t+jFanMHenS5HVLlfFwzuWUKfustuuKw/W+
+gee3fi8Vz6+431NjN/blK+dFjE+lvd+K6kvqzv4/8Fia5gVfzsoPipQJE+TFKGfaUpd8Y0F6wSvl
+TLoAFuc6NuUHk7Pqu1GNgqUs9dluUKjMAGVCWlW/LgaKuCjioX2tMeOsuvPV+p61bUsGkX3npVnO
+zCzlHrNlWIvFIKEutsxrCOSMCQrFQGCaCBRy9qO/pvWAx8q1sZx9mJYq6lz6aCxnu2lFKZOeG4nG
+QSGmL39YKpucG2eJhPPT18o2bfWn5eT61XNjFnq5z0fiWNbvjFOJeT3+e95u1Xt522rfVFZifT+K
+YzMsBxv4hhjnOnKWfG4M4jR8OauWQD954siCLB9+9deTM272x7QsmPdIe69tOVMEqqmcSZkzi5wh
+czZNV0f0BQQmSKCQs2cfo/WAx8pnTolE5Fxaqqhz6aJIJrb8Nq0YyqTnC7KhlCvOvetcodwptPfh
+sh9N6s9ZJHUIcey6S+bEitNyflXdauzGviR9z/v8J7R3S5SVk+JLX7MxbjLeLDmLRcy4zyq7WzKb
+94WciWVZWS3TsqbwmivTwmqj+sPJ2fTNycbYWuGcyylT1l9vWdO5f0/sQFXGSHrPtuRpWdZ0jacQ
+g4lJ7bFS7vy0y7CyZIo9ZxO8sqFpEBg4gULOnn6U1gd0pLLyW7QyoJjb5Luy532RqH2QlhQetteb
+xsKRM/MDWtMlQPMyZLY8KC7XSc8jy5cP80xV9Q0BtmyP9UYDMa4mNwQo3wm2jI2+ET/LLGr71WSZ
+NW5QN4hLWs602V7O9OnlTDcEGMQjb1OVcFFKqt6LuusVo4ecmUVM3w+YLI2rNwRI7WTnqHsaHWXi
+KcCRQc7lA8uaHEooAwJTRqCQs7WDtD6gY+nCSM5O/zitDCjmNvmuXBPLWZQ5+6I4jp9Llzov/Fzw
+seXIWfxR0UXItCFbkSzT5n5J0nQ5231IfpRGVaanL3JWXsCFPWu2pThpD55BuCziUv0okvLLTGWi
+iq2rnqrzm9ZdzCMPOUuXzxlzzSiv8h5CdS6Z5o9pvnGWUTmXE8gZhxLKgMCUEcjl7Pjf/RUN6Vi6
+IJazK+mpgcXdJuOnPv3L2iNItn/6nlbGlStn7X5cLDcEtNtop7WHusB3GnQvGnPdhWoOksObUya/
+G9drOdjCDXLWiwmFIECgWwKFnK0coOM4wIA5ByBn3XxOeSLQTSxDa6XOb2tyeHPKpJm7MD/hBTkb
+2sxDvCAQgEAhZ0/9BR3HAQbMOQA5C/DhY1TBEgFGPbNZxP/3LTm83WXC/q4n5Gw2Zy96PeMECjn7
+wX46jgMMmHOgH3I24x9edH8mCEDOZmKY0UkQkAkUcvbkMh3HAQbMOQA5wzcJCHRDAHLWDWe0AgK9
+IlDK2TgSExxgwJsDkLNefYwRzBQTgJxN8eCiayBgI5DLWXyxxQEGPnPg6P7b6cUjB/HhAgEQaJEA
+5KxFuKgaBPpKYOPlJ6NfBjhEP/+/++m5P78Vh8Dgkc//Oi3dcBGYWObF01+/BXLW1w824poaApCz
+qRlKdAQE/Am8/soP6Xv33IBDYHDbFf+WfvPfvQdMKuYFMmf+nzWcAQI+BCBnPrRQFgSmjADkTBdT
+yJlb1iFnU/ZFgO70jgDkrHdDgoBAAAQmSeDaa6+ls88+e5IhoG0QAIEZJwA5m/EJgO6DAAjIBCBn
+mBEgAAKTJgA5m/QIoH0QAIFeEYCc9Wo4EAwIzCQByNlMDjs6DQIgYCMAOcPcAAEQmDQByNmkRwDt
+gwAI9IoA5KxXw4FgQGAmCQxOzpbnRzSaW6S1psO1PE+j0RwtNq6oaSCBzp+2/gTC4qxmprkt0/xo
+RPPLTkp6gYRboM8ip3lOe9Yya7Q4N6I55ocdcsYZEJQBARBok0Brcra2OBd9ec9Tne/9qg73Tc7s
+/UwvCKNaV74aQz4ByUj7HvVRPULIcw0EtU5hciv7Wi30yfzsUlpqdTo9KelT3bHiyFKD2LRTOe1V
+lUne430fQc5CDhzqAgEQqEMActYwcwY5413w6kzOTs7xkrM5mqsS7rVFmouysUmZutLTSacTNfPK
+JnUWVmsN8bOEkLPWBgEVgwAIMAlAziBnzKmiF2srO1o7oDonesnZPC1WZITzTNRiqKX3Ov3hnpOJ
+JHOlj1trr8slWU1GJhty1uthRHAgMBMEOpWz4ssxX35IlsP0ZSJ1uUz8PlWXNY3LnIYLrlxnlO0x
+XZSluHhf5N6ZM2cb2XKosFRoup6E6E8+HmVdflkwp5xlfZXiV7ib54S6D8rNpN7csswDw0e/7Gua
+gdH3L5WZGX1OuuNPclnKMrE276MXjGOlzinG8p1z7Gxff875G/h7k9Mep0zB1z3HIWeBxxDVgQAI
+eBPoXs6U/TjqhSy9aIjCFl/0yi/UOnKm1Vl8mZft6Bcr3p4xHzlzt5G2KV6UdR75RVxgVLM/TfdH
+cS7waRv5+OliY4pB7jOPiake59wycLN9gsS+mv5BYH+fFz9r3hv2spnmR8qCsTeu0dIr7/Ph/Y1k
+PYHTnqMMM0sKOQs3aqgJBECgHoHu5Uy9IEhfmLasRNk5fzmz1GloV8tQMTYRWzfF55mvolLLnhdX
+G8nykyhs4foji5P/BDL3XZWCNN54OckkNeYbPBzzQGNCxrqjFwVJ4XCzM5BEVMsIyvu3nDetcMdU
+CMc8VtVZPPvdiRzRcc2HEHW42hDf57TnKGOYN6YIIGc+44KyIAACbRDol5wxvjy95cxWp3jhzsoY
+7zx0ZCDYmTN2G/oSWBxX4XgB++OUCMeM42TOkioqMlTmGNSLrINJ0oRhE75hjM0C7n6kitxXJT7T
+Uq30j5CaY6rKmfoPG+vnxSUyrvc5XzUh6uC0k5fhtAc58yGKsiAAAv0lADmLbwhgSKFtCH3lrHo/
+cpllKtpTY/OQM9fe567kTMywqTG55YzBpHM5k5eW1Y3mcp8Y8TPmn5FTUzmbtWVNBuf4c4fMWX8v
+WIgMBGaFQL/kLHoqmnmzdTkc3pkzW52cJS/GLGDLGaNvRknkLoHV6E8ncpbFHy+xmZbmnMuapgvq
+pJc103RgOlfn55VlZyWLx4rff96nU7PusqYl08iY72URTibLq0JHYU572HMWkjjqAgEQmByBnslZ
+dtHwuCFA3leUpFCyh6KWS1XaBmnrBnpleSsu58gu8OXMsJE/ub6KbahZlnI5TLtzT2RUsz9WOWNu
+nHYva2bxFwz1LJJ1I79yE0H5CIQKJpX7GQ1zq+YNAfnH1XZDRXXmjDmmiXjZb4SRY5DnLWcvYdXY
+FZnOyrlfIULM+ZP3oXF7ZZq58sHP7vmaVoTM2eQuSGgZBEAgJdA7OUt9RX7qfNWjNLTy8QXF8Awn
+qU5LGW2DO2PZx0fO4lidbSiPBZhfNt9IEKI/Njkz3QFo+sBYb4bIuBnrUTbTFzFI/TZIsvRoEZ2J
+c89Z1gEON3tflccwCFlB8RwtljpjqvysUlWW0zmnTB2qECibdBrnbzEu6p3P7n18Lsn1a8/wSxXK
+flEbw6uuusr8SxfCnDv55JPp2LFjuG6AAAiAQCcEWpOzTqJHI60QaLrc6RNUl235xDX9Zd1LqXUZ
+9HNM7f19+eWX6cQTT6wUtIWFhbo4cB4IgAAIeBOAnHkjm/YT+D9zE4JEPy/kIXrW/zqSjBsjO+zX
+k27nDzs2xyNrqrJnyJqxKaMgCIBAIAKQs0Agp6Wa5ILtus0zYGchZwFhelcVXqS6nj+8LsvPoTOd
+U5U9Q9aMRxmlQAAEwhGAnIVjiZpAAAQGTMCUPUPWbMADitBBYMAEIGcDHjyEDgIgEI6AKXuGrFk4
+vqgJBECATwByxmeFkiAAAlNOQMyeIWs25YON7oFAjwlAzno8OAgNBECgWwJi9gxZs27ZozUQAIGS
+AOQMswEEQAAEBAJx9gxZM0wJEACBSRKAnE2SPtoGgQkRWH/iAXr7oQUcYOA9B+K5gz8gAALtEoCc
+tcsXtYNALwnkchb/FwcYcOdALPSQs15+pBHUlBGAnE3ZgKI7IMAhkMsZbW4SDjDgzgHIGefThTIg
+0JwA5Kw5Q9QAAoMjUMjZxgYRDjBgzgHI2eA+6gh4oAQgZwMdOIQNAk0IlHK2HokJDjDgzYFYzl7/
+q/9Kf//03zSZfjgXBEDAQQByhikCAjNIoJCz9beJcIABcw7EcnZ0/+304pGDM/ipQZdBoDsCkLPu
+WKMlEOgNgULOjr9JhAMMmHMActabjzACmXICkLMpH2B0DwRMBHI523z7GOEAA+4cgJzh+wQEuiEA
+OeuGM1oBgV4RKOTszTdoEwcYMOcA5KxXH2MEM8UEIGdTPLjoGgjYCBRydux12sQhMHiCFs4a0eis
+z9JaxmV8hfz3+rz0uuvXNZlxg5wN7TvlVbrzyj30risP0jNZ6Aduk//eTo+epN0f2EO7D7VT+7Bq
+TcfgnPtf9QobcuaFC4VBYDoIFHL2T0dps8Nj7XNn0GgUyU5xnEEL/6fbGKr7+3gmZzfTWsZlfHks
+Z+Xf6/PS665f12SY+chZIgHRBbo4bntywh+eTFQCxvTM/XfIffzAHXTn8xPuptT8ZOQs4SIIYZ+I
+TCSWQ/uiebKPDng0DjnzgIWiIDAtBAo5+9nf02ZHx/hjsZRFMnZEaPPITbR9dAmNO4qhTl+TuM+8
+idZ8Yvz6JXpffc7vaVmenBkkKBMiMZNSiE0n0pZmciRZzP9es/1UPhUZe/4gneN5Ee76O6X9zFm9
+TFHXHLptzz+TCDnrdoTQGgj0gkAuZxv/+Ap1cazesi2SlW208EQ37YXs0/iyWM5uoFUfVn9y8WD7
+W8WOJWeJoKjikl6wJytnokiJsuaX0Yg/wKlY9i1LxvtqaV3OkvEfJhsewXqlEu4e/xCAnNXjjLNA
+YNAECjl77QXaaP34Ni2cEQnOGdfRKqetfTuUpc8dNFbOG18a1XfpPbQhlc3Kff+6KBuXL51upYXv
+l300nzeiXfuUMkKsyTlS7Fl/hOVZ7Xxp6XZE22/+dsJZrytqt3Z/5b61P44vJD+S7nzOWSFntj1H
+lsyacOHSlgulJbL8/FiqlIwY++InxiDIWbL85NofpC8VVn4ZZHWWWTtdBosLt1Q2KyfwVIXQfJ7M
+XZUxo5ypMSoc83bKcbELbVpGf19fAs4ymaa2iiynWfLkJfP6IsiNibJ5Vr1vLJ2LtjI2Lra5Azkb
+9CUWwYNAPQKFnP39s7TR+nEX7YpkZftNDzvbWr1pSyRmW2jhu2Vc40ti0TK9FkvTZ2g1if/hVAAT
+KbqIxuJrRZlnKa1LPO9ZUttMyqjnKO3suq+MzxTzxn0XaTHHnNW66/dXr6v9cXyWJ2ekypd68ayW
+M22vWn6hLgTNvmzqFqv88yJInSgHLDmrvgiLn0hThs20HFr02djHXHQs+8diPoK8qm265EyXhqwd
+gYsen/17xyR/OoeMvyRmonTn9Uev3VbezEDF3BLlTy3D+07kxSTPlyZyRsnc4osk5Iw3jigFAlNF
+oJCzV9doo+3j8DVJJmv7jQccbX0xlTitnP56IjnbrqFVIfbVG0+PhOhCGov9+dqF0Wun08LhtJ+m
+8zZeletXy5jPEbhl/dv1NeE1pd2csVxXs/5uWNpoczxZmbPkk2ISKDmbYt5zlkuTeBHL68pfE+pu
+IhCJ9PkvaVKWyXLffWeTOP11u9Ao8SkXePMSpVx/tZxZ9kIpG9hTOeOw0sUung2mONXXOEvFnDLc
+L2pOTGVdHCF3lMnmDfcOVsgZdyRRDgSmiEAhZy8/RRttH9/5VCpn1/9FdVtZuV1fVWP6C1rYFsnY
+zj8qzh/vjOXsU7QqxL56fSxnH6Gx2J+vfiSVs++kdZrO23hZrl8to5+TlVeWLqW4lXZzxlJdDfu7
+YWmjzfHky1n5YZEyYVqGR9mHoy0Bypv40wtbKWfSha44t1oiyqUsfhZD+uhz5cx6MbZkppS7G43L
+YCw5k+uvlDNpyVS9YaLkw9+nZpYzW5ZKFFxOG5wy3K9pZ0yOuZjsH+OUyQOCnHGHBuVAYHYJFHL2
+wt/SRuvHmBa2RjK14w+r2/r21YnE7bpHjUk/f7wjqm/r1bQqxL563WmRiJ1PY7E/95wfvXYaLXw7
+rdN03sYLcv1qGfnvf5hk96S+mOJW2s0ZS3U17O+GpY02x7OOnCWfMoM4GTNnLctZKYo1xUzMCrr2
+tw1IzlzZHL4UWfbjmcbVtNfM8fgNfhyM73ZGTMicMTiiCAiAQDgCuZytP/c4dXGsXHdqJEmn0t5H
+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
+
+------MultipartBoundary--C93TDuKI44rEYrRlVZoP4eMgzMFKcgv0TMKNPFdZrz------

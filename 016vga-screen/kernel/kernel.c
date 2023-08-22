@@ -1,0 +1,17 @@
+#include "../drivers/screen.h"
+
+
+void main() {
+    clear_screen();
+    // col, row
+    // kprint_at("X", 1, 6);
+    // kprint_at("This text spans multiple lines", 75, 10);
+    // kprint_at("There is a line\nbreak", 0, 20);
+    // kprint("There is a line\nbreak");
+    // kprint_at("What happens when we run out of space?", 45, 24);
+
+    // void kprint_at2(char *message, int row, int col, unsigned char fg, unsigned char bg)
+    kprint_at2("1. hello world", 3, 0, WHITE, BLUE);
+    kprint("\n");
+    kprint_at2("2. hello world", -1, -1, BLUE, WHITE);
+}

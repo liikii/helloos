@@ -1,0 +1,2 @@
+def fund():
+    print('abc')
