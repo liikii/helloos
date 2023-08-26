@@ -2,8 +2,6 @@
 #include "ports.h"
 #include "../kernel/util.h"
 
-
-// 不知为何， 这个文件过大， 会对  isr.c这个文件里的except数据产生影响
 /* Declaration of private functions */
 int get_cursor_offset();
 void set_cursor_offset(int offset);
@@ -11,8 +9,6 @@ int print_char(char c, int col, int row, char attr);
 int get_offset(int col, int row);
 int get_offset_row(int offset);
 int get_offset_col(int offset);
-// void scroll_screen();
-
 
 /**********************************************************
  * Public Kernel API functions                            *
@@ -43,92 +39,14 @@ void kprint_at(char *message, int col, int row) {
     }
 }
 
-
-// void kprint_at3(char *message, int col, int row) {
-//     /* Set cursor if col/row are negative */
-//     int offset;
-//     if (col >= 0 && row >= 0)
-//         offset = get_offset(col, row);
-//     else {
-//         offset = get_cursor_offset();
-//         row = get_offset_row(offset);
-//         col = get_offset_col(offset);
-//     }
-
-//     /* Loop through message and print it */
-//     int i = 0;
-//     while (message[i] != 0) {
-//         offset = print_char(message[i++], col, row, WHITE_ON_BLACK);
-//         /* Compute row/col for next iteration */
-//         row = get_offset_row(offset);
-//         col = get_offset_col(offset);
-//     }
-// }
-
-
-// void kprint_at2(char *message, int row, int col, unsigned char fg, unsigned char bg) {
-//     /* Set cursor if col/row are negative */
-//     int offset;
-//     if (col >= 0 && row >= 0){
-//         offset = get_offset(col, row);
-//     }
-//     else {
-//         offset = get_cursor_offset();
-//         row = get_offset_row(offset);
-//         col = get_offset_col(offset);
-//     }
-
-//     char txt_attr = ((fg & 0x0F) << 4) | (bg & 0x0F);
-//     /* Loop through message and print it */
-//     int i = 0;
-//     while (message[i] != 0) {
-//         offset = print_char(message[i++], col, row, txt_attr);
-//         /* Compute row/col for next iteration */
-//         row = get_offset_row(offset);
-//         col = get_offset_col(offset);
-//     }
-// }
-
-
 void kprint(char *message) {
-    // print at current postion.
     kprint_at(message, -1, -1);
 }
 
+
 /**********************************************************
  * Private kernel functions                               *
- *********************************************************
-*/
-
-
-// void scroll(){
-//     int i;
-//     for (i = 1; i < MAX_ROWS; i++) 
-//         memory_copy(get_offset(0, i) + VIDEO_ADDRESS,
-//                     get_offset(0, i-1) + VIDEO_ADDRESS,
-//                     MAX_COLS * 2);
-
-//     /* Blank last line */
-//     char *last_line = get_offset(0, MAX_ROWS-1) + VIDEO_ADDRESS;
-//     for (i = 0; i < MAX_COLS * 2; i++) last_line[i] = 0;
-
-// }
-
-
-// void scroll_screen(){
-//     unsigned char *vid_mem = (unsigned char*) VIDEO_ADDRESS;
-//     int max_cols_2 =  MAX_COLS * 2;
-//     int i;
-//     for (i = 1 * max_cols_2; i < MAX_ROWS * max_cols_2; i++) {
-//         vid_mem[i-max_cols_2] = vid_mem[i];
-//     }
-
-//     /* Blank last line */
-//     char *last_line = (MAX_ROWS - 1) * max_cols_2 + vid_mem;
-//     for (i = 0; i < MAX_COLS * 2; i++){
-//         last_line[i] = 0;
-//     }
-// }
+ **********************************************************/
 
 
 /**
@@ -182,7 +100,6 @@ int print_char(char c, int col, int row, char attr) {
     return offset;
 }
 
-
 int get_cursor_offset() {
     /* Use the VGA ports to get the current cursor position
      * 1. Ask for high byte of the cursor offset (data 14)
@@ -192,14 +109,11 @@ int get_cursor_offset() {
     int offset = port_byte_in(REG_SCREEN_DATA) << 8; /* High byte: << 8 */
     port_byte_out(REG_SCREEN_CTRL, 15);
     offset += port_byte_in(REG_SCREEN_DATA);
-    return offset * 2; /* Position * size of character cell . entry index * size of entry */
+    return offset * 2; /* Position * size of character cell */
 }
-
-
 
 void set_cursor_offset(int offset) {
     /* Similar to get_cursor_offset, but instead of reading we write data */
-    // reverse of the get_cursor_offset
     offset /= 2;
     port_byte_out(REG_SCREEN_CTRL, 14);
     port_byte_out(REG_SCREEN_DATA, (unsigned char)(offset >> 8));
@@ -207,9 +121,7 @@ void set_cursor_offset(int offset) {
     port_byte_out(REG_SCREEN_DATA, (unsigned char)(offset & 0xff));
 }
 
-
 void clear_screen() {
-    // set all entities to black. 
     int screen_size = MAX_COLS * MAX_ROWS;
     int i;
     char *screen = VIDEO_ADDRESS;
@@ -222,8 +134,6 @@ void clear_screen() {
 }
 
 
-
 int get_offset(int col, int row) { return 2 * (row * MAX_COLS + col); }
 int get_offset_row(int offset) { return offset / (2 * MAX_COLS); }
-// substract the perfect row, remain the column index.
 int get_offset_col(int offset) { return (offset - (get_offset_row(offset)*2*MAX_COLS))/2; }

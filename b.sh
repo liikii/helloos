@@ -6,5 +6,6 @@ if [ -f "${fn}" ]; then
     rm -fv "${fn}"
 fi
 
-tar zcf ${fn} helloos
+tar zcf ${fn} --exclude='helloos/.git' helloos
 ls -lht ${fn}
+tar tf ${fn}

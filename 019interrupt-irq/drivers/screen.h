@@ -35,7 +35,7 @@
 void clear_screen();
 void kprint_at(char *message, int col, int row);
 void kprint(char *message);
-void kprint_at2(char *message, int row, int col, unsigned char fg, unsigned char bg);
+// void kprint_at2(char *message, int row, int col, unsigned char fg, unsigned char bg);
 
 
 #endif
