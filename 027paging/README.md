@@ -3,6 +3,14 @@
 introducing grub
 ```
 
+### James Molloy's Tutorial Known Bugs
+```
+Problem: Interrupt handlers corrupt interrupted state
+This article previously told you to know the ABI. If you do you will see a huge problem in the interrupt.s suggested by the tutorial: It breaks the ABI for structure passing! It creates an instance of the struct registers on the stack and then passes it by value to the isr_handler function and then assumes the structure is intact afterwards. However, the function parameters on the stack belongs to the function and it is allowed to trash these values as it sees fit (if you need to know whether the compiler actually does this, you are thinking the wrong way, but it actually does). There are two ways around this. The most practical method is to pass the structure as a pointer instead, which allows you to explicitly edit the register state when needed - very useful for system calls, without having the compiler randomly doing it for you. The compiler can still edit the pointer on the stack when it's not specifically needed. The second option is to make another copy the structure and pass that.
+
+```
+
+
 
 ### section .bss  与  section .text
 ```

@@ -67,6 +67,6 @@ void free_frame(page_t *page);
 /**
    Handler for page faults.
 **/
-void page_fault(registers_t regs);
+void page_fault(registers_t *regs);
 
 #endif

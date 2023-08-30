@@ -7,7 +7,7 @@
 #include "timer.h"
 
 
-int main(void)
+int kernel_main(void)
 {
     // Initialise all the ISRs and segmentation
     init_descriptor_tables();

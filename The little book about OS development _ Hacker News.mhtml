@@ -1,0 +1,1759 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://news.ycombinator.com/item?id=13258063
+Subject: The little book about OS development | Hacker News
+Date: Sun, 27 Aug 2023 10:17:53 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--Dxz4WeMCz6aAJMyzzOYfT7PWhTM3OFOkwQ5mDAAudI----"
+
+
+------MultipartBoundary--Dxz4WeMCz6aAJMyzzOYfT7PWhTM3OFOkwQ5mDAAudI----
+Content-Type: text/html
+Content-ID: <frame-283D46DC2DDBC427D523ED944459A638@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://news.ycombinator.com/item?id=13258063
+
+<html lang=3D"en" op=3D"item"><head><meta http-equiv=3D"Content-Type" conte=
+nt=3D"text/html; charset=3DUTF-8"><meta name=3D"referrer" content=3D"origin=
+"><meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scale=3D=
+1.0"><link rel=3D"stylesheet" type=3D"text/css" href=3D"https://news.ycombi=
+nator.com/news.css?Y9h0ILkWzGxqeJlqMssh">
+        <link rel=3D"shortcut icon" href=3D"https://news.ycombinator.com/fa=
+vicon.ico">
+        <title>The little book about OS development | Hacker News</title></=
+head><body><center><table id=3D"hnmain" border=3D"0" cellpadding=3D"0" cell=
+spacing=3D"0" width=3D"85%" bgcolor=3D"#f6f6ef">
+        <tbody><tr><td bgcolor=3D"#ff6600"><table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"padding:2px"><tbody><tr><t=
+d style=3D"width:18px;padding-right:4px"><a href=3D"https://news.ycombinato=
+r.com/"><img src=3D"https://news.ycombinator.com/y18.svg" width=3D"18" heig=
+ht=3D"18" style=3D"border:1px white solid; display:block"></a></td>
+                  <td style=3D"line-height:12pt; height:10px;"><span class=
+=3D"pagetop"><b class=3D"hnname"><a href=3D"https://news.ycombinator.com/ne=
+ws">Hacker News</a></b>
+                            <a href=3D"https://news.ycombinator.com/newest"=
+>new</a> | <a href=3D"https://news.ycombinator.com/front">past</a> | <a hre=
+f=3D"https://news.ycombinator.com/newcomments">comments</a> | <a href=3D"ht=
+tps://news.ycombinator.com/ask">ask</a> | <a href=3D"https://news.ycombinat=
+or.com/show">show</a> | <a href=3D"https://news.ycombinator.com/jobs">jobs<=
+/a> | <a href=3D"https://news.ycombinator.com/submit">submit</a>           =
+ </span></td><td style=3D"text-align:right;padding-right:4px;"><span class=
+=3D"pagetop">
+                              <a href=3D"https://news.ycombinator.com/login=
+?goto=3Ditem%3Fid%3D13258063">login</a>
+                          </span></td>
+              </tr></tbody></table></td></tr>
+<tr id=3D"pagespace" title=3D"The little book about OS development" style=
+=3D"height:10px"></tr><tr><td><table class=3D"fatitem" border=3D"0">
+        <tbody><tr class=3D"athing" id=3D"13258063">
+      <td align=3D"right" valign=3D"top" class=3D"title"><span class=3D"ran=
+k"></span></td>      <td valign=3D"top" class=3D"votelinks"><center><a id=
+=3D"up_13258063" href=3D"https://news.ycombinator.com/vote?id=3D13258063&am=
+p;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=3D"votearrow" title=
+=3D"upvote"></div></a></center></td><td class=3D"title"><span class=3D"titl=
+eline"><a href=3D"http://littleosbook.github.io/" rel=3D"noreferrer">The li=
+ttle book about OS development</a><span class=3D"sitebit comhead"> (<a href=
+=3D"https://news.ycombinator.com/from?site=3Dlittleosbook.github.io"><span =
+class=3D"sitestr">littleosbook.github.io</span></a>)</span></span></td></tr=
+><tr><td colspan=3D"2"></td><td class=3D"subtext"><span class=3D"subline">
+          <span class=3D"score" id=3D"score_13258063">497 points</span> by =
+<a href=3D"https://news.ycombinator.com/user?id=3DChesco_" class=3D"hnuser"=
+>Chesco_</a> <span class=3D"age" title=3D"2016-12-26T12:50:32"><a href=3D"h=
+ttps://news.ycombinator.com/item?id=3D13258063">on Dec 26, 2016</a></span> =
+<span id=3D"unv_13258063"></span> | <a href=3D"https://news.ycombinator.com=
+/hide?id=3D13258063&amp;goto=3Ditem%3Fid%3D13258063">hide</a> | <a href=3D"=
+https://hn.algolia.com/?query=3DThe%20little%20book%20about%20OS%20developm=
+ent&amp;type=3Dstory&amp;dateRange=3Dall&amp;sort=3DbyDate&amp;storyText=3D=
+false&amp;prefix&amp;page=3D0" class=3D"hnpast">past</a> | <a href=3D"https=
+://news.ycombinator.com/fave?id=3D13258063&amp;auth=3Dc010a6b9937623e429851=
+0854d8079b9a07b909b">favorite</a> | <a href=3D"https://news.ycombinator.com=
+/item?id=3D13258063">45&nbsp;comments</a>        </span>
+              </td></tr>
+        </tbody></table><br><br><table border=3D"0" class=3D"comment-tree">
+            <tbody><tr class=3D"athing comtr" id=3D"13260056"><td><table bo=
+rder=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D"http=
+s://news.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td valign=3D=
+"top" class=3D"votelinks">
+      <center><a id=3D"up_13260056" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13260056&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dsamwilliams" cl=
+ass=3D"hnuser">samwilliams</a> <span class=3D"age" title=3D"2016-12-26T22:1=
+3:10"><a href=3D"https://news.ycombinator.com/item?id=3D13260056">on Dec 26=
+, 2016</a></span> <span id=3D"unv_13260056"></span>          <span class=3D=
+"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258373" class=3D"clicky" aria-hidden=3D"true">next</a> <a class=3D"togg cl=
+icky" id=3D"13260056" n=3D"6">[=E2=80=93]</a><span class=3D"onstory"></span=
+>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">As someone that has just spe=
+nt the last 27 months building an OS from scratch in a University research =
+environment (an OS that can survive catastrophic hardware and software fail=
+ure [0]), I am very impressed with the quality of this document. I only wis=
+h I had found it previously!<p>OS dev can be great fun and gives you a leve=
+l of understanding about how computers actually work that is hard to gain f=
+rom other sources. I have frequently found myself using the knowledge I gai=
+ned from building the OS when working on other projects. It has been partic=
+ularly useful when it comes to understanding performance issues. I would hi=
+ghly recommend it to anyone that is even remotely interested.</p><p>Other s=
+uperb resources to help you get started include the OSdev wiki[1], along wi=
+th this document[2] from the University of Birmingham, UK.</p><p>[0] <a hre=
+f=3D"http://www.hydros-project.org/" rel=3D"nofollow">http://www.hydros-pro=
+ject.org</a></p><p>[1] <a href=3D"http://wiki.osdev.org/" rel=3D"nofollow">=
+http://wiki.osdev.org/</a></p><p>[2] <a href=3D"https://www.cs.bham.ac.uk/~=
+exr/lectures/opsys/10_11/lectures/os-dev.pdf" rel=3D"nofollow">https://www.=
+cs.bham.ac.uk/~exr/lectures/opsys/10_11/lectures...</a>
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13260644"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13260644" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13260644&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dmetaobject" cla=
+ss=3D"hnuser">metaobject</a> <span class=3D"age" title=3D"2016-12-27T01:02:=
+10"><a href=3D"https://news.ycombinator.com/item?id=3D13260644">on Dec 27, =
+2016</a></span> <span id=3D"unv_13260644"></span>          <span class=3D"n=
+avs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3260056" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13261712" class=3D"clicky" aria=
+-hidden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13260644" n=3D"3">=
+[=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Your research project sounds=
+ interesting.  Is there any info you can share (white paper, etc)?</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13261093"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"2"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"80"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13261093" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13261093&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dsamwilliams" cl=
+ass=3D"hnuser">samwilliams</a> <span class=3D"age" title=3D"2016-12-27T03:2=
+4:51"><a href=3D"https://news.ycombinator.com/item?id=3D13261093">on Dec 27=
+, 2016</a></span> <span id=3D"unv_13261093"></span>          <span class=3D=
+"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3260056" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13260644" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13261712" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13261093" n=3D"2">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Thanks! At the moment, the b=
+est source of information is the talk I gave at the Erlang User Conference =
+2016 [0]. Four papers and a thesis are in the pipeline for next year, thoug=
+h! I will update the site once PDFs of those are available.<p>[0] <a href=
+=3D"https://www.youtube.com/watch?v=3D9XqHiumZ02E" rel=3D"nofollow">https:/=
+/www.youtube.com/watch?v=3D9XqHiumZ02E</a>
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13262467"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"3"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"120"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13262467" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13262467&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dsasas" class=3D=
+"hnuser">sasas</a> <span class=3D"age" title=3D"2016-12-27T10:55:56"><a hre=
+f=3D"https://news.ycombinator.com/item?id=3D13262467">on Dec 27, 2016</a></=
+span> <span id=3D"unv_13262467"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3260056" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13261093" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13261712" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13262467" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Thanks for sharing, really e=
+njoyed the video.=20
+Isn't it amazing that Ericsson were achieving <i>nine 9's</i> (31.5 millise=
+conds downtime per year) [1], using Erlang in the AXD switch back in 1998 [=
+2].<p>[1] <a href=3D"https://en.wikipedia.org/wiki/High_availability#Percen=
+tage_calculation" rel=3D"nofollow">https://en.wikipedia.org/wiki/High_avail=
+ability#Percentage_c...</a></p><p>[2] <a href=3D"https://en.wikipedia.org/w=
+iki/Erlang_(programming_language)#History" rel=3D"nofollow">https://en.wiki=
+pedia.org/wiki/Erlang_(programming_language)#...</a>
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                        <tr class=3D"athing comtr" id=3D"13261712"><td><tab=
+le border=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img src=3D=
+"https://news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><td val=
+ign=3D"top" class=3D"votelinks">
+      <center><a id=3D"up_13261712" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13261712&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dcopine" class=
+=3D"hnuser">copine</a> <span class=3D"age" title=3D"2016-12-27T07:00:46"><a=
+ href=3D"https://news.ycombinator.com/item?id=3D13261712">on Dec 27, 2016</=
+a></span> <span id=3D"unv_13261712"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3260056" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13260644" class=3D"clicky" aria=
+-hidden=3D"true">prev</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258373" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13261712" n=3D"2">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">What is your opinion on some=
+ of the issues?  I see the project seems dead, and some of the simple issue=
+s like fixing the frame buffer instructions, and replacing external with ex=
+tern. I'd love to get into OS dev, and help make this 'book' better, but it=
+ seems dead and no one has taken the time to fix such  issues</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13262175"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"2"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"80"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13262175" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13262175&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dsamwilliams" cl=
+ass=3D"hnuser">samwilliams</a> <span class=3D"age" title=3D"2016-12-27T09:2=
+4:10"><a href=3D"https://news.ycombinator.com/item?id=3D13262175">on Dec 27=
+, 2016</a></span> <span id=3D"unv_13262175"></span>          <span class=3D=
+"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3260056" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13261712" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258373" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13262175" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Do you mean with the 'little=
+ book of OS dev'? Or one of the other resources?<p>In general, my experienc=
+e has been that OS dev is a topic that is best approached through the study=
+ of a variety of different documents, simultaneously. For example, you woul=
+d do well to read both the originally posted 'little book...', as well as t=
+he University of Birmingham text. Then it might be a good idea to look at t=
+he OSdev wiki pages for the specific tasks that you want to work on.</p><p>=
+&gt; but it seems dead and no one has taken the time to fix such issues</p>=
+<p>Unfortunately, there seem to be few /completed/, and high-quality texts =
+available. It is certainly a shame that there is not a modern, high-quality=
+ book about OS development (that I know of), but the motivated student can =
+certainly find the needed information. Good luck and have fun!
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                        <tr class=3D"athing comtr" id=3D"13258373"><td><tab=
+le border=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D=
+"https://news.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td vali=
+gn=3D"top" class=3D"votelinks">
+      <center><a id=3D"up_13258373" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258373&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dgravypod" class=
+=3D"hnuser">gravypod</a> <span class=3D"age" title=3D"2016-12-26T14:41:03">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13258373">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13258373"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3260056" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258138" class=3D"clicky" aria-h=
+idden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13258373" n=3D"3">[=
+=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">If you want a real bang up t=
+utorial that covers absolutely everything theory and implementation check o=
+ut Broken Thorns. You'll need to Google for it because I'm on my phone.<p>T=
+wo small notes: the website is down (it's quite old and I'd be sad if the o=
+wner has a bit of bus-syndrome), you can find it on the waybackmachine</p><=
+p>It's the best tutorial out there for an x86 based OS
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13258391"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13258391" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258391&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dbandali" class=
+=3D"hnuser">bandali</a> <span class=3D"age" title=3D"2016-12-26T14:48:01"><=
+a href=3D"https://news.ycombinator.com/item?id=3D13258391">on Dec 26, 2016<=
+/a></span> <span id=3D"unv_13258391"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258373" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13258138" class=3D"clicky" aria=
+-hidden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13258391" n=3D"2">=
+[=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Here it is: <a href=3D"http:=
+//www.brokenthorn.com/Resources/OSDevIndex.html" rel=3D"nofollow">http://ww=
+w.brokenthorn.com/Resources/OSDevIndex.html</a><p>The website's working jus=
+t fine for me, but in case it doesn't work for someone else or if it goes d=
+own again: <a href=3D"https://web.archive.org/web/20161223021815/http://www=
+.brokenthorn.com/Resources/OSDevIndex.html" rel=3D"nofollow">https://web.ar=
+chive.org/web/20161223021815/http://www.broken...</a>
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13258494"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"2"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"80"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13258494" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258494&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dgravypod" class=
+=3D"hnuser">gravypod</a> <span class=3D"age" title=3D"2016-12-26T15:21:55">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13258494">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13258494"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258373" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258391" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258138" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13258494" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">I feared the worst! I'll scr=
+ape the entire page and keep a local backup. It went down for some time.</s=
+pan>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                        <tr class=3D"athing comtr" id=3D"13258138"><td><tab=
+le border=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D=
+"https://news.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td vali=
+gn=3D"top" class=3D"votelinks">
+      <center><a id=3D"up_13258138" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258138&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3DDAllison" class=
+=3D"hnuser">DAllison</a> <span class=3D"age" title=3D"2016-12-26T13:23:31">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13258138">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13258138"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258373" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258384" class=3D"clicky" aria-h=
+idden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13258138" n=3D"2">[=
+=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Original link [pdf]: <a href=
+=3D"http://littleosbook.github.io/book.pdf" rel=3D"nofollow">http://littleo=
+sbook.github.io/book.pdf</a><p>HTML version: <a href=3D"http://littleosbook=
+.github.io/" rel=3D"nofollow">http://littleosbook.github.io/</a></p><p>Sour=
+ce: <a href=3D"https://github.com/littleosbook/littleosbook" rel=3D"nofollo=
+w">https://github.com/littleosbook/littleosbook</a></p><p>2015 Discussion: =
+<a href=3D"https://news.ycombinator.com/item?id=3D8866912" rel=3D"nofollow"=
+>https://news.ycombinator.com/item?id=3D8866912</a></p><p>reddit: <a href=
+=3D"https://www.reddit.com/r/programming/duplicates/2rx3wq/the_little_book_=
+about_os_development/" rel=3D"nofollow">https://www.reddit.com/r/programmin=
+g/duplicates/2rx3wq/the_l...</a>
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13258816"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13258816" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258816&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dsctb" class=3D"=
+hnuser">sctb</a> <span class=3D"age" title=3D"2016-12-26T16:50:31"><a href=
+=3D"https://news.ycombinator.com/item?id=3D13258816">on Dec 26, 2016</a></s=
+pan> <span id=3D"unv_13258816"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258138" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13258384" class=3D"clicky" aria=
+-hidden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13258816" n=3D"1">=
+[=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Thanks, we've updated the li=
+nk from <a href=3D"http://feederio.com/book/37/the-little-book-about-os-dev=
+elopment" rel=3D"nofollow">http://feederio.com/book/37/the-little-book-abou=
+t-os-develop...</a>.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class=3D"athing comtr" id=3D"13258384"><td><table bor=
+der=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D"https=
+://news.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13258384" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258384&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dfuball63" class=
+=3D"hnuser">fuball63</a> <span class=3D"age" title=3D"2016-12-26T14:45:06">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13258384">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13258384"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258138" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258749" class=3D"clicky" aria-h=
+idden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13258384" n=3D"20">[=
+=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Other than the educational v=
+alue of doing so, what would be a reason to write a brand new operating sys=
+tem?  Obviously there is a lot to learn about existing operating systems by=
+ coding you own, much in the way that writing a new languages teaches you a=
+bout existing languages, but what are some creative applications of a hand =
+made operating system?</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13259548"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13259548" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13259548&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Drm445" class=3D=
+"hnuser">rm445</a> <span class=3D"age" title=3D"2016-12-26T20:09:44"><a hre=
+f=3D"https://news.ycombinator.com/item?id=3D13259548">on Dec 26, 2016</a></=
+span> <span id=3D"unv_13259548"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13259196" class=3D"clicky" aria=
+-hidden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13259548" n=3D"3">=
+[=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">&gt; Other than the educatio=
+nal value of doing so, what would be a reason to write a brand new operatin=
+g system?<p>Well an operating system talks to hardware and allocates resour=
+ces, right? The motivation to write a non-toy operating system must be some=
+ strong ideas about how to do those things, and they'd have to be pretty fu=
+ndamental to give up on the vast advantages of interoperability and pre-exi=
+sting software that would come from just implementing your ideas on top of =
+Linux or whatever.</p><p>Past motivations for writing OSes might be express=
+ed as licensing (GNU/Linux), disagreements about fundamental architecture o=
+f operating systems (microkernels), need for hard real-time (vxWorks), or t=
+he belief that you have the sheer resources and market power to start again=
+ and build something better (Windows NT). Security seems like another likel=
+y motivation (There's probably a better example than OpenBSD because I don'=
+t think they started from scratch).</p><p>I quite like the idea that hardwa=
+re intended for autonomy might benefit from being implemented on bare metal=
+. Devices that AREN'T general-purpose computers, but communicate only with =
+their own hardware and with the outside world by their actions and by commu=
+nications protocols, well why shouldn't they run on a custom and highly str=
+ipped-down OS? You'd expect to get benefits in performance and a smaller co=
+debase for potential security holes. But I don't think the industry is actu=
+ally headed in that direction.
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13260077"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"2"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"80"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13260077" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13260077&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3DktRolster" clas=
+s=3D"hnuser">ktRolster</a> <span class=3D"age" title=3D"2016-12-26T22:18:58=
+"><a href=3D"https://news.ycombinator.com/item?id=3D13260077">on Dec 26, 20=
+16</a></span> <span id=3D"unv_13260077"></span>          <span class=3D"nav=
+s">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13259548" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13259196" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13260077" n=3D"2">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00"><i>I quite like the idea tha=
+t hardware intended for autonomy might benefit from being implemented on ba=
+re metal.</i><p>Some embedded OSes work by basically writing your applicati=
+on as an extension of the OS. So you're essentially running on bare metal t=
+here. Usually even for simple devices you want more than one thread/process=
+....and then you start wanting OS stuff.</p><p><i>There's probably a better=
+ example than OpenBSD</i></p><p>Kaspersky's new OS is built for exactly tha=
+t reason.</p><p>Also, for completeness, the osDev wiki has a list of OSes b=
+uilt for various reasons....some serious, some for research: <a href=3D"htt=
+p://wiki.osdev.org/Projects" rel=3D"nofollow">http://wiki.osdev.org/Project=
+s</a>
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13261503"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"3"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"120"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13261503" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13261503&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dnickpsecurity" =
+class=3D"hnuser">nickpsecurity</a> <span class=3D"age" title=3D"2016-12-27T=
+05:40:44"><a href=3D"https://news.ycombinator.com/item?id=3D13261503">on De=
+c 27, 2016</a></span> <span id=3D"unv_13261503"></span>          <span clas=
+s=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13260077" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13259196" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13261503" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Two, older examples are RTEM=
+S and eCos. RTEMS is basically a single application with some OS code linke=
+d in. eCos was interesting in that it let you delete what you didnt need ou=
+t of the OS. JX is an interesting, modern example where the OS is mostly a =
+microkernel, parts of drivers, and JVM. Everything else, including driver l=
+ogic, is in the JVM and depends on developer's needs.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                        <tr class=3D"athing comtr" id=3D"13259196"><td><tab=
+le border=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img src=3D=
+"https://news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><td val=
+ign=3D"top" class=3D"votelinks">
+      <center><a id=3D"up_13259196" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13259196&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dqwertyuiop924" =
+class=3D"hnuser">qwertyuiop924</a> <span class=3D"age" title=3D"2016-12-26T=
+18:28:29"><a href=3D"https://news.ycombinator.com/item?id=3D13259196">on De=
+c 26, 2016</a></span> <span id=3D"unv_13259196"></span>          <span clas=
+s=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13259548" class=3D"clicky" aria=
+-hidden=3D"true">prev</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258517" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13259196" n=3D"8">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Well, for one thing, you can=
+ explore computing ideas and paradigms that fall outside the realm of UNIX.=
+ What if instead of a filesystem, there was a persistant collection of live=
+ objects (with attributes and functions and everything), like Smalltalk? Ho=
+w about a system where there's a unified abstraction for both network and l=
+ocal I/O, ala plan9?<p>How about some new idea that hasn't been tried befor=
+e? Maybe you'll find a better way of doing things.
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13259468"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"2"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"80"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13259468" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13259468&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dfuball63" class=
+=3D"hnuser">fuball63</a> <span class=3D"age" title=3D"2016-12-26T19:40:44">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13259468">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13259468"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13259196" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258517" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13259468" n=3D"7">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">This is where the education =
+part is also helpful. It's been so long since I made a primitive OS that I =
+wouldn't even know where to improve. But even some of the concepts in Templ=
+eOS are fascinating.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13260828"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"3"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"120"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13260828" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13260828&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dspc476" class=
+=3D"hnuser">spc476</a> <span class=3D"age" title=3D"2016-12-27T02:04:29"><a=
+ href=3D"https://news.ycombinator.com/item?id=3D13260828">on Dec 27, 2016</=
+a></span> <span id=3D"unv_13260828"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13259468" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258517" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13260828" n=3D"6">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Well, there's Synthesis OS (=
+<a href=3D"http://valerieaurora.org/synthesis/SynthesisOS/" rel=3D"nofollow=
+">http://valerieaurora.org/synthesis/SynthesisOS/</a>), a "just in time" op=
+erating system that can recompile itself on the fly to provide customized s=
+ystem calls.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13261511"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"4"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"160"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13261511" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13261511&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dnickpsecurity" =
+class=3D"hnuser">nickpsecurity</a> <span class=3D"age" title=3D"2016-12-27T=
+05:43:03"><a href=3D"https://news.ycombinator.com/item?id=3D13261511">on De=
+c 27, 2016</a></span> <span id=3D"unv_13261511"></span>          <span clas=
+s=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13260828" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13260904" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13261511" n=3D"2">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">The funny thing is I was goi=
+ng ro reply to qwerty with that exact OS but thought it's shown up in comme=
+nts too often. So, I didnt. Then it still surprises people when you do. May=
+be I need to keep posting it when people ask these questions if it consiste=
+ntly has such an effect. Maybe see about getting the author over here too w=
+hile we're at it.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13262532"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"5"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"200"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13262532" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13262532&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dqwertyuiop924" =
+class=3D"hnuser">qwertyuiop924</a> <span class=3D"age" title=3D"2016-12-27T=
+11:15:08"><a href=3D"https://news.ycombinator.com/item?id=3D13262532">on De=
+c 27, 2016</a></span> <span id=3D"unv_13262532"></span>          <span clas=
+s=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13261511" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13260904" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13262532" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">It never showed up when I wa=
+s browsing HN...<p>&gt;Maybe I need to keep posting it when people ask thes=
+e questions if it consistently has such an effect</p><p>That's what I do. I=
+t seems to usually work.
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class=3D"athing comtr" id=3D"13260904"><td><table bor=
+der=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"4"><img src=3D"https=
+://news.ycombinator.com/s.gif" height=3D"1" width=3D"160"></td><td valign=
+=3D"top" class=3D"votelinks">
+      <center><a id=3D"up_13260904" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13260904&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dqwertyuiop924" =
+class=3D"hnuser">qwertyuiop924</a> <span class=3D"age" title=3D"2016-12-27T=
+02:30:11"><a href=3D"https://news.ycombinator.com/item?id=3D13260904">on De=
+c 27, 2016</a></span> <span id=3D"unv_13260904"></span>          <span clas=
+s=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13260828" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13261511" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a h=
+ref=3D"https://news.ycombinator.com/item?id=3D13258063#13258517" class=3D"c=
+licky" aria-hidden=3D"true">next</a> <a class=3D"togg clicky" id=3D"1326090=
+4" n=3D"3">[=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">See? <i>that's fascinating</=
+i>.<p>My unix box handles the day-to-day, but the future is coming, and <i>=
+I can't wait</i>.
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13261008"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"5"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"200"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13261008" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13261008&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dspc476" class=
+=3D"hnuser">spc476</a> <span class=3D"age" title=3D"2016-12-27T03:00:26"><a=
+ href=3D"https://news.ycombinator.com/item?id=3D13261008">on Dec 27, 2016</=
+a></span> <span id=3D"unv_13261008"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13260904" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258517" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13261008" n=3D"2">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">That particular future has b=
+een around for 25 years.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13262527"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"6"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"240"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13262527" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13262527&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dqwertyuiop924" =
+class=3D"hnuser">qwertyuiop924</a> <span class=3D"age" title=3D"2016-12-27T=
+11:13:44"><a href=3D"https://news.ycombinator.com/item?id=3D13262527">on De=
+c 27, 2016</a></span> <span id=3D"unv_13262527"></span>          <span clas=
+s=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13261008" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258517" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13262527" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">That one has been, yes. Othe=
+rs have not.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                                          <tr class=3D"athing comtr" id=3D"=
+13258517"><td><table border=3D"0">  <tbody><tr>    <td class=3D"ind" indent=
+=3D"1"><img src=3D"https://news.ycombinator.com/s.gif" height=3D"1" width=
+=3D"40"></td><td valign=3D"top" class=3D"votelinks">
+      <center><a id=3D"up_13258517" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258517&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dformula1" class=
+=3D"hnuser">formula1</a> <span class=3D"age" title=3D"2016-12-26T15:26:58">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13258517">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13258517"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13259196" class=3D"clicky" aria=
+-hidden=3D"true">prev</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258727" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13258517" n=3D"6">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">I know Ive wanted to make ch=
+anges to my own for a while. At very least default ui, menus and shortcuts =
+after installation. These are modtly ux changes though<p>Additionally there=
+s a few features I would prefer from a security user experience standpoint<=
+/p><p>- symlinks are indexed anD the move or deletion of the target would t=
+rigger a "would you like to change/delete the symlink as well?"</p><p>- all=
+ applications run in a container</p><p>- the application can never touch os=
+ filesystem or know about other apps but themself and what the user allows<=
+/p><p>- requests for hardware trigger permission dialog</p><p>- requests fo=
+r files are handled outside the container</p><p>- shared folders are mounte=
+d to the container that the user knows are vulnerable</p><p>- some folders =
+are an aggregate of the applications folders but the application only views=
+ its own</p><p>- deletion of an applications folder will permanently delete=
+ all if its data. No messy installations or artifacts</p><p>- system monito=
+r shows cpu, memory and network usage per application</p><p>- applications =
+require permission to use network and outward calls can be captured before =
+being made</p><p>Additionally there are features from a dev standpoint</p><=
+p>- there is a discoverability system for modified and alternative applicat=
+ions</p><p>- there is a focus on ensuring all parts of the os are easily fo=
+und and modified</p><p>- changes to the os filesystem creates forces the us=
+er to create a virtual machine, make changes to that then "commit" those ch=
+anges in bulk</p><p>- the user can make these patches available online alon=
+g with keywords, problem and a tutorial inorder to recreate for discoverabi=
+lity</p><p>- heavy focus on user interfaces that can be reused in terminal =
+and gui. Applications that only are available in one or have different expe=
+riences will be flagged as such.</p><p>But I canonly make this if I know ho=
+w
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13258726"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"2"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"80"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13258726" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258726&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dddevault" class=
+=3D"hnuser">ddevault</a> <span class=3D"age" title=3D"2016-12-26T16:28:10">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13258726">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13258726"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258517" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258766" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13258726" n=3D"2">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">&gt; symlinks are indexed an=
+D the move or deletion of the target would trigger a "would you like to cha=
+nge/delete the symlink as well?"<p>Patch your coreutils. Difficulty: easy.<=
+/p><p>Most of your other needs can be addressed by making a specialized Lin=
+ux distro (difficulty: hard), rather than writing a kernel that does all of=
+ this (difficulty: max). Build your packages to be containerized by default=
+. I suggest using chroot containers and writing some kind of FUSE filesyste=
+m to mount in the container and provide controlled access to user files. Yo=
+u'll also want to write or modify a Wayland compositor to suit your needs. =
+You can have this provide the permission prompts and similar things. Diffic=
+ulty: hard, but very much doable.</p><p>Skills to learn: Linux, thoroughly.=
+ You should be comfortable making packages, running things in containers, a=
+nd writing C before you embark on this.</p><p>You should <i>definitely</i> =
+build this. I'm working on something similar but my design appeals to fewer=
+ people. Feel free to reach out to me if you have questions with anything, =
+email is in my profile.
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13259454"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"3"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"120"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13259454" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13259454&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dformula1" class=
+=3D"hnuser">formula1</a> <span class=3D"age" title=3D"2016-12-26T19:36:53">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13259454">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13259454"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258726" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258766" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13259454" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">I appreciate the inspirstion=
+, I'll see to get started on it tonight. I was looking into fuse before whi=
+ch inspired much pf the filesystem shinanigans</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class=3D"athing comtr" id=3D"13258766"><td><table bor=
+der=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"2"><img src=3D"https=
+://news.ycombinator.com/s.gif" height=3D"1" width=3D"80"></td><td valign=3D=
+"top" class=3D"votelinks">
+      <center><a id=3D"up_13258766" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258766&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dwinter_blue" cl=
+ass=3D"hnuser">winter_blue</a> <span class=3D"age" title=3D"2016-12-26T16:3=
+8:10"><a href=3D"https://news.ycombinator.com/item?id=3D13258766">on Dec 26=
+, 2016</a></span> <span id=3D"unv_13258766"></span>          <span class=3D=
+"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258517" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258726" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a h=
+ref=3D"https://news.ycombinator.com/item?id=3D13258063#13265000" class=3D"c=
+licky" aria-hidden=3D"true">next</a> <a class=3D"togg clicky" id=3D"1325876=
+6" n=3D"2">[=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Several of the features you'=
+ve  described are present in mobile operating systems, like Android and iOS=
+. For example, <i>"the application can never touch os filesystem or know ab=
+out other apps but themself and what the user allows"</i> and <i>"requests =
+for hardware trigger permission dialog"</i>. Android and iOS both have this=
+ model. Most of what you've described can be implemented in the application=
+ layer, and don't require writing a new kernel, and the few others could be=
+ implemented with small patches to existing well-established kernels like L=
+inux or FreeBSD. We've already got the infrastructure for the container-rel=
+ated features you've described, so implementing what you want is a matter o=
+f creating an system-level policy that allows applications to only run in c=
+ontainers and enforces the other restrictions you've described.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13259159"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"3"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"120"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13259159" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13259159&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dformula1" class=
+=3D"hnuser">formula1</a> <span class=3D"age" title=3D"2016-12-26T18:18:17">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13259159">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13259159"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258766" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13265000" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13259159" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Many of the features are cer=
+tainly inspired by mobile and docker and related technologies certainly it =
+seem possible.<p>I guess writing a new kernal is more for rasberry pi/odroi=
+d/dev boards? In that case having a detailed explaination on it would be ni=
+ce
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class=3D"athing comtr" id=3D"13265000"><td><table bor=
+der=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"2"><img src=3D"https=
+://news.ycombinator.com/s.gif" height=3D"1" width=3D"80"></td><td valign=3D=
+"top" class=3D"votelinks">
+      <center><a id=3D"up_13265000" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13265000&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3DJdeBP" class=3D=
+"hnuser">JdeBP</a> <span class=3D"age" title=3D"2016-12-27T18:39:19"><a hre=
+f=3D"https://news.ycombinator.com/item?id=3D13265000">on Dec 27, 2016</a></=
+span> <span id=3D"unv_13265000"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258517" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258766" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a h=
+ref=3D"https://news.ycombinator.com/item?id=3D13258063#13258727" class=3D"c=
+licky" aria-hidden=3D"true">next</a> <a class=3D"togg clicky" id=3D"1326500=
+0" n=3D"1">[=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Starting from scratch is one=
+ way to achieve this.  But I suggest that you look into the GNU Hurd if sta=
+rting from scratch seems daunting.  Its potential is underused by the likes=
+ of Arch Hurd and Debian Hurd.  One of the things that it can do is substit=
+ute user-supplied intermediaries, for just about anything, for selected pro=
+cesses.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class=3D"athing comtr" id=3D"13258727"><td><table bor=
+der=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img src=3D"https=
+://news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><td valign=3D=
+"top" class=3D"votelinks">
+      <center><a id=3D"up_13258727" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258727&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dkj01a" class=3D=
+"hnuser">kj01a</a> <span class=3D"age" title=3D"2016-12-26T16:28:25"><a hre=
+f=3D"https://news.ycombinator.com/item?id=3D13258727">on Dec 26, 2016</a></=
+span> <span id=3D"unv_13258727"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13258517" class=3D"clicky" aria=
+-hidden=3D"true">prev</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258749" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13258727" n=3D"2">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">It's fun.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13259428"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"2"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"80"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13259428" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13259428&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dfuball63" class=
+=3D"hnuser">fuball63</a> <span class=3D"age" title=3D"2016-12-26T19:30:00">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13259428">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13259428"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258727" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13258749" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13259428" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">OS class was one of my favor=
+ites in college, and I was recently reading about the MikeOS project and it=
+ really inspired me to try and do it again.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                        <tr class=3D"athing comtr" id=3D"13258749"><td><tab=
+le border=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D=
+"https://news.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td vali=
+gn=3D"top" class=3D"votelinks">
+      <center><a id=3D"up_13258749" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258749&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dnayuki" class=
+=3D"hnuser">nayuki</a> <span class=3D"age" title=3D"2016-12-26T16:31:47"><a=
+ href=3D"https://news.ycombinator.com/item?id=3D13258749">on Dec 26, 2016</=
+a></span> <span id=3D"unv_13258749"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258384" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258498" class=3D"clicky" aria-h=
+idden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13258749" n=3D"1">[=
+=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">About 7 years ago, I followe=
+d James Molloy's helpful tutorial for OS development: <a href=3D"http://web=
+.archive.org/web/20160414051121/http://www.jamesmolloy.co.uk/tutorial_html/=
+" rel=3D"nofollow">http://web.archive.org/web/20160414051121/http://www.jam=
+esmo...</a></span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class=3D"athing comtr" id=3D"13258498"><td><table border=3D=
+"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D"https://new=
+s.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td valign=3D"top" c=
+lass=3D"votelinks">
+      <center><a id=3D"up_13258498" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258498&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dsteveklabnik" c=
+lass=3D"hnuser">steveklabnik</a> <span class=3D"age" title=3D"2016-12-26T15=
+:23:35"><a href=3D"https://news.ycombinator.com/item?id=3D13258498">on Dec =
+26, 2016</a></span> <span id=3D"unv_13258498"></span>          <span class=
+=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258749" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13259549" class=3D"clicky" aria-h=
+idden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13258498" n=3D"6">[=
+=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">This is probably a good thre=
+ad to ask: one of my hobby projects is writing an OS, but for x86-64. My ne=
+xt task is user mode, and while I feel pretty solid conceptually, the detai=
+ls around the TSS and such I'm much shakier on. Does anyone have a good, de=
+tailed, with-code resource on such things?</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13258672"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13258672" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258672&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dbee_vik" class=
+=3D"hnuser">bee_vik</a> <span class=3D"age" title=3D"2016-12-26T16:12:24"><=
+a href=3D"https://news.ycombinator.com/item?id=3D13258672">on Dec 26, 2016<=
+/a></span> <span id=3D"unv_13258672"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258498" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13259890" class=3D"clicky" aria=
+-hidden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13258672" n=3D"4">=
+[=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">I'm part-way through my impl=
+ementation of an x86_64 experimental OS and had to address all the issues y=
+ou're facing right now.  I didn't really document my process, but the code =
+to get everything booted into x64 mode is there, including setting up the T=
+SS.<p><a href=3D"https://github.com/beevik/MonkOS" rel=3D"nofollow">https:/=
+/github.com/beevik/MonkOS</a></p><p>In particular, the bootloader:</p><p><a=
+ href=3D"https://github.com/beevik/MonkOS/blob/master/boot/loader.asm" rel=
+=3D"nofollow">https://github.com/beevik/MonkOS/blob/master/boot/loader.asm<=
+/a>
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13258790"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"2"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"80"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13258790" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258790&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dsteveklabnik" c=
+lass=3D"hnuser">steveklabnik</a> <span class=3D"age" title=3D"2016-12-26T16=
+:42:33"><a href=3D"https://news.ycombinator.com/item?id=3D13258790">on Dec =
+26, 2016</a></span> <span id=3D"unv_13258790"></span>          <span class=
+=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258498" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258672" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13259890" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13258790" n=3D"3">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Neat thanks! I will check it=
+ out. It's really the context switching itself that's the trickiest part, I=
+ think. Or all of it. To me, it feels exactly like when I was learning abou=
+t interrupts: while I was doing it, it was so tough... but as soon as I got=
+ something working, it made perfect sense and I wondered why I found it so =
+hard in the first place.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13258809"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"3"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"120"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13258809" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258809&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dbee_vik" class=
+=3D"hnuser">bee_vik</a> <span class=3D"age" title=3D"2016-12-26T16:47:56"><=
+a href=3D"https://news.ycombinator.com/item?id=3D13258809">on Dec 26, 2016<=
+/a></span> <span id=3D"unv_13258809"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258498" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258790" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13259890" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13258809" n=3D"2">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">One resource I found myself =
+consulting over and over again was the Intel Architecture Software Developm=
+ent manuals (<a href=3D"https://software.intel.com/en-us/articles/intel-sdm=
+" rel=3D"nofollow">https://software.intel.com/en-us/articles/intel-sdm</a>)=
+. They're huge and obviously a bit dry, but they had about 90% of what I ne=
+eded to know about x86 memory architecture and interrupts.<p>I included som=
+e other resources I consulted in the README. The OSDev wiki (<a href=3D"htt=
+p://wiki.osdev.org/Main_Page" rel=3D"nofollow">http://wiki.osdev.org/Main_P=
+age</a>) is also good, although I found some of it to be dated or incorrect=
+.</p><p>Good luck on developing your OS. Even though I'm not finished, it's=
+ been an extraordinarily valuable and educational process.
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13258967"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"4"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"160"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13258967" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258967&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dsteveklabnik" c=
+lass=3D"hnuser">steveklabnik</a> <span class=3D"age" title=3D"2016-12-26T17=
+:28:48"><a href=3D"https://news.ycombinator.com/item?id=3D13258967">on Dec =
+26, 2016</a></span> <span id=3D"unv_13258967"></span>          <span class=
+=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258498" class=3D"clicky" aria-hidden=3D"true">root</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258809" class=3D"clicky" aria-h=
+idden=3D"true">parent</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13259890" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13258967" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Yeah, I probably need to jus=
+t take a weekend day and actually read rather than skim and look for second=
+ary sources. The OSDev wiki's pages on this particular topic are all kind o=
+f okay, but often aren't talking about long mode, only protected mode, or o=
+nly have bits and pieces.<p>Thank you! Good luck with finishing yours, as t=
+hough these things are ever finished :)
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                              <tr class=3D"athing comtr" id=3D"13259890"><t=
+d><table border=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img =
+src=3D"https://news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><=
+td valign=3D"top" class=3D"votelinks">
+      <center><a id=3D"up_13259890" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13259890&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3DPeCaN" class=3D=
+"hnuser">PeCaN</a> <span class=3D"age" title=3D"2016-12-26T21:36:18"><a hre=
+f=3D"https://news.ycombinator.com/item?id=3D13259890">on Dec 26, 2016</a></=
+span> <span id=3D"unv_13259890"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258498" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13258672" class=3D"clicky" aria=
+-hidden=3D"true">prev</a> | <a href=3D"https://news.ycombinator.com/item?id=
+=3D13258063#13259549" class=3D"clicky" aria-hidden=3D"true">next</a> <a cla=
+ss=3D"togg clicky" id=3D"13259890" n=3D"1">[=E2=80=93]</a><span class=3D"on=
+story"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">You should join us on freeno=
+de #osdev if you have any questions!<p>(Plus, a bunch of people there are i=
+nterested in Rust, but only 1-2 with Rust OS projects, so your Rust experti=
+se would be appreciated. ;-) )
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class=3D"athing comtr" id=3D"13259549"><td><table bor=
+der=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D"https=
+://news.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13259549" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13259549&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dbrian-armstrong=
+" class=3D"hnuser">brian-armstrong</a> <span class=3D"age" title=3D"2016-12=
+-26T20:10:32"><a href=3D"https://news.ycombinator.com/item?id=3D13259549">o=
+n Dec 26, 2016</a></span> <span id=3D"unv_13259549"></span>          <span =
+class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258498" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13258210" class=3D"clicky" aria-h=
+idden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13259549" n=3D"2">[=
+=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Does anyone have a similar g=
+uide for ARM, and specifically an Android device? I wrote a small x86 kerne=
+l for my class project in school. Being able to run an OS on a phone seems =
+like a lot more fun.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13260933"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13260933" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13260933&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dmindentropy" cl=
+ass=3D"hnuser">mindentropy</a> <span class=3D"age" title=3D"2016-12-27T02:3=
+8:25"><a href=3D"https://news.ycombinator.com/item?id=3D13260933">on Dec 27=
+, 2016</a></span> <span id=3D"unv_13260933"></span>          <span class=3D=
+"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3259549" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13258210" class=3D"clicky" aria=
+-hidden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13260933" n=3D"1">=
+[=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">I used to document the creat=
+ion of a baremetal OS on an ARM device which uses the S3C2440 chip here : <=
+a href=3D"http://thesoulofamachine.blogspot.in/" rel=3D"nofollow">http://th=
+esoulofamachine.blogspot.in/</a><p>You can find the partially developed but=
+ documented code here: <a href=3D"https://github.com/mindentropy/s3c2440-md=
+k" rel=3D"nofollow">https://github.com/mindentropy/s3c2440-mdk</a></p><p>Th=
+e board I use is the mini2440 single board computer. You can bring up the s=
+ame on a beagle bone with some minor modifications when you are dealing wit=
+h the peripherals.
+              </p><div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></span></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class=3D"athing comtr" id=3D"13258210"><td><table bor=
+der=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D"https=
+://news.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13258210" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13258210&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Djesuslop" class=
+=3D"hnuser">jesuslop</a> <span class=3D"age" title=3D"2016-12-26T13:50:06">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13258210">on Dec 26, 2016=
+</a></span> <span id=3D"unv_13258210"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3259549" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13259903" class=3D"clicky" aria-h=
+idden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13258210" n=3D"1">[=
+=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">I also would add DMA (direct=
+ memory access) transfers to round the IO model. It's important for perform=
+ance and affects a quantity of devices (disk, net, sound...).</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class=3D"athing comtr" id=3D"13259903"><td><table border=3D=
+"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D"https://new=
+s.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td valign=3D"top" c=
+lass=3D"votelinks">
+      <center><a id=3D"up_13259903" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13259903&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3DDSingularity" c=
+lass=3D"hnuser">DSingularity</a> <span class=3D"age" title=3D"2016-12-26T21=
+:41:05"><a href=3D"https://news.ycombinator.com/item?id=3D13259903">on Dec =
+26, 2016</a></span> <span id=3D"unv_13259903"></span>          <span class=
+=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3258210" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13263366" class=3D"clicky" aria-h=
+idden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13259903" n=3D"2">[=
+=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">What's the best book/resourc=
+e on modern OS design and concepts? Is there one backed by examples from Li=
+nux?</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                <tr class=3D"athing comtr" id=3D"13260078"><td><table borde=
+r=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"1"><img src=3D"https:/=
+/news.ycombinator.com/s.gif" height=3D"1" width=3D"40"></td><td valign=3D"t=
+op" class=3D"votelinks">
+      <center><a id=3D"up_13260078" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13260078&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3DktRolster" clas=
+s=3D"hnuser">ktRolster</a> <span class=3D"age" title=3D"2016-12-26T22:19:34=
+"><a href=3D"https://news.ycombinator.com/item?id=3D13260078">on Dec 26, 20=
+16</a></span> <span id=3D"unv_13260078"></span>          <span class=3D"nav=
+s">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3259903" class=3D"clicky" aria-hidden=3D"true">parent</a> | <a href=3D"http=
+s://news.ycombinator.com/item?id=3D13258063#13263366" class=3D"clicky" aria=
+-hidden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13260078" n=3D"1">=
+[=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">I would start at the OS-Dev =
+wiki: <a href=3D"http://wiki.osdev.org/Main_Page" rel=3D"nofollow">http://w=
+iki.osdev.org/Main_Page</a></span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+                  <tr class=3D"athing comtr" id=3D"13263366"><td><table bor=
+der=3D"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D"https=
+://news.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td valign=3D"=
+top" class=3D"votelinks">
+      <center><a id=3D"up_13263366" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13263366&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Dkuharich" class=
+=3D"hnuser">kuharich</a> <span class=3D"age" title=3D"2016-12-27T14:43:39">=
+<a href=3D"https://news.ycombinator.com/item?id=3D13263366">on Dec 27, 2016=
+</a></span> <span id=3D"unv_13263366"></span>          <span class=3D"navs"=
+>
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3259903" class=3D"clicky" aria-hidden=3D"true">prev</a> | <a href=3D"https:=
+//news.ycombinator.com/item?id=3D13258063#13259593" class=3D"clicky" aria-h=
+idden=3D"true">next</a> <a class=3D"togg clicky" id=3D"13263366" n=3D"1">[=
+=E2=80=93]</a><span class=3D"onstory"></span>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">Previous discussion: <a href=
+=3D"https://news.ycombinator.com/item?id=3D8866912" rel=3D"nofollow">https:=
+//news.ycombinator.com/item?id=3D8866912</a></span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            <tr class=3D"athing comtr" id=3D"13259593"><td><table border=3D=
+"0">  <tbody><tr>    <td class=3D"ind" indent=3D"0"><img src=3D"https://new=
+s.ycombinator.com/s.gif" height=3D"1" width=3D"0"></td><td valign=3D"top" c=
+lass=3D"votelinks">
+      <center><a id=3D"up_13259593" href=3D"https://news.ycombinator.com/vo=
+te?id=3D13259593&amp;how=3Dup&amp;goto=3Ditem%3Fid%3D13258063"><div class=
+=3D"votearrow" title=3D"upvote"></div></a></center>    </td><td class=3D"de=
+fault"><div style=3D"margin-top:2px; margin-bottom:-10px;"><span class=3D"c=
+omhead">
+          <a href=3D"https://news.ycombinator.com/user?id=3Ddubesor" class=
+=3D"hnuser">dubesor</a> <span class=3D"age" title=3D"2016-12-26T20:21:53"><=
+a href=3D"https://news.ycombinator.com/item?id=3D13259593">on Dec 26, 2016<=
+/a></span> <span id=3D"unv_13259593"></span>          <span class=3D"navs">
+             | <a href=3D"https://news.ycombinator.com/item?id=3D13258063#1=
+3263366" class=3D"clicky" aria-hidden=3D"true">prev</a> <a class=3D"togg cl=
+icky" id=3D"13259593" n=3D"1">[=E2=80=93]</a><span class=3D"onstory"></span=
+>          </span>
+                  </span></div><br><div class=3D"comment">
+                  <span class=3D"commtext c00">How does this differ from do=
+ing hack the kernel course stuff? Want to dip my feet into this for better =
+knowledge.</span>
+              <div class=3D"reply">        <p><font size=3D"1">
+                  </font>
+      </p></div></div></td></tr>
+        </tbody></table></td></tr>
+            </tbody></table>
+  <br><br>
+</td></tr>
+<tr><td><img src=3D"https://news.ycombinator.com/s.gif" height=3D"10" width=
+=3D"0"><table width=3D"100%" cellspacing=3D"0" cellpadding=3D"1"><tbody><tr=
+><td bgcolor=3D"#ff6600"></td></tr></tbody></table><br>
+<center><span class=3D"yclinks"><a href=3D"https://news.ycombinator.com/new=
+sguidelines.html">Guidelines</a> | <a href=3D"https://news.ycombinator.com/=
+newsfaq.html">FAQ</a> | <a href=3D"https://news.ycombinator.com/lists">List=
+s</a> | <a href=3D"https://github.com/HackerNews/API">API</a> | <a href=3D"=
+https://news.ycombinator.com/security.html">Security</a> | <a href=3D"https=
+://www.ycombinator.com/legal/">Legal</a> | <a href=3D"https://www.ycombinat=
+or.com/apply/">Apply to YC</a> | <a href=3D"mailto:hn@ycombinator.com">Cont=
+act</a></span><br><br>
+<form method=3D"get" action=3D"https://hn.algolia.com/">Search: <input type=
+=3D"text" name=3D"q" size=3D"17" autocorrect=3D"off" spellcheck=3D"false" a=
+utocapitalize=3D"off" autocomplete=3D"false"></form></center></td></tr>    =
+  </tbody></table></center>
+     =20
+ =20
+</body></html>
+------MultipartBoundary--Dxz4WeMCz6aAJMyzzOYfT7PWhTM3OFOkwQ5mDAAudI----
+Content-Type: text/css
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://news.ycombinator.com/news.css?Y9h0ILkWzGxqeJlqMssh
+
+@charset "utf-8";
+
+body { font-family: Verdana, Geneva, sans-serif; font-size: 10pt; color: rg=
+b(130, 130, 130); }
+
+td { font-family: Verdana, Geneva, sans-serif; font-size: 10pt; color: rgb(=
+130, 130, 130); }
+
+.admin td { font-family: Verdana, Geneva, sans-serif; font-size: 8.5pt; col=
+or: rgb(0, 0, 0); }
+
+.subtext td { font-family: Verdana, Geneva, sans-serif; font-size: 7pt; col=
+or: rgb(130, 130, 130); }
+
+input { font-family: monospace; font-size: 10pt; }
+
+input[type=3D"\"submit\""] { font-family: Verdana, Geneva, sans-serif; }
+
+textarea { font-family: monospace; font-size: 10pt; resize: both; }
+
+a:link { color: rgb(0, 0, 0); text-decoration: none; }
+
+a:visited { color: rgb(130, 130, 130); text-decoration: none; }
+
+.default { font-family: Verdana, Geneva, sans-serif; font-size: 10pt; color=
+: rgb(130, 130, 130); }
+
+.admin { font-family: Verdana, Geneva, sans-serif; font-size: 8.5pt; color:=
+ rgb(0, 0, 0); }
+
+.title { font-family: Verdana, Geneva, sans-serif; font-size: 10pt; color: =
+rgb(130, 130, 130); overflow: hidden; }
+
+.subtext { font-family: Verdana, Geneva, sans-serif; font-size: 7pt; color:=
+ rgb(130, 130, 130); }
+
+.yclinks { font-family: Verdana, Geneva, sans-serif; font-size: 8pt; color:=
+ rgb(130, 130, 130); }
+
+.pagetop { font-family: Verdana, Geneva, sans-serif; font-size: 10pt; color=
+: rgb(34, 34, 34); line-height: 12px; }
+
+.comhead { font-family: Verdana, Geneva, sans-serif; font-size: 8pt; color:=
+ rgb(130, 130, 130); }
+
+.comment { font-family: Verdana, Geneva, sans-serif; font-size: 9pt; }
+
+.hnname { margin-right: 5px; }
+
+#hnmain { min-width: 796px; }
+
+.title a { word-break: break-word; }
+
+.comment a:link, .comment a:visited { text-decoration: underline; }
+
+.noshow { display: none; }
+
+.nosee { visibility: hidden; pointer-events: none; cursor: default; }
+
+.c00, .c00 a:link { color: rgb(0, 0, 0); }
+
+.c5a, .c5a a:link, .c5a a:visited { color: rgb(90, 90, 90); }
+
+.c73, .c73 a:link, .c73 a:visited { color: rgb(115, 115, 115); }
+
+.c82, .c82 a:link, .c82 a:visited { color: rgb(130, 130, 130); }
+
+.c88, .c88 a:link, .c88 a:visited { color: rgb(136, 136, 136); }
+
+.c9c, .c9c a:link, .c9c a:visited { color: rgb(156, 156, 156); }
+
+.cae, .cae a:link, .cae a:visited { color: rgb(174, 174, 174); }
+
+.cbe, .cbe a:link, .cbe a:visited { color: rgb(190, 190, 190); }
+
+.cce, .cce a:link, .cce a:visited { color: rgb(206, 206, 206); }
+
+.cdd, .cdd a:link, .cdd a:visited { color: rgb(221, 221, 221); }
+
+.pagetop a:visited { color: rgb(0, 0, 0); }
+
+.topsel a:link, .topsel a:visited { color: rgb(255, 255, 255); }
+
+.subtext a:link, .subtext a:visited { color: rgb(130, 130, 130); }
+
+.subtext a:hover { text-decoration: underline; }
+
+.comhead a:link, .subtext a:visited { color: rgb(130, 130, 130); }
+
+.comhead a:hover { text-decoration: underline; }
+
+.hnmore a:link, a:visited { color: rgb(130, 130, 130); }
+
+.hnmore { text-decoration: underline; }
+
+.default p { margin-top: 8px; margin-bottom: 0px; }
+
+.pagebreak { break-before: page; }
+
+pre { overflow: auto; padding: 2px; white-space: pre-wrap; overflow-wrap: a=
+nywhere; }
+
+pre:hover { overflow: auto; }
+
+.votearrow { width: 10px; height: 10px; border: 0px; margin: 3px 2px 6px; b=
+ackground: url("triangle.svg") 0% 0% / 10px, linear-gradient(transparent, t=
+ransparent) no-repeat; }
+
+.votelinks.nosee div.votearrow.rotate180 { display: none; }
+
+table.padtab td { padding: 0px 10px; }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and=
+ (min-device-pixel-ratio: 2) {
+  .votearrow { background-size: 10px; background-image: url("triangle.svg")=
+, linear-gradient(transparent, transparent); }
+}
+
+.rotate180 { transform: rotate(180deg); }
+
+@media only screen and (min-width: 300px) and (max-width: 750px) {
+  #hnmain { width: 100%; min-width: 0px; }
+  body { padding: 0px; margin: 0px; width: 100%; }
+  td { height: inherit !important; }
+  .title, .comment { font-size: inherit; }
+  span.pagetop { display: block; margin: 3px 5px; font-size: 12px; line-hei=
+ght: normal; }
+  span.pagetop b { display: block; font-size: 15px; }
+  table.comment-tree .comment a { display: inline-block; max-width: 200px; =
+overflow: hidden; white-space: nowrap; text-overflow: ellipsis; vertical-al=
+ign: top; }
+  img[src=3D"s.gif"][width=3D"40"] { width: 12px; }
+  img[src=3D"s.gif"][width=3D"80"] { width: 24px; }
+  img[src=3D"s.gif"][width=3D"120"] { width: 36px; }
+  img[src=3D"s.gif"][width=3D"160"] { width: 48px; }
+  img[src=3D"s.gif"][width=3D"200"] { width: 60px; }
+  img[src=3D"s.gif"][width=3D"240"] { width: 72px; }
+  img[src=3D"s.gif"][width=3D"280"] { width: 84px; }
+  img[src=3D"s.gif"][width=3D"320"] { width: 96px; }
+  img[src=3D"s.gif"][width=3D"360"] { width: 108px; }
+  img[src=3D"s.gif"][width=3D"400"] { width: 120px; }
+  img[src=3D"s.gif"][width=3D"440"] { width: 132px; }
+  img[src=3D"s.gif"][width=3D"480"] { width: 144px; }
+  img[src=3D"s.gif"][width=3D"520"] { width: 156px; }
+  img[src=3D"s.gif"][width=3D"560"] { width: 168px; }
+  img[src=3D"s.gif"][width=3D"600"] { width: 180px; }
+  img[src=3D"s.gif"][width=3D"640"] { width: 192px; }
+  img[src=3D"s.gif"][width=3D"680"] { width: 204px; }
+  img[src=3D"s.gif"][width=3D"720"] { width: 216px; }
+  img[src=3D"s.gif"][width=3D"760"] { width: 228px; }
+  img[src=3D"s.gif"][width=3D"800"] { width: 240px; }
+  img[src=3D"s.gif"][width=3D"840"] { width: 252px; }
+  .title { font-size: 11pt; line-height: 14pt; }
+  .subtext { font-size: 9pt; }
+  .votearrow { transform: scale(1.3, 1.3); margin-right: 6px; }
+  .votearrow.rotate180 { transform: rotate(180deg) scale(1.3, 1.3); }
+  .votelinks { min-width: 18px; }
+  .votelinks a { display: block; margin-bottom: 9px; }
+  input[type=3D"text"], input[type=3D"number"], textarea { font-size: 16px;=
+ width: 90%; }
+}
+
+.comment { max-width: 1215px; overflow-wrap: anywhere; }
+
+@media only screen and (min-width: 300px) and (max-width: 389px) {
+  .comment { max-width: 270px; overflow: hidden; }
+}
+
+@media only screen and (min-width: 390px) and (max-width: 509px) {
+  .comment { max-width: 350px; overflow: hidden; }
+}
+
+@media only screen and (min-width: 510px) and (max-width: 599px) {
+  .comment { max-width: 460px; overflow: hidden; }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 689px) {
+  .comment { max-width: 540px; overflow: hidden; }
+}
+
+@media only screen and (min-width: 690px) and (max-width: 809px) {
+  .comment { max-width: 620px; overflow: hidden; }
+}
+
+@media only screen and (min-width: 810px) and (max-width: 899px) {
+  .comment { max-width: 730px; overflow: hidden; }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1079px) {
+  .comment { max-width: 810px; overflow: hidden; }
+}
+
+@media only screen and (min-width: 1080px) and (max-width: 1169px) {
+  .comment { max-width: 970px; overflow: hidden; }
+}
+
+@media only screen and (min-width: 1170px) and (max-width: 1259px) {
+  .comment { max-width: 1050px; overflow: hidden; }
+}
+
+@media only screen and (min-width: 1260px) and (max-width: 1349px) {
+  .comment { max-width: 1130px; overflow: hidden; }
+}
+------MultipartBoundary--Dxz4WeMCz6aAJMyzzOYfT7PWhTM3OFOkwQ5mDAAudI----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://news.ycombinator.com/triangle.svg
+
+<?xml version=3D"1.0" encoding=3D"UTF-8"?>
+<svg width=3D"32" height=3D"32" viewBox=3D"0 0 32 16" version=3D"1.1" xmlns=
+=3D"http://www.w3.org/2000/svg">
+ <path d=3D"m 2 27 14 -29 14 29 z" fill=3D"#999999"/>
+</svg>=0A
+------MultipartBoundary--Dxz4WeMCz6aAJMyzzOYfT7PWhTM3OFOkwQ5mDAAudI----
+Content-Type: image/svg+xml
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://news.ycombinator.com/y18.svg
+
+<svg xmlns=3D"http://www.w3.org/2000/svg" width=3D"18" height=3D"18" viewBo=
+x=3D"0 0 192 192"><rect x=3D"4" y=3D"4" width=3D"188" height=3D"188" fill=
+=3D"#f60" stroke=3D"#fff"></rect><path d=3D"M 73.25217560011882,45.01 L 96,=
+92.40130083308577 L 118.74782439988117,45.00999999999999 L 138.313520714737=
+36,45.01 L 103.99,109.49661467617327 L 103.99,150.99 L 88.01,150.99 L 88.01=
+,109.49661467617327 L 53.686479285262635,45.010000000000005 Z" fill=3D"#fff=
+"></path></svg>
+------MultipartBoundary--Dxz4WeMCz6aAJMyzzOYfT7PWhTM3OFOkwQ5mDAAudI----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://news.ycombinator.com/s.gif
+
+R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==
+
+------MultipartBoundary--Dxz4WeMCz6aAJMyzzOYfT7PWhTM3OFOkwQ5mDAAudI------

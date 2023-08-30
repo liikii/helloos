@@ -7,7 +7,7 @@
 ; find its definition. You can kind of think of it 
 ; like a 'public' annotation in other languages.
 global start 
-extern main
+extern kernel_main
 
 
 section .bss
@@ -27,7 +27,7 @@ section .text
 ; assembler has to generate 32bit code. Our Hello World will only be in
 ; 32 bits.
 
-bits 32
+
 start:
     ; mov word [0xb8000], 0x0248 ; H
     ; mov word [0xb8002], 0x0265 ; e
@@ -43,6 +43,6 @@ start:
     ; mov word [0xb8016], 0x0264 ; d
     ; mov word [0xb8018], 0x0221 ; !
     mov esp, stack_top
-    call main
+    call kernel_main
     ; cli                         ; Disable interrupts.
     jmp $
