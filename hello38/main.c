@@ -1,13 +1,14 @@
 #include "console.h"
 #include "vga.h"
 
+
 // static inline void lcr3(unsigned int val){
 //     asm volatile("movl %0,%%cr3" : : "r" (val));
 // }
-
 static inline void halt(void){
     asm volatile("hlt" : : );
 }
+
 
 int main(void){
     // int i;
@@ -24,10 +25,17 @@ int main(void){
     // }
     // char* video_memory = (char*) 0xb8000;
     // *video_memory = 'H';
-
-    _kputc('A');
-    _kputc('B');
-    _kputc('C');
+    cls();
+    putchar('A');
+    putchar('B');
+    putchar('C');
+    putchar('\n');
+    puts((unsigned char *)"DEF");
+    // kntohex
+    // unsigned char *abc = "helloworld";
+    unsigned char abc[10];
+    kntohex(abc, 12);
+    puts(abc);
 
     halt();
     return 0; 

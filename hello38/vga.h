@@ -2,8 +2,8 @@
 #define __VGA_H__
 
 
-#define _SCR_W 80
-#define _SCR_H 25
+#define SCR_W 80
+#define SCR_H 25
 
 #define BLACK 0
 #define BLUE 1
@@ -25,8 +25,13 @@
 
 // #define OK_POS 70
 
+// void putchar(unsigned char c);
+void cls();
+void putchar(unsigned char c);
+void puts(unsigned char *text);
+void kntohex(unsigned char *buffer, unsigned int decnum);
 // void _kntos(char*, unsigned int, int);
-void _kputc(char);
+// void kputc(char);
 // void _kcolor(char);
 // void _kputs(char *);
 // void _kbackspace();

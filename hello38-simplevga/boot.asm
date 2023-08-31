@@ -87,7 +87,7 @@ far_jmp:
     mov ebp, stack_top
     mov esp, ebp
 
-    
+
     ; map first PTD entry to PT table
     mov eax, pt_table
     or eax, 0b11 ; present + writable
@@ -131,4 +131,3 @@ far_jmp:
     ; If kmain return, just keep looping...
 loop:
     jmp loop
-

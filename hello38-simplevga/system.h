@@ -6,6 +6,7 @@ typedef unsigned int uint32_t;
 typedef unsigned short uint16_t;
 typedef unsigned char uint8_t;
 
+
 // Register structs for interrupt/exception
 typedef struct registers
 {
@@ -14,6 +15,7 @@ typedef struct registers
     uint32_t int_no, err_code;
     uint32_t eip, cs, eflags, useresp, ss;
 }register_t;
+
 
 // Register structs for bios service
 typedef struct register16 {
@@ -35,7 +37,10 @@ typedef struct register16 {
 }register16_t;
 
 
-
-
+void *memcpy(void* dst, const void* src, int n);
+void *memset(void * dst, char val, int n);
+uint16_t * memsetw(uint16_t *dest, uint16_t val, uint32_t count);
+uint32_t * memsetdw(uint32_t *dest, uint32_t val, uint32_t count);
+int strlen(const unsigned char * s);
 
 #endif
