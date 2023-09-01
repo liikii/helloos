@@ -1,6 +1,8 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 
+#define NULL 0
+
 typedef unsigned long long uint64_t;
 typedef unsigned int uint32_t;
 typedef unsigned short uint16_t;
@@ -37,10 +39,15 @@ typedef struct register16 {
 }register16_t;
 
 
+
+unsigned char inb(unsigned short port);
+void outb(unsigned short port, unsigned char data);
+
 void *memcpy(void* dst, const void* src, int n);
 void *memset(void * dst, char val, int n);
 uint16_t * memsetw(uint16_t *dest, uint16_t val, uint32_t count);
 uint32_t * memsetdw(uint32_t *dest, uint32_t val, uint32_t count);
+
 int strlen(const unsigned char * s);
 
 #endif

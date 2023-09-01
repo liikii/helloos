@@ -1,7 +1,6 @@
 #include "console.h"
 #include "vga.h"
 #include "idt.h"
-#include "time.h"
 
 
 // static inline void lcr3(unsigned int val){
@@ -38,18 +37,12 @@ int main(void){
     // unsigned char abc[10];
     // kntohex(abc, 12);
     // puts(abc);
+
     idt_init();
 
-    // puts((unsigned char *)"123");
-    unsigned int n = 123;
-    put_dec(n);
-    putchar('\n');
+    puts((unsigned char *)"123");
     // __asm__ __volatile__("int $0x3");
-    // __asm__ __volatile__("int $0x3");
-    timer_init();
-
-
-
+    __asm__ __volatile__("int $0x3");
     halt();
     return 0; 
 }

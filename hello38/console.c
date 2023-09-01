@@ -1,22 +1,12 @@
+#include "system.h"
+
+
 #define COM1    0x3f8
 
 static int uart;    // is there a uart?
 
 void microdelay(unsigned long us) {
 
-}
-
-unsigned char inb(unsigned short port)
-{
-    unsigned char data;
-
-    asm volatile("in %1,%0" : "=a" (data) : "d" (port));
-    return data;
-}
-
-void outb(unsigned short port, unsigned char data)
-{
-    asm volatile("out %0,%1" : : "a" (data), "d" (port));
 }
 
 

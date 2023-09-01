@@ -1,8 +1,6 @@
 #ifndef __VGA_H__
 #define __VGA_H__
 
-#include "system.h"
-
 
 #define SCR_W 80
 #define SCR_H 25
@@ -32,7 +30,6 @@ void cls();
 void putchar(unsigned char c);
 void puts(unsigned char *text);
 void kntohex(unsigned char *buffer, unsigned int decnum);
-void put_dec(uint32_t n);
 // void _kntos(char*, unsigned int, int);
 // void kputc(char);
 // void _kcolor(char);

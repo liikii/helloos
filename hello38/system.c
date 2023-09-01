@@ -1,6 +1,20 @@
 #include "system.h"
 
 
+unsigned char inb(unsigned short port)
+{
+    unsigned char data;
+
+    asm volatile("in %1,%0" : "=a" (data) : "d" (port));
+    return data;
+}
+
+void outb(unsigned short port, unsigned char data)
+{
+    asm volatile("out %0,%1" : : "a" (data), "d" (port));
+}
+
+
 void *memcpy(void *dst, void const *src, int n){
     char * ret = dst;
     char * p = dst;
