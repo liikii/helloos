@@ -1,7 +1,7 @@
 #include "console.h"
 #include "vga.h"
 #include "idt.h"
-#include "time.h"
+#include "timer.h"
 
 
 // static inline void lcr3(unsigned int val){
@@ -47,8 +47,6 @@ int main(void){
     // __asm__ __volatile__("int $0x3");
     // __asm__ __volatile__("int $0x3");
     timer_init();
-
-
 
     halt();
     return 0; 
