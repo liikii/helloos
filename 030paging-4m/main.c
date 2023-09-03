@@ -26,6 +26,12 @@ int main(void){
     // *video_memory = 'H';
     video_memory[0] = 'X'; 
     video_memory[1] = 0x0f; /* White text on black background */
+
+    video_memory = (char*) (0xC0000000 + 0xb8000);
+    // *video_memory = 'H';
+    video_memory[2] = 'F'; 
+    video_memory[3] = 0x1f; /* White text on blue background */
+
     halt();
     return 0; 
 }
