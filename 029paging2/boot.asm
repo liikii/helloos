@@ -55,6 +55,7 @@ kernel_entry:
     mov word [0xb8006], 0x026c ; l
     mov word [0xb8008], 0x026f ; o
     mov word [0xb800a], 0x022c ; ,
+    mov eax, main
     mov word [0xb800c], 0x0220 ;
     mov word [0xb800e], 0x0277 ; w
     mov word [0xb8010], 0x026f ; o
@@ -90,11 +91,13 @@ kernel_entry:
     ; mov esp, stack_top
 ;     ; Upon entry to the os, the bootloader has put a pointer to multiboot information structure in ebx, we can pass it into our kmain(), but we may or may not need to use it
 ;     push ebx
-
+    
     mov esp, stack_top
     
 ;     ; When control is transfer to the c code, we can throw away the old pageing directory structure and use our own, remember to clear pse bit in cr4 though :)
-    call main
+    ; call main
+    jmp eax
+
 ; If kmain return, just keep looping...
 loop:
     jmp loop
