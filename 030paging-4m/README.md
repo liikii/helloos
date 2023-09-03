@@ -51,7 +51,3 @@ set disassemble-next-line on
 ```
 https://users.cs.utah.edu/~aburtsev/238P/hw/hw4-boot-into-c/hw4-boot-into-c.html
 ```
-
-
-
-### 0b1100 0000 0001 0000 0000 0000 0000 0000
