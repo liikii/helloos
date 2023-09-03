@@ -1,3 +1,5 @@
+VM_BASE     equ 0xC0000000
+
 extern main
 
 
@@ -49,11 +51,10 @@ DATA_SEG equ gdt_data - gdt_start
 
 
 ; Our initial stack
-section .bss, nobits
+;section .bss nobits
+section .bss
 align 4096
 pt_table:
-    resb 4096
-ptd_table:
     resb 4096
 
 stack_bottom:
@@ -62,36 +63,26 @@ stack_bottom:
 stack_top:
 
 
-global start 
+section .data
+align 4096
+ptd_table:
+    times(1024) dd 0 
+
+
+
 section .text
-bits 32
+
+global low_kernel_entry
+low_kernel_entry equ (start - VM_BASE)
+
+global start 
 start:
-    ; load 0 into all data segment registers
-    ; mov ax, DATA_SEG
-    ; mov ss, ax
-    ; mov ds, ax
-    ; mov es, ax
-    ; mov fs, ax
-    ; mov gs, ax
-
-    lgdt [gdt_descriptor]
-    jmp CODE_SEG:far_jmp
-
-far_jmp:
-    mov ax, DATA_SEG
-    mov ss, ax
-    mov ds, ax
-    mov es, ax
-    mov fs, ax
-    mov gs, ax
-    mov ebp, stack_top
-    mov esp, ebp
-
-
     ; map first PTD entry to PT table
     mov eax, pt_table
     or eax, 0b11 ; present + writable
     mov [ptd_table], eax
+    mov [ptd_table+4*768], eax
+
     ; map each P1 entry to a 4KB page
     mov ecx, 0         ; counter variable
 .map_pt_table:
@@ -103,6 +94,7 @@ far_jmp:
     inc ecx            ; increase counter
     cmp ecx, 1024      ; if counter == 1024, the whole P1 table is mapped
     jne .map_pt_table  ; else map the next entry
+
      ; move page table address to cr3
     mov eax, ptd_table
     mov cr3, eax
@@ -112,6 +104,14 @@ far_jmp:
     or eax, 1 << 31
     mov cr0, eax
 
+
+    lea ecx, [higher_half]
+    jmp ecx
+higher_half:
+    ; Unmap the first 4mb physical mem, because we don't need it anymore. Flush the tlb too
+    mov dword[ptd_table], 0
+    invlpg[0]
+    push ebx
     call main
 
     ; mov word [0xb8000], 0x0248 ; H
