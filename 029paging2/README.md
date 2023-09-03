@@ -38,3 +38,16 @@ Reserved: 保留位，此处为000，未使用。
 
 需要注意的是，以上描述基于一般的x86体系结构，具体的处理器架构和操作系统可能会有所不同。
 ```
+
+
+### gdb
+```
+add-auto-load-safe-path /home/liikii/helloos/hello38/.gdbinit
+add-auto-load-safe-path /home/liikii/helloos/029paging2/.gdbinit
+set disassemble-next-line on
+```
+
+### gdb tutorial
+```
+https://users.cs.utah.edu/~aburtsev/238P/hw/hw4-boot-into-c/hw4-boot-into-c.html
+```
