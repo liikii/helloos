@@ -124,3 +124,48 @@ Upto 256 Bus
 Each bus have maximum 32 devices attached
 Each device have atmost 8 functions
 Buses are connected using Bridges
+
+
+在szhou42/osdev项目中，pci_size_map是一个用于映射PCI设备配置空间大小的数组。该数组定义了每个PCI设备类型所需的配置空间大小，以字节为单位。配置空间包含了设备的寄存器、寄存器集合和其他相关信息。
+
+PCI设备配置空间是由PCI规范定义的，它包含了设备的基本信息、设备寄存器和设备的功能描述等。对于每个PCI设备，系统都会从其配置空间中读取必要的信息以进行正确的初始化和驱动。
+
+pci_size_map数组的索引对应于设备的类别代码（Class Code），而数组的值对应于该设备类别所需的配置空间大小。通过查询pci_size_map数组，操作系统可以根据设备的类别代码确定设备的配置空间大小。
+
+这个pci_size_map数组在操作系统开发中特别有用，因为它提供了一种方便的方式来确定每个PCI设备所需的配置空间大小，从而可以在系统初始化过程中正确地分配和管理资源。
+
+总之，pci_size_map定义了每个PCI设备类型所需的配置空间大小，帮助操作系统正确地分配和管理设备资源。
+
+
+
+LINUX DEVICE DRIVERS
+
+LINUX
+DEVICE
+DRIVERS
+
+
+### ata 
+```
+Short for Advanced Technology Attachment, ATA was approved on May 12, 1994, and is an interface that connects hard drives, CD-ROM (compact disc read-only memory) drives, and other drives. The first ATA interface is now commonly called PATA, which is short for Parallel AT Attachment after the introduction of SATA (Serial AT Attachment). Today, almost all home computers use the ATA interface, including Apple computers, which use SATA.
+```
+
+
+### github 里 szhou42/osdev 项目里 ata_init 函数的作用
+```
+在szhou42/osdev项目中，ata_init函数是用于初始化ATA（Advanced Technology Attachment）硬盘驱动的函数。
+
+ATA是一种常见的硬盘接口标准，用于连接计算机主板和硬盘。ata_init函数的作用是在操作系统启动时初始化ATA硬盘驱动，以便后续能够正确地读取和写入硬盘数据。
+
+具体而言，ata_init函数可能会执行以下一些任务：
+
+1. 检测ATA控制器：函数会检测系统中存在的ATA控制器，并确定其I/O端口和中断线路。
+
+2. 识别连接的硬盘：函数会与每个ATA控制器通信，发送命令以识别连接的硬盘。这个过程称为ATA设备识别（ATA device identification）。通过识别硬盘，操作系统可以获取硬盘的参数信息，如容量、扇区大小等。
+
+3. 初始化ATA驱动：函数会根据识别到的硬盘信息，初始化ATA硬盘驱动程序的数据结构和状态。这样操作系统就可以利用驱动程序来进行硬盘读写操作。
+
+4. 分配资源：根据硬盘数量和配置，函数可能会分配适当的内存和其他资源来管理和操作硬盘。
+
+总之，ata_init函数的作用是在操作系统启动时，对ATA硬盘驱动进行初始化，包括探测ATA控制器、识别连接的硬盘、初始化驱动程序等。这样操作系统就能够正确地与硬盘进行数据交互，并实现文件系统的读写功能。
+```
