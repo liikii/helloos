@@ -1,0 +1,1664 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://tldp.org/LDP/tlk/dd/pci.html
+Subject: 
+Date: Tue, 12 Sep 2023 14:38:08 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----"
+
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: text/html
+Content-ID: <frame-1EA2A13BBA8E104117ACE8EC79937292@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://tldp.org/LDP/tlk/dd/pci.html
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dwindows-1252"></head><body><center>
+<a href=3D"https://tldp.org/LDP/tlk/tlk-toc.html"> Table of Contents</a>,=
+=20
+<a href=3D"https://tldp.org/LDP/tlk/tlk.html" target=3D"_top"> Show Frames<=
+/a>,=20
+<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html" target=3D"_top"> No Frames=
+</a>=20
+</center>
+<hr>
+<meta name=3D"TtH" content=3D"1.03">                                       =
+  =20
+
+<p>
+                  </p><h1><a name=3D"tth_chAp6">Chapter 6     <br>PCI</a></=
+h1><a name=3D"tth_chAp6">
+</a><a name=3D"PCI-chapter"></a>
+<p>
+<img src=3D"https://tldp.org/LDP/tlk/logos/sit3-bw-tran.1.gif"><br> <tt><b>=
+</b></tt>=20
+Peripheral Component Interconnect (PCI),=20
+as its name implies is a standard that describes how to connect
+the peripheral components of a system together in a structured
+and controlled way.
+The standard describes =20
+the way that the system components are electrically
+connected and the way that they should behave.
+This chapter looks at how the Linux kernel initializes the system's PCI
+buses and devices.
+
+</p><p>
+
+</p><p><a name=3D"tth_fIg6.1"></a>=20
+</p><center><center> <img src=3D"https://tldp.org/LDP/tlk/dd/pci-system.gif=
+"><br>=20
+<p>
+</p></center></center><center>      Figure 6.1: Example PCI Based System</c=
+enter>
+<a name=3D"example-pci-system"></a>
+<p>
+</p><p>Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#example-=
+pci-system"> 6.1</a> is a logical diagram of an example PCI based system.
+The PCI buses and PCI-PCI bridges are the glue connecting the system
+components together; the CPU=20
+is connected to PCI bus 0, the primary PCI bus as is the video device. =20
+A special PCI device, a PCI-PCI bridge connects the primary
+bus to the secondary PCI bus, PCI bus 1.=20
+In the jargon of the PCI specification, PCI bus 1 is described as being=20
+<em>downstream</em> of the PCI-PCI bridge and
+PCI bus 0 is <em>up-stream</em> of the bridge.
+Connected to the secondary PCI bus are the SCSI and ethernet
+devices for the system.
+Physically the bridge, secondary PCI bus and two devices
+would all be contained on the same combination PCI card.
+The PCI-ISA bridge in the system supports older, legacy ISA devices and the=
+ diagram
+shows a super I/O controller chip, which controls the keyboard, mouse and
+floppy.
+<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#tthFtNtAAB" name=3D"tthFref=
+AAB"><sup>1</sup></a>
+
+</p><p>
+
+</p><h2><a name=3D"tth_sEc6.1">6.1&nbsp;</a> PCI Address Spaces</h2>
+
+<p>
+The CPU and the PCI devices need to access memory that is shared
+between them.
+This memory is used by device drivers to control the PCI devices and
+to pass information between them.
+Typically the shared memory contains control and status registers for the
+device.
+These registers are used to control the device and to read its status.
+For example, the PCI SCSI device driver would read its status register
+to find out if the SCSI device was ready to write a block of information
+to the SCSI disk.
+Or it might write to the control register to start the device running after=
+ it
+has been turned on.
+
+</p><p>
+The CPU's system memory could be used  for this shared memory but if it wer=
+e, then every time a=20
+PCI device accessed memory, the CPU would have to stall, waiting for
+the PCI device to finish.
+Access to memory is generally limited to one system component at a time.
+This would slow the system down.
+It is also not a good idea to allow the system's peripheral devices to
+access main memory in an uncontrolled way.
+This would be very dangerous; a rogue device could make the system
+very unstable.
+
+</p><p>
+Peripheral devices have their own memory spaces.
+The CPU can access these spaces but access by the devices into the
+system's memory is very strictly controlled using DMA (Direct Memory
+Access) channels.
+ISA devices have access to two address spaces, ISA I/O (Input/Output)=20
+and ISA memory.
+PCI has three; PCI I/O, PCI Memory and PCI Configuration space.
+All of these address spaces are also accessible by the CPU with the
+the PCI I/O and PCI Memory address spaces being used by the device
+drivers and the PCI Configuration space being used by the PCI initializatio=
+n
+code within the Linux kernel.
+
+</p><p>
+The Alpha AXP&nbsp;processor does not have natural access to addresses spac=
+es other than
+the system address space.
+It uses support chipsets to access other address spaces such as PCI Configu=
+ration
+space.
+It uses a sparse address mapping scheme which steals part of the large virt=
+ual=20
+address space and maps it to the PCI address spaces.
+
+</p><p>
+
+</p><h2><a name=3D"tth_sEc6.2">6.2&nbsp;</a> PCI Configuration Headers</h2>
+
+<p>
+
+</p><p><a name=3D"tth_fIg6.2"></a>=20
+</p><center><center> <img src=3D"https://tldp.org/LDP/tlk/dd/pci-config-hea=
+der.gif"><br>=20
+<p>
+</p></center></center><center>      Figure 6.2: The PCI Configuration Heade=
+r</center>
+<a name=3D"pci-configuration-header"></a>
+<p>
+</p><p>Every PCI device in the system, including the PCI-PCI bridges
+has a configuration data structure that is somewhere in
+the PCI configuration address space.
+The PCI Configuration header allows the system to identify and
+control the device.
+Exactly where the header is in the PCI Configuration address space
+depends on where in the PCI topology that device is.
+For example, a PCI video card plugged into one PCI slot=20
+on the PC motherboard will=20
+have its configuration header at one location and if it is
+plugged into another PCI slot then its header will appear=20
+in another location in PCI Configuration memory.
+This does not matter, for wherever the PCI devices and bridges
+are the system will find and configure them using the status
+and configuration registers in their configuration headers.
+
+</p><p>
+Typically, systems are designed so that every PCI slot has it's=20
+PCI Configuration Header in an offset that is related to
+its slot on the board. =20
+So, for example, the first slot on the board might have its
+PCI Configuration at offset 0 and the second slot at offset
+256 (all headers are the same length, 256 bytes) and so on.
+A system specific hardware mechanism is defined so that the PCI=20
+configuration code can attempt to examine all possible PCI Configuration
+Headers for a given PCI bus and know which devices are present
+and which devices are absent simply by trying to read one of
+the fields in the header (usually the <em>Vendor Identification</em>
+field) and getting some sort of error.
+The  describes
+one possible error message as returning <em>0xFFFFFFFF</em> when attempting=
+ to
+read the <em>Vendor Identification</em> and <em>Device Identification</em>=
+=20
+fields for an empty PCI slot.
+
+</p><p>
+Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#pci-configurati=
+on-header"> 6.2</a> shows the layout
+of the 256 byte PCI configuration header. =20
+It contains the following fields:
+
+</p><p>
+
+</p><dl compact=3D"">	<dt><b>Vendor Identification</b></dt><dd> A unique nu=
+mber=20
+	describing the originator
+	of the PCI device.  Digital's PCI Vendor Identification is
+	<em>0x1011</em> and Intel's is <em>0x8086</em>.
+	</dd><dt><b>Device Identification</b></dt><dd> A unique number describing
+	the device itself.  For example, Digital's 21141 fast
+	ethernet device has a device identification of <em>0x0009</em>.
+	</dd><dt><b>Status</b></dt><dd> This field gives the status of the
+	device with the meaning of the bits of this field set=09
+	by the standard. .
+	</dd><dt><b>Command</b></dt><dd> By writing to this field the system
+	controls the device, for example allowing the device to access PCI I/O mem=
+ory,
+	</dd><dt><b>Class Code</b></dt><dd> This identifies the type of device tha=
+t
+	this is.  There are standard classes for every sort of device;
+	video, SCSI and so on.  The class code for SCSI is <em>0x0100</em>.
+	</dd><dt><b>Base Address Registers</b></dt><dd> These registers are used t=
+o
+	determine and allocate the type, amount and location of
+	PCI I/O and PCI memory space that the device can use.
+	</dd><dt><b>Interrupt Pin</b></dt><dd> Four of the physical pins on the PC=
+I card carry
+		interrupts from the card to the PCI bus.  The standard labels these as
+		A, B, C and D.   The <em>Interrupt Pin</em> field describes which of thes=
+e=20
+		pins this PCI device uses.  Generally it is hardwired for a pariticular
+		device.  That is, every time the system boots, the device uses the same
+		interrupt pin.  This information allows the interrupt handling subsystem
+		to manage interrupts from this device,
+	</dd><dt><b>Interrupt Line</b></dt><dd>=20
+=09
+		The <em>Interrupt Line</em> field of the device's PCI Configuration heade=
+r
+		is used to pass an interrupt handle between the PCI initialisation code,=
+=20
+		the device's driver and Linux's interrupt handling subsystem.
+		The number written there is meaningless to the the device driver but it
+		allows the interrupt handler to correctly route an interrupt from the
+		PCI device to the correct device driver's interrupt handling code within
+		the Linux operating system.
+		See Chapter&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/interrupts.html">=
+ interrupt-chapter</a> on page&nbsp;
+		for details on how Linux handles interrupts.
+</dd></dl>
+<p>
+
+</p><h2><a name=3D"tth_sEc6.3">6.3&nbsp;</a> PCI I/O and PCI Memory Address=
+es</h2>
+
+<p>
+These two address spaces are used by the devices to communicate
+with their device drivers running in the Linux kernel on the CPU.
+For example, the DECchip 21141 fast ethernet device maps its
+internal registers into PCI I/O space.
+Its Linux device driver then reads and writes those registers to control
+the device.
+Video drivers typically use large amounts of PCI memory space
+to contain video information.
+
+</p><p>
+Until the PCI system has been set up and the device's access to
+these address spaces has been turned on using the <em>Command</em>=20
+field in the PCI Configuration header, nothing can access them.
+It should be noted that only the PCI configuration code reads
+and writes PCI configuration addresses; the Linux device drivers=20
+only read and write PCI I/O and PCI memory addresses.
+
+</p><p>
+
+</p><h2><a name=3D"tth_sEc6.4">6.4&nbsp;</a> PCI-ISA Bridges</h2>
+These bridges support legacy ISA devices by translating PCI I/O and PCI Mem=
+ory
+space accesses into ISA I/O and ISA Memory accesses.
+A lot of systems now sold contain several ISA bus slots and several PCI bus=
+ slots.
+Over time the need for this backwards compatibility will dwindle and PCI on=
+ly
+systems will be sold.
+Where in the ISA address spaces (I/O and Memory) the ISA devices of the
+system have their registers was fixed in the dim mists of time by the
+early Intel 8080 based PCs.
+Even a $5000 Alpha AXP&nbsp;based computer systems  will have its ISA flopp=
+y controller
+at the same place in ISA I/O space as the first IBM PC.
+The PCI specification copes with this by reserving the lower regions
+of the PCI I/O and PCI Memory address spaces for use by the ISA peripherals
+in the system and using a single PCI-ISA bridge to translate any PCI memory
+accesses to those regions into ISA accesses.
+
+<p>
+
+</p><h2><a name=3D"tth_sEc6.5">6.5&nbsp;</a> PCI-PCI Bridges</h2>
+
+<p>
+PCI-PCI bridges are special PCI devices that glue the PCI buses of the syst=
+em together.
+Simple systems have a single PCI bus but there is an
+electrical limit on the number of PCI devices that a single
+PCI bus can support.
+Using PCI-PCI bridges to add more PCI buses allows the system
+to support many more PCI devices.
+This is particularly important for a high performance server.
+Of course, Linux fully supports the use of PCI-PCI bridges.
+
+</p><p>
+
+</p><h3><a name=3D"tth_sEc6.5.1">6.5.1&nbsp;</a> PCI-PCI Bridges: PCI I/O a=
+nd PCI Memory Windows</h3>
+PCI-PCI bridges only pass a subset of PCI I/O and PCI memory read and=20
+write requests downstream.
+For example, in Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html=
+#example-pci-system"> 6.1</a> on=20
+page&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#example-pci-syste=
+m">pageref</a>, the PCI-PCI bridge will only=20
+pass read and write addresses from PCI bus 0 to PCI bus 1
+if they are for PCI I/O or PCI memory addresses owned by either=20
+the SCSI or ethernet device; all other PCI I/O and memory addresses are ign=
+ored.
+This filtering stops addresses propogating needlessly throughout the system=
+.
+To do this, the PCI-PCI bridges must be programmed with a base and limit fo=
+r=20
+PCI I/O and PCI Memory space access that they have to pass=20
+from their primary bus onto their secondary bus. =20
+Once the PCI-PCI Bridges in a system have been configured=20
+then so long as the Linux device drivers only access PCI I/O and PCI=20
+Memory space via these windows, the PCI-PCI Bridges are invisible.
+This is an important feature that makes life easier for=20
+Linux PCI device driver writers.
+However, it also makes PCI-PCI bridges somewhat tricky for
+Linux to configure as we shall see later on.
+
+<p>
+
+</p><h3><a name=3D"tth_sEc6.5.2">6.5.2&nbsp;</a> PCI-PCI Bridges: PCI Confi=
+guration Cycles and PCI Bus Numbering</h3>
+
+<p>
+
+</p><p><a name=3D"tth_fIg6.3"></a>=20
+</p><center><center> <img src=3D"https://tldp.org/LDP/tlk/dd/pci-cycle-0.gi=
+f"><br>=20
+<p>
+</p></center></center><center>      Figure 6.3: Type 0 PCI Configuration Cy=
+cle</center>
+<a name=3D"type-0-configuration-cycle"></a>
+<p>
+</p><p>
+</p><p><a name=3D"tth_fIg6.4"></a>=20
+</p><center><center> <img src=3D"https://tldp.org/LDP/tlk/dd/pci-cycle-1.gi=
+f"><br>=20
+<p>
+</p></center></center><center>      Figure 6.4: Type 1 PCI Configuration Cy=
+cle</center>
+<a name=3D"type-1-configuration-cycle"></a>
+<p>
+</p><p>So that the CPU's PCI initialization code can address devices that=
+=20
+are not on the main PCI bus, there has to be a mechanism=20
+that allows bridges to decide whether or not to pass=20
+Configuration cycles from their primary interface to=20
+their secondary interface.
+A cycle is just an address as it appears on the PCI bus.  =20
+The PCI specification defines two formats for the PCI Configuration address=
+es; Type 0 and Type 1; these
+are shown in Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#ty=
+pe-0-configuration-cycle"> 6.3</a> and Figure&nbsp;<a href=3D"https://tldp.=
+org/LDP/tlk/dd/pci.html#type-1-configuration-cycle"> 6.4</a>
+respectively.
+Type 0 PCI Configuration cycles do not contain a bus number and these are
+interpretted by all devices as being for PCI configuration addresses=20
+on this PCI bus.
+Bits 31:11 of the Type 0 configuraration cycles are treated as the
+device select field.
+One way to design a system is to have each bit select a different device.
+In this case bit 11 would select the PCI device in slot 0, bit 12 would
+select the PCI device in slot 1 and so on.
+Another way is to write the device's slot number directly into bits 31:11.
+Which mechanism is used in a system depends on the system's PCI memory=20
+controller.
+
+</p><p>
+Type 1 PCI Configuration cycles contain a PCI bus number and this type
+of configuration cycle is ignored by all PCI devices except the PCI-PCI
+bridges.
+All of the PCI-PCI Bridges seeing Type 1 configuration cycles may choose
+to pass them to the PCI buses downstream of themselves.
+Whether the PCI-PCI Bridge ignores the Type 1 configuration cycle or
+passes it onto the downstream PCI bus depends on how the PCI-PCI Bridge has=
+ been configured.
+Every PCI-PCI bridge has a primary bus interface number=20
+and a secondary bus interface number.
+The primary bus interface being the one nearest the CPU and the secondary
+bus interface being the one furthest away.
+Each PCI-PCI Bridge also has a subordinate bus number and this is
+the maximum bus number of  all the PCI buses that are bridged beyond the se=
+condary bus=20
+interface.
+Or to put it another way, the subordinate bus number is
+the highest numbered PCI bus downstream of the PCI-PCI bridge.
+When the PCI-PCI bridge sees a Type 1 PCI configuration cycle it does one o=
+f the=20
+following things:
+
+</p><ul>
+<p>
+    =20
+</p><li>  Ignore it if the bus number specified is not in=20
+        between the bridge's secondary bus number and=20
+        subordinate bus number (inclusive),
+
+<p>
+    =20
+</p></li><li>  Convert it to a Type 0 configuration command if=20
+        the bus number specified matches the secondary bus=20
+        number of the bridge,
+
+<p>
+    =20
+</p></li><li>  Pass it onto the secondary bus interface unchanged=20
+        if the bus number specified is greater than the=20
+        secondary bus number and less than or equal to the=20
+        subordinate bus number.
+</li></ul>
+<p>
+So, if we want to address Device 1 on bus 3 of the=20
+topology Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#pci-pc=
+i-config-eg-4"> pci-pci-config-eg-4</a> on page&nbsp;
+we must generate a Type 1 Configuration command from the CPU.=20
+Bridge<sub>1</sub> passes this unchanged onto Bus 1. Bridge<sub>2</sub> ign=
+ores it but Bridge<sub>3</sub>=20
+converts it into a Type 0 Configuration command and sends=20
+it out on Bus 3 where Device 1 responds to it.=20
+
+</p><p>
+It is up to each individual operating system to allocate bus=20
+numbers during PCI configuration but whatever the=20
+numbering scheme used the following statement must be true for=20
+all of the PCI-PCI bridges in the system:
+
+</p><p>
+   <em>``All PCI buses located behind a PCI-PCI bridge must=20
+   reside between the seondary bus number and the=20
+   subordinate bus number (inclusive).''</em>
+
+</p><p>
+If this rule is broken then the PCI-PCI Bridges will not pass and
+translate Type 1 PCI configuration cycles correctly and the system will
+fail to find and initialise the PCI devices in the system.
+To achieve this numbering scheme, Linux configures these special devices=20
+in a particular order.  =20
+Section&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#pci-pci-bus-nu=
+mbering"> pci-pci-bus-numbering</a> on page&nbsp;
+describes Linux's PCI bridge and bus numbering scheme in detail together
+with a worked example.
+
+</p><p>
+
+</p><h2><a name=3D"tth_sEc6.6">6.6&nbsp;</a> Linux PCI Initialization</h2>
+
+<p>
+The PCI initialisation code in Linux is broken into three logical parts:
+
+</p><dl compact=3D"">
+<p>
+	</p><dt><b>PCI Device Driver</b></dt><dd> This pseudo-device driver search=
+es the
+		PCI system starting at Bus 0 and locates all PCI
+		devices and bridges in the system. =20
+		It builds a linked list of data structures describing the=20
+		topology of the system.
+		Additionally, it numbers all of the bridges that it finds.
+	=09
+
+<p>
+	</p></dd><dt><b>PCI BIOS</b></dt><dd> This software layer provides the ser=
+vices
+		described in 		bib-pci-bios-specification.  Even though Alpha AXP&nbsp;do=
+es
+		not have BIOS services, there is equivalent code in the Linux
+		kernel providing the same functions,
+	=09
+
+<p>
+	</p></dd><dt><b>PCI Fixup</b></dt><dd> System specific fixup code tidies u=
+p the
+		system specific loose ends of PCI initialization.
+	=09
+
+<p>
+</p></dd></dl>
+<h3><a name=3D"tth_sEc6.6.1">6.6.1&nbsp;</a> The Linux Kernel PCI Data Stru=
+ctures</h3>
+
+<p><a name=3D"tth_fIg6.5"></a>=20
+</p><p>
+
+</p><center><center> <img src=3D"https://tldp.org/LDP/tlk/dd/pci-structures=
+.gif"><br>=20
+<p>
+</p></center></center><center>      Figure 6.5: Linux Kernel PCI Data Struc=
+tures</center>
+<a name=3D"pci-data-structures"></a>
+<p>
+</p><p>As the Linux kernel initialises the PCI system it builds data struct=
+ures mirroring
+the real PCI topology of the system.
+Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#pci-data-struct=
+ures"> 6.5</a> shows the relationships of the data structures
+that it would build for the example PCI system in Figure&nbsp;<a href=3D"ht=
+tps://tldp.org/LDP/tlk/dd/pci.html#example-pci-system"> 6.1</a>
+on page&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#example-pci-sy=
+stem">pageref</a>.
+
+</p><p>
+Each PCI device (including the PCI-PCI Bridges) is described by a <tt>pci_d=
+ev</tt> data
+structure.
+Each PCI bus is described by a <tt>pci_bus</tt> data structure.
+The result is a tree structure of PCI buses each of which has a number of
+child PCI devices attached to it.
+As a PCI bus can only be reached using a PCI-PCI Bridge (except the primary=
+ PCI bus, bus 0),
+each <tt>pci_bus</tt> contains a pointer to the PCI device (the PCI-PCI Bri=
+dge) that it is=20
+accessed through.
+That PCI device is a child of the the PCI Bus's parent PCI bus.
+
+</p><p>
+Not shown in the Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.htm=
+l#pci-data-structures"> 6.5</a> is a pointer to=20
+all of the PCI devices in the system, <tt>pci_devices</tt>.
+All of the PCI devices in the system have their <tt>pci_dev</tt> data struc=
+tures queued onto
+this queue..
+This queue is used by the Linux kernel to quickly find all of the PCI devic=
+es in the=20
+system.
+
+</p><p>
+
+</p><h3><a name=3D"tth_sEc6.6.2">6.6.2&nbsp;</a> The PCI Device Driver</h3>
+
+<p>
+The PCI device driver is not really a device driver at all but
+a function of the operating system called at system initialisation time.
+The PCI initialisation code must scan all of the PCI buses=20
+in the system looking for all PCI devices in the system (including
+PCI-PCI bridge devices).
+
+</p><p>
+It uses the PCI BIOS code to find out if every possible slot in the
+current PCI bus that it is scanning is occupied.
+If the PCI slot is occupied, it builds a <tt>pci_dev</tt> data structure=20
+describing the device and links into the list of=20
+known PCI devices (pointed at by <tt>pci_devices</tt>).
+
+</p><p>
+The PCI initialisation code starts by scanning PCI Bus 0.
+It tries to read the <em>Vendor Identification</em> and <em>Device Identifi=
+cation</em>
+fields for every possible PCI device in every possible PCI slot.
+When it finds an occupied slot it builds a <tt>pci_dev</tt> data structure
+describing the device.
+All of the <tt>pci_dev</tt> data structures built by the PCI initialisation=
+=20
+code (including all of the PCI-PCI Bridges) are linked into a singly linked
+list; <tt>pci_devices</tt>.
+
+</p><p>
+If the PCI device that was found was a PCI-PCI bridge then a <tt>pci_bus</t=
+t>
+data structure is built and linked into the tree of <tt>pci_bus</tt> and
+<tt>pci_dev</tt> data structures pointed at by <tt>pci_root</tt>.
+The PCI initialisation code can tell if the PCI device is a PCI-PCI Bridge
+because it has a class code of <em>0x060400</em>.
+The Linux kernel then configures the PCI bus on the other (downstream) side
+of the PCI-PCI Bridge that it has just found.
+If more PCI-PCI Bridges are found then these are also configured.
+This process is known as a depthwise algorithm; the system's PCI
+topology is fully mapped depthwise before searching breadthwise.
+Looking at Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#exam=
+ple-pci-system"> 6.1</a> on page&nbsp;<a href=3D"https://tldp.org/LDP/tlk/d=
+d/pci.html#example-pci-system">pageref</a>,
+Linux would configure PCI Bus 1 with its Ethernet and SCSI device before it
+configured the video device on PCI Bus 0.
+
+</p><p>
+As Linux searches for downstream PCI buses it must=20
+also configure the intervening PCI-PCI bridges' secondary=20
+and subordinate bus numbers. =20
+This is described in detail in Section&nbsp;<a href=3D"https://tldp.org/LDP=
+/tlk/dd/pci.html#pci-pci-bus-numbering"> pci-pci-bus-numbering</a> below.
+
+</p><p>
+
+</p><h4><a name=3D"tth_sEc6.6.2"></a>Configuring PCI-PCI Bridges - Assignin=
+g PCI Bus Numbers</h4>
+
+<p>
+<a name=3D"pci-pci-bus-numbering"></a>
+</p><p><a name=3D"tth_fIg6.6"></a>=20
+</p><center><center> <img src=3D"https://tldp.org/LDP/tlk/dd/pci-pci-config=
+-eg-1.gif"><br>=20
+<p>
+</p></center></center><center>      Figure 6.6: Configuring a PCI System: P=
+art 1</center>
+<a name=3D"pci-pci-config-eg-1"></a>
+<p>
+</p><p>For PCI-PCI bridges to pass PCI I/O, PCI Memory or PCI=20
+Configuration address space reads and writes across them,=20
+they need to know the following:
+
+</p><dl compact=3D"">
+<p>
+	</p><dt><b>Primary Bus Number</b></dt><dd> The bus number immediately
+	upstream of the PCI-PCI Bridge,
+	</dd><dt><b>Secondary Bus Number</b></dt><dd> The bus number immediately
+	downstream of the PCI-PCI Bridge,
+	</dd><dt><b>Subordinate Bus Number</b></dt><dd> The highest bus number of =
+all
+		of the buses that can be reached downstream of the bridge.=09
+	</dd><dt><b>PCI I/O and PCI Memory Windows</b></dt><dd> The window base an=
+d size for PCI I/O address space=20
+     	and PCI Memory address space for all addresses downstream of the PCI-=
+PCI Bridge.
+</dd></dl>
+<p>
+The problem is that at the time when you wish to=20
+configure any given PCI-PCI bridge you do not know the=20
+subordinate bus number for that bridge.  You do not know=20
+if there are further PCI-PCI bridges downstream and if=20
+you did, you do not know what numbers will be assigned to=20
+them.
+The answer is to use a depthwise recursive algorithm
+and scan each bus for any PCI-PCI bridges assigning them=20
+numbers as they are found. =20
+As each PCI-PCI bridge is found and its secondary bus numbered, assign it a=
+=20
+temporary subordinate number of <em>0xFF</em> and scan and assign=20
+numbers to all PCI-PCI bridges downstream of it. =20
+This all seems complicated but the worked example below makes this process
+clearer.
+
+</p><p>
+
+</p><dl compact=3D""><dt><b>PCI-PCI Bridge Numbering: Step 1</b></dt><dd>
+Taking the topology in Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/p=
+ci.html#pci-pci-config-eg-1"> 6.6</a>, the first bridge
+the scan would find is Bridge<sub>1</sub>.  =20
+The PCI bus downstream of Bridge<sub>1</sub> would be numbered as 1 and Bri=
+dge<sub>1</sub>=20
+assigned a secondary bus number of 1 and a temporary subordinate bus number=
+ of <em>0xFF</em>. =20
+This means that all Type 1 PCI Configuration addresses specifying a PCI bus=
+ number
+of 1 or higher would be passed across Bridge<sub>1</sub> and onto PCI Bus 1=
+.
+They would be translated into Type 0 Configuration cycles if they have a bu=
+s number
+of 1 but left untranslated for all other bus numbers.
+This is exactly what the Linux PCI initialisation code needs to do in order=
+=20
+to go and scan PCI Bus 1.
+
+<p>
+
+</p><p><a name=3D"tth_fIg6.7"></a>=20
+</p><center><center> <img src=3D"https://tldp.org/LDP/tlk/dd/pci-pci-config=
+-eg-2.gif"><br>=20
+<p>
+</p></center></center><center>      Figure 6.7: Configuring a PCI System: P=
+art 2</center>
+<a name=3D"pci-pci-config-eg-2"></a>
+<p>
+</p><p></p></dd><dt><b>PCI-PCI Bridge Numbering: Step 2</b></dt><dd>
+Linux uses a depthwise algorithm and so the initialisation code goes
+on to scan PCI Bus 1.
+Here it finds PCI-PCI Bridge<sub>2</sub>. =20
+There are no further PCI-PCI bridges beyond PCI-PCI Bridge<sub>2</sub>,=20
+so it is assigned a subordinate bus number of 2 which=20
+matches the number assigned to its secondary interface.  =20
+Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#pci-pci-config-=
+eg-2"> 6.7</a> shows how the buses and
+PCI-PCI bridges are numbered at this point.
+
+<p>
+
+</p><p><a name=3D"tth_fIg6.8"></a>=20
+</p><center><center> <img src=3D"https://tldp.org/LDP/tlk/dd/pci-pci-config=
+-eg-3.gif"><br>=20
+<p>
+</p></center></center><center>      Figure 6.8: Configuring a PCI System: P=
+art 3</center>
+<a name=3D"pci-pci-config-eg-3"></a>
+<p>
+</p><p></p></dd><dt><b>PCI-PCI Bridge Numbering: Step 3</b></dt><dd>
+The PCI initialisation code returns to scanning PCI Bus 1 and finds another=
+=20
+PCI-PCI bridge, Bridge<sub>3</sub>.
+It is assigned 1 as its primary bus interface number, 3 as its secondary bu=
+s=20
+interface number and <em>0xFF</em> as its subordinate bus number.
+Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#pci-pci-config-=
+eg-3"> 6.8</a> on=20
+page&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#pci-pci-config-eg=
+-3">pageref</a> shows how the system is configured now.
+Type 1 PCI configuration cycles with a bus number of 1, 2 or 3 wil be corre=
+ctly
+delivered to the appropriate PCI buses.
+
+<p>
+
+</p><p><a name=3D"tth_fIg6.9"></a>=20
+</p><center><center> <img src=3D"https://tldp.org/LDP/tlk/dd/pci-pci-config=
+-eg-4.gif"><br>=20
+<p>
+</p></center></center><center>      Figure 6.9: Configuring a PCI System: P=
+art 4</center>
+<a name=3D"pci-pci-config-eg-4"></a>
+<p>
+</p><p></p></dd><dt><b>PCI-PCI Bridge Numbering: Step 4</b></dt><dd>
+Linux starts scanning PCI Bus 3,  downstream of PCI-PCI Bridge<sub>3</sub>.
+PCI Bus 3 has another PCI-PCI bridge (Bridge<sub>4</sub>) on it, it is assi=
+gned 3 as its
+primary bus number and 4 as its secondary bus number.
+It is the last bridge on this branch and so it is assigned a subordinate bu=
+s
+interface number of 4.
+The initialisation code returns to PCI-PCI Bridge<sub>3</sub> and assigns i=
+t a
+subordinate bus number of 4.
+Finally, the PCI initialisation code can assign 4 as the=20
+subordinate bus number for PCI-PCI Bridge<sub>1</sub>.
+Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#pci-pci-config-=
+eg-4"> 6.9</a> on page&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html=
+#pci-pci-config-eg-4">pageref</a>=20
+shows the final bus numbers.
+</dd></dl>
+<p>
+
+</p><h3><a name=3D"tth_sEc6.6.3">6.6.3&nbsp;</a> PCI BIOS Functions</h3>
+
+<p>
+The PCI BIOS functions are a series of standard routines which are common
+across all platforms.
+For example, they are the same for both Intel and Alpha AXP&nbsp;based syst=
+ems.
+They allow the CPU controlled access to all of the PCI address spaces.
+
+</p><p>
+Only Linux kernel code and device drivers may use them.
+
+</p><p>
+
+</p><h3><a name=3D"tth_sEc6.6.4">6.6.4&nbsp;</a> PCI Fixup</h3>
+
+<p>
+The PCI fixup code for Alpha AXP&nbsp;does rather more than that for Intel =
+(which
+basically does nothing).
+
+</p><p>
+For Intel based systems the system BIOS, which ran at boot time, has alread=
+y
+fully configured the PCI system.
+This leaves Linux with little to do other than map that configuration.
+For non-Intel based systems further configuration needs to happen to:
+
+</p><ul>
+<p>
+=09
+</p><li> Allocate PCI I/O and PCI Memory space to each device,
+=09
+</li><li> Configure the PCI I/O and PCI Memory address windows for each PCI=
+-PCI bridge=20
+	in the system,
+=09
+</li><li> Generate <em>Interrupt Line</em> values for the devices; these co=
+ntrol interrupt
+		handling for the device.
+</li></ul>
+<p>
+The next subsections describe how that code works.
+
+</p><p>
+
+</p><h4><a name=3D"tth_sEc6.6.4"></a>Finding Out How Much PCI I/O and PCI M=
+emory Space a=20
+Device Needs</h4>
+Each PCI device found is queried to find out how much PCI=20
+I/O and PCI Memory address space it requires.  =20
+To do=20
+this, each Base Address Register has all 1's written to=20
+it and then read.  =20
+The device will return 0's in the=20
+don't-care address bits, effectively specifying the=20
+address space required. =20
+
+<p>
+
+</p><p><a name=3D"tth_fIg6.10"></a>=20
+</p><center><center> <img src=3D"https://tldp.org/LDP/tlk/dd/pci-bars.gif">=
+<br>=20
+<p>
+</p></center></center><center>      Figure 6.10: PCI Configuration Header: =
+Base Address Registers</center>
+<a name=3D"pci-bars"></a>
+<p>
+</p><p>There are two basic types of Base Address Register, the=20
+first indicates within which address space the devices=20
+registers must reside; either PCI I/O or PCI Memory=20
+space.   This is indicated by Bit 0 of the register.
+Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#pci-bars"> 6.10=
+</a> shows the two forms of the Base Address Register for=20
+PCI Memory and for PCI I/O.
+
+</p><p>
+To find out just how much of each address space a given=20
+Base Address Register is requesting, you write all 1s=20
+into the register and then read it back.   The device=20
+will specify zeros in the don't care address bits,=20
+effectively specifying the address space required.  =20
+This design implies that all address spaces used are a power=20
+of two and are naturally aligned.
+
+</p><p>
+For example when you initialize the DECChip 21142 PCI Fast Ethernet=20
+device, it tells you that it needs <em>0x100</em> bytes of=20
+space of either PCI I/O or PCI Memory.   The=20
+initialization code allocates it space.   The moment that=20
+it allocates space, the 21142's control and status registers=20
+can be seen at those addresses.  =20
+
+</p><p>
+
+</p><h4><a name=3D"tth_sEc6.6.4"></a>Allocating PCI I/O and PCI Memory to P=
+CI-PCI Bridges and=20
+Devices</h4>
+Like all memory the PCI I/O and PCI memory spaces are finite, and to some
+extent scarce.
+The PCI Fixup code for non-Intel systems (and the BIOS code for Intel
+systems) has to allocate each device the amount of memory that it is
+requesting in an efficient manner.
+Both PCI I/O and PCI Memory  must be allocated to a  device in a naturally=
+=20
+aligned way.   For example, if a device asks for <em>0xB0</em> of PCI I/O s=
+pace=20
+then it must be aligned on an address that is a multiple of <em>0xB0</em>. =
+ =20
+In addition to this, the PCI I/O and PCI Memory bases for=20
+any given bridge must be aligned on 4K and on 1Mbyte=20
+boundaries respectively.  =20
+Given that the address spaces=20
+for downstream devices must lie within all of the=20
+upstream PCI-PCI Bridge's memory ranges for any given=20
+device, it is a somewhat difficult problem to allocate=20
+space efficiently.
+
+<p>
+The algorithm that Linux uses relies on each device described=20
+by the bus/device tree built by the PCI Device Driver being=20
+allocated address space in ascending PCI I/O memory order.  =20
+Again a recursive algorithm is used to walk the <tt>pci_bus</tt> and <tt>pc=
+i_dev</tt>=20
+data structures built by the PCI initialisation code.
+Starting at the root PCI bus (pointed at by <tt>pci_root</tt>) the BIOS fix=
+up
+code:
+
+</p><ul>
+<p>
+
+</p><li> Aligns the current global PCI I/O and Memory bases on 4K=20
+   and 1 Mbyte boundaries respectively,
+
+<p>
+
+</p></li><li> For every device on the current bus (in ascending PCI I/O=20
+   memory needs),=20
+=09
+<ul>
+=09
+<li>     allocates it space in PCI I/O and/or PCI Memory,
+
+<p>
+ =09
+</p></li><li>    moves on the global PCI I/O and Memory bases by the=20
+        appropriate amounts,
+
+<p>
+ =09
+</p></li><li>    enables the device's use of PCI I/O and PCI Memory,
+	</li></ul>
+
+<p>
+
+</p></li><li> Allocates space recursively to all of the buses=20
+   downstream of the current bus.  Note that this will=20
+   change the global PCI I/O and Memory bases,
+
+<p>
+
+</p></li><li> Aligns the current global PCI I/O and Memory bases on 4K=20
+   and 1 Mbyte boundaries respectively and in doing so=20
+   figure out the size and base of PCI I/O and PCI Memory=20
+   windows required by the current PCI-PCI bridge,
+
+<p>
+
+</p></li><li> Programs the PCI-PCI bridge that links to this bus with=20
+   its PCI I/O and PCI Memory bases and limits,
+
+<p>
+
+</p></li><li> Turns on bridging of PCI I/O and PCI Memory accesses in
+	 the PCI-PCI Bridge.  This means that if any PCI I/O or PCI Memory
+	 addresses seen on the Bridge's primary PCI bus that are within
+	its PCI I/O and PCI Memory address windows will be bridged onto
+	its secondary PCI bus.
+</li></ul>
+<p>
+Taking the PCI system in Figure&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd=
+/pci.html#example-pci-system"> 6.1</a> on
+page&nbsp;<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html#example-pci-syste=
+m">pageref</a> as our example the
+PCI Fixup code would set up the system in the following way:
+
+</p><dl compact=3D"">
+<p>
+	</p><dt><b>Align the PCI bases</b></dt><dd> PCI I/O is <em>0x4000</em> and
+		PCI Memory is <em>0x100000</em>.  This allows the PCI-ISA bridges
+		to translate all addresses below these into ISA address cycles,
+	</dd><dt><b>The Video Device</b></dt><dd> This is asking for
+		<em>0x200000</em> of PCI Memory and so we allocate it that=09
+		amount starting at the current PCI Memory base of=20
+		<em>0x200000</em> as it has to be naturally aligned to=20
+		the size requested. =20
+		The PCI Memory base is moved to=20
+		<em>0x400000</em> and the PCI I/O base remains at <em>0x4000</em>.
+	</dd><dt><b>The PCI-PCI Bridge</b></dt><dd> We now cross the PCI-PCI Bridg=
+e and
+		allocate PCI memory there, note that we do not need to=20
+		align the bases as they are already correctly aligned:
+=09
+<dl compact=3D"">
+		<dt><b>The Ethernet Device</b></dt><dd> This is asking for <em>0xB0</em> =
+bytes
+		of both PCI I/O and PCI Memory space.  It gets allocated PCI
+		I/O at <em>0x4000</em> and PCI Memory at <em>0x400000</em>.
+		The PCI Memory base is moved to=20
+		<em>0x4000B0</em> and the PCI I/O base to <em>0x40B0</em>.
+		</dd><dt><b>The SCSI Device</b></dt><dd> This is asking for <em>0x1000</e=
+m> PCI Memory
+		and so it is allocated it at <em>0x401000</em> after it has been
+		naturally aligned.  The PCI I/O  base is still <em>0x40B0</em> and
+		the PCI Memory base has been moved to <em>0x402000</em>.
+	</dd></dl>
+	</dd><dt><b>The PCI-PCI Bridge's PCI I/O and Memory Windows</b></dt><dd> W=
+e now return to
+		the bridge and set its PCI I/O window at between <em>0x4000</em> and <em>=
+0x40B0</em> and
+		it's PCI Memory window at between <em>0x400000</em> and <em>0x402000</em>=
+.
+		This means  that the PCI-PCI Bridge will ignore the PCI Memory accesses f=
+or
+		the video device and pass them on if they are for the ethernet or SCSI
+		devices.
+</dd></dl>
+<p>
+</p><hr><h3>Footnotes:</h3>
+
+<p><a name=3D"tthFtNtAAB"></a><a href=3D"https://tldp.org/LDP/tlk/dd/pci.ht=
+ml#tthFrefAAB"><sup>1</sup></a> For example?
+</p><p></p><hr><small>File translated from T<sub><font size=3D"-1">E</font>=
+</sub>X by <a href=3D"http://hutchinson.belmont.ma.us/tth/tth.html">T<sub><=
+font size=3D"-1">T</font></sub>H</a>, version 1.0.</small>
+<hr>
+<center>
+<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html"> Top of Chapter</a>,=20
+<a href=3D"https://tldp.org/LDP/tlk/tlk-toc.html"> Table of Contents</a>,=
+=20
+<a href=3D"https://tldp.org/LDP/tlk/tlk.html" target=3D"_top"> Show Frames<=
+/a>,=20
+<a href=3D"https://tldp.org/LDP/tlk/dd/pci.html" target=3D"_top"> No Frames=
+</a><br>=20
+=A9 1996-1999 David A Rusling <a href=3D"https://tldp.org/LDP/tlk/misc/copy=
+right.html">copyright notice</a>.
+</center>
+</body></html>
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/logos/sit3-bw-tran.1.gif
+
+R0lGODlhQABLAPAAAAAAAP///yH+FHRoZSBHSU1QIHdhcyBoZXJlBQGBACwAAAAAQABLAAAC/oyP
+qWvgwKKcdL37qt4S+8yF20dC4hmVJcoi6tWALfpm2MzWKy7qJB/y7YAV4Y9YtHlcSyRFFoAlms6O
+g3md3qrW6BX2jUG5Fq8YIt2SGWgTGKReK74mrFsqn6NT7Xhe/PTxpzXi91eXhDdo1uWlODgWg+WI
+eDgURSm5mKln57hJVzd2ZHlApXVKJmNoSqpamWWV6hSZOAtUq3GJm2t72/LIoYLEqjvM82sc2isc
+3KPEbPw58+bcHF24XBlU/Ky9nR2Lc9MdiH3dJ46uTg19rvceTskeOE1UHd9qz3usvI/84tq/ce7i
+VaNVkB4bQQjPGHzDBY41C+VyBPRWpQYNfoUndIyAB9DhxDIgqbVKRnEhOGF2xK3Up/JlEVSw4EWr
+mELXHG75TElzwbMnpiRTvHHM6U9TOJlsuCmV9/FoU6lNmzF61lEg1YU0rlK0gZVpl1UrxDJ52mOe
+R3NFLQrx+vWrWZo+4BIyt/XbWlRGV44sOQkYHqEXCaKUdThAAQA7
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/dd/pci-system.gif
+
+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
+hVvIhV3ohV8IhmEohltQAAA7
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/dd/pci-config-header.gif
+
+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
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/dd/pci-cycle-0.gif
+
+R0lGODdhfAE/AIAAAAAAAP///ywAAAAAfAE/AAAC/oyPqcvtD6OctNqLs968+w+G4kiW5omm6sq2
+7gvH8kzX9o3n+s73PggAIIIL4iForCCFiiXzl1jqpMcn9IoNWLWMpzE5YW6jK2oD3BSPbdt19p1r
+d49DC9FtwIe8EL1VH4MGCEcYSFZEl6gEOCgy6Fc3JVdIeTPZpMi1iBbZ8ujwx3NZSWrYeaiZZ5fn
+1rgXAZmJM1pay0KbqbaqinjbyMgqimpLjIJUNXbMyimhjCkM6mwpyFxsfU3jFO2K3e39DR4uPk5e
+bn6Onr7txN7u/g4fLz9PX29/j5+vv8/f7/9PL5u6gRq4FYT24JdAggyVpDB4C5bEGRAbEqx4AePD
+/okJF1r8CGrjDoV9PII8OayERmMcQ1JECfOUSoQuO748uVJczjA0z7SEsfMDO55hzKTEKXLKzzk3
+TVbbwKdXyXPJtHFoZXTq1SHSUiGLKiOoh0nHyoqpgixKmyRe2KoR+yaZI6a8MlRsG0zWl7NN+3K5
+I+QOnS9aAq/VRbhw4cRw4z5D69Yt3WFt3zIG/HaZ1FB6IzW2y4aMNsGqDnMyq8zyaXRVU9cVnPjo
+Msmko3IG7BUV57q8+YYNXUdQqsBqOwpXzDv5OLm8fJ8FVkRau9d5NY322VvmbZO/IfMFY7i0cz6M
+87rOvfxxItvoZVvH+1XRZZmddufe7jeQUTO33CP/cUZFZYbBVw5znq2H3BqtoJUgevgRhkd/9OnS
+nicxXdgaV+dlJlVx5qFm216zIadeVq2BZcqFKH2GHQYDvqJVTSmqCBKLkzlU3VhLdQgUjSsmlVFX
+HZBkU3c+fmQjj5bsqF6PRyIJ5CxMuhfRkxYl2eSSMbY4o5UDYUllfkqO6QlAZp6JZppqrslmm24C
+5GWccs5JZ5123olnnnruyWeffv4JaKCCDkpooYYeimiiii7KaKOOPgpppJJOSmmlll6Kaaaabspp
+p55+Cmqooo5Kaqmmnopqqqr+WQAAOw==
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/dd/pci-cycle-1.gif
+
+R0lGODdhfAE/AIAAAAAAAP///ywAAAAAfAE/AAAC/oyPqcvtD6OctNqLs968+w+G4kiW5omm6sq2
+7gvH8kzX9o3n+s73KUADAA/CRZEoHFaSSgSz6XMmdUxplFFNQA3ZLOnI3SKl4g60rDyCJ8Myd+XF
+ugPquex8VaS1273zlGbnV4JnRPS3BDRn9zHYsIiYs0aX9/gHOWYSOBk59aWFdSia+MAowoj5RlVY
+qSeaSmeq4cepmnkKamhLmVi7CwcBK+vC2joa6ZpLOIqWjIvcCR3R1txiKsxTbAz2JMY5jDFYLe2h
+fUxt4UiueV0alq1s7AAOfiEeGt/I/b3vG+xbj4UgTzgIhgkYJA4vPlMMjvCkEIkih/KuPJnnr6LG
+/o0cO3r8CDKkyJEkS5o8iXJWt5UsW7p8CTOmzJk0a9q8iTOnzp08e+YMktJSFISAfsALNg1oUF0+
+iGoyuqMd0hlOO1ZVcfUhVCpJp95ZyrRH1mdFo3Z1RxWsM7FcUYzV6nWeUrXHjhbcKums3LR065rN
+69buXrRfm8I1DLhsW8KDYwy7iPUwhW6KMUYUukQP5A1oLmPmTMZcrHUC2ZAO8TbfZL8gpL5bpprD
+uIXh0mVaMzt1hseICEKsM3FirE26WUvYU6TfLL28GiZvc4viL9qj+wXCt3bTQTUHh3f37qyJeOzU
+XzzuInzhc9rJq6cvPp2Nb1tZXb9Z3/4+9PVr/rdDV6/IaOUNONw+1dG3Czr5MTWecQ0WNo1v6PnH
+XoAXqVPObq/9J6CGcVFyYYD3MVRLH68gCCJjoYUG0Su0VOGGIw/GA59tx23YR3q/WPhgjU7RkmBV
+9oGIB3J8NDYdh/up6OItBTLzH26YzZjbXF7xNx53Z6BDZHyyedjcjsvFheVr+p05oIm5AMldf1Bu
+WF6DXIoYFpdezgjDeWOgRw1/UAKXUW32eAGZdKb9YxChvVkX1ncUhgmem2YC+qQqv23XIY0OecON
+lXTViNpiT2loKJhIkpdnX8bdldio9jhpBnOomqeql6ze6uqggb764azE1EogrjaAGlsNQ/pqhg2w
+xDYiKmzNIltsabUum2GrzloL7WmRTWvRs5IJm+2qcPhEbrnmnotuuuquy65PwL4Lb7zyzktvvfbe
+i2+++u7Lb7/+/gtwwAIPTHDBBh+McMIKL8xwww4/DHHEEk9MccUWX4xxxhpvzHHHHn8Mcsgij0xy
+ySafjHLKKq/McssuvwxzSQUAADs=
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/dd/pci-structures.gif
+
+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
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/dd/pci-pci-config-eg-1.gif
+
+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
+upztlYojik/HthD5uRpI6pwX1pmJ+qSJlYnJKp7COpvjVaxr6qYHuKV2Sp7MiqPESq2e+Y6JFYyO
+apNsiq3IdY+v6GzG2p7WSqS3+KyeCqbtJaUfOqSQWZZVOqbHulp5CKyqga7yWqnmyqQrGq+bIjQ1
+CnUB6zEDa6TnNhLj6pUIO6iTZ49OqqiiWq8U+57DpazQ+qlvWrH/Wqaxw7CBiqra+q4Xm4+MmqQe
+W7IWe67q9pcam7KNirISa7IIOLPNCqrROqWjarNYurFi+qQs/que+yqwp9qv30m0B2u0OVurBnsW
+Djuyo5e0T7u0HFuzJMmvTMuqMvux39qqVhuqKsuzWFu0UUuwVOe0bGB8Z4tvFDqWXdSIFiqhYXub
+szO3ZNqT/Xi3XJu3Dbm3HmmNuvi3i0qL9QgSL4uf5yi4zyeZ+jUZ+Xqz1Tg5jYshkCuyK3l/SWmo
+BmW5l3uTL2kSIRdoCVKg3mi4wzendeoZnQurfgs4o2abpsG6HUuRr/tevLm6igstqCucowukK6S7
+dju4gMuLuzu8hNu3oHu8PZu8Cre8NKuMi/u8zBu4xju90HuH1nu91Fu8wru9rVu93stw3Em+5Wu+
+54u+6au+OBj6ve3rvu8Lv/Erv/NLv/Vrv/eLv/mrv/vLv/3rv/8LwAEswANMwAVswAeMwAmswAvM
+wA38vAUAADs=
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/dd/pci-pci-config-eg-2.gif
+
+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
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/dd/pci-pci-config-eg-3.gif
+
+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
+re3arw3bsS3bs03btc0/BQAAOw==
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/dd/pci-pci-config-eg-4.gif
+
+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
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG----
+Content-Type: image/gif
+Content-Transfer-Encoding: base64
+Content-Location: https://tldp.org/LDP/tlk/dd/pci-bars.gif
+
+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
+GQUAADs=
+
+------MultipartBoundary--Ui4PoCjlr560g2Qx8mjYX6ZvLlYpzkBvP8yVPyB6mG------

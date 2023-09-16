@@ -71,10 +71,6 @@ ptd_table:
 
 
 section .text
-
-global low_kernel_entry
-low_kernel_entry equ (start - VM_BASE)
-
 global start 
 start:
     ; map first PTD entry to PT table

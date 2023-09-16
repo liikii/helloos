@@ -8,6 +8,7 @@ static inline void halt(void){
     asm volatile("hlt" : : );
 }
 
+
 int main(void){
     // int i;
     // int sum = 0;
