@@ -1,0 +1,793 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://www.cs.usfca.edu/~cruse/cs630f08/
+Subject: CS 630
+Date: Sun, 17 Sep 2023 08:16:31 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--greynX1yEN5wCXaUnvSPkYGm4jYDGoZ59ueXQTJeHb----"
+
+
+------MultipartBoundary--greynX1yEN5wCXaUnvSPkYGm4jYDGoZ59ueXQTJeHb----
+Content-Type: text/html
+Content-ID: <frame-D9DF0368C1AC97BD574DE1F3D8DA797B@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://www.cs.usfca.edu/~cruse/cs630f08/
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3DUTF-8"> <title>CS 630</title> </head>
+
+<body text=3D"#000000" bgcolor=3D"#FFFFFF" link=3D"#0000EE" vlink=3D"#551A8=
+B" alink=3D"#FF0000">
+<font face=3D"helvetica" size=3D"+3">
+CS 630: Advanced Microcomputer Programming (Fall 2008)
+<br>
+
+<p>
+<font size=3D"+1">
+Lecture: Tuesday-Thursday 7:30pm-9:15pm (235 Harney Science Center)
+<br>
+
+</font></p><p><font size=3D"+1">
+<font size=3D"+1">
+<br>Instructor:=20
+<a href=3D"http://nexus.cs.usfca.edu/~cruse">Allan Cruse</a>
+<br>Email:=20
+<a href=3D"mailto:cruse@usfca.edu">cruse@usfca.edu</a>
+<br>Phone: (415) 422-6562
+<br>Office: 212 Harney Science Center
+<br>Office Hours: (see my <a href=3D"http://nexus.cs.usfca.edu/~cruse">home=
+page</a>)
+<br>
+</font>
+</font></p><p><font size=3D"+1">
+
+<!--
+<font size=3D+1>Teaching Assistant:</font>
+<font size=3D+1>TBA</font>
+-->
+
+<!--
+<br><font size=3D+3>This page is currently under construction</font><br>
+-->
+
+<br>
+
+
+<font size=3D"+1">Synopsis:</font><br><br>
+
+This course explores fundamental capabilities of Intel's Core-2 Quad <br>=
+=20
+microprocessor, regarded as a "bare machine" for which some basic <br>
+software components of an operating system are to be constructed <br>
+in a context of standard PC-BIOS firmware and peripheral devices <br>
+(a.k.a. PXE, the so called 'Pre-boot eXecution Environment'). <br>
+<br>
+
+
+Topics appropriate to this goal include: <br>
+ - crafting a bootstrap loader <br>
+ - identifying a processor's model and stepping <br>
+ - segmented real-mode memory-addressing <br>
+ - device detection and initialization <br>
+ - the CMOS memory and real-time clock <br>
+ - keyboard, monitor, and interval-timers <br>
+ - the programmable interrupt controllers <br>
+ - floating-point, mmx, and simd instructions <br>
+ - building protected-mode segment-descriptors <br>
+ - entering and leaving 16-bit/32-bit/64-bit protected-modes <br>
+ - creating exception-handlers and interrupt-descriptors <br>
+ - building page-tables for virtual-memory support <br>
+ - processor mechanisms for multitasking and debugging <br>
+ - emulation of the legacy 8086 execution environment <br>
+ - initialization and communication among multiple CPUs <br>
+ - system management mode and performance monitoring counters <br>
+ - aims of the UEFI (Unified Extensible Firmware Interface) endeavor <br>=
+=20
+<br>
+Throughout the course small software-component prototypes will be <br>
+written using the GNU/Linux program development tools (including <br>
+assemblers and C/C++ compilers).  The course is open to graduate <br>
+students in computer science (and to qualified undergraduates or <br>
+non-degree students when the Instructor has granted permission). <br>
+Students are assumed to be familiar with Linux or UNIX, and with <br>
+programming in C and in x86 assembly language.  <br>
+<br>
+
+<font size=3D"+1">Learning Outcomes:</font>
+</font></p><ul type=3D"BOX"><font size=3D"+1">
+<li> You will broaden your knowledge of standard 32-bit Intel Architectures=
+.=20
+</li><li> You will become aware of the Intel processors' seldom-used capabi=
+lities.
+</li><li> You will increase your proficiency with using C and assembler lan=
+guage.
+</li><li> You will know how to access service-functions provided in BIOS fi=
+rmware.
+</li><li> You will gain practical experience in programming peripheral I/O =
+devices.
+</li><li> You will acquire the background for understanding next-generation=
+ CPUs.
+</li><li> You will lay a foundation for pursuing some additional career opt=
+ions. =20
+</li></font></ul><font size=3D"+1">
+
+
+Class meetings will be held in the=20
+<a href=3D"http://www.usfca.edu/~wolberd/department/KudlickClass.htm">
+ Michael D. Kudlick computer classroom </a> <br>=20
+(Room 235, Harney Science Center) which affords convenient opportunities <b=
+r>=20
+for combining formal instruction with "hands-on" programming exercises. <br=
+> =20
+This facility, a gift of USF alumnus Alfred S. Chuang ('82), opened in=20
+Fall 2002.
+
+
+
+<br><br>
+<!--
+<font color=3D"green" size=3D+1><I>
+First class meeting is Thursday, August 28, 7:30pm, in=20
+Harney Science Center, Room 235 (The Kudlick Classroom)
+</I></font>
+<br>
+-->
+
+
+
+
+
+<h1>
+<hr width=3D"100%">
+<font size=3D"+2">Textbook(s): </font>
+
+</h1>
+<ul type=3D"BOX">
+	Tom Shanley, <a href=3D"http://www.aw-bc.com/catalog/academic/product/0,40=
+96,020155447X,00.html">
+Protected Mode Software Architecture</a>, Addison-Wesley (1996), ISBN 0-201=
+-55447-X <br>
+<br>
+</ul>
+
+
+<h1>
+<hr width=3D"100%"><font size=3D"+2">Readings</font>
+</h1>
+
+
+<ul type=3D"SQUARE">
+<li> Week 1: Part One (Chapters 1-3) in textbook by Shanley=20
+</li><li> Week 2: Part Two (Chapters 4-5) in textbook by Shanley
+</li><li> Week 3: Part Three (Chapters 6-7) in textbook by Shanley
+</li><li> Week 4: Part Three (Chapters 8-9) in textbook by Shanley
+</li><li> Week 5: Part Three (Chapters 10-11) in textbook by Shanley
+</li><li> Week 6: Part Three (Chapter 12) in textbook by Shanley.
+</li><li> Week 7: Data Sheet for 8259A Programmable Interrupt Controller.
+</li><li> Week 8: Official Documentation for ELF files (Chapter One).
+</li><li> Week 9: Official Documentation for ELF files (Chapters 2-3).
+</li><li> Week 10: No new assignment (work on Project 2 and midterm review)=
+.
+</li><li> Week 11: Intel Multiprocessor Specification version 1.4
+</li><li> Week 12: Part Three (Chapters 13-14) in textbook by Shanley.-
+</li><li> Week 13: Part Three (Chapter 15) in textbook by Shanley.
+</li><li> Weeks 14-15: No new assignment (review for Final Examination).
+
+</li></ul>
+
+
+<h1>
+<hr width=3D"100%"><font size=3D"+2">Resources</font>
+</h1>
+
+<ul type=3D"BOX">
+<li> Official =20
+<a href=3D"http://www.intel.com/products/processor/manuals/index.htm">
+Intel 64 and IA-32 Architecture Software Developer's Manuals</a>=20
+(online)
+
+</li><li> Professor Ralf Brown's Interrupt List online at
+<a href=3D"http://www.ctyme.com/rbrown.htm">
+http://www.ctyme.com/rbrown.htm</a>
+
+</li><li> BiosCentral's map of the PC's=20
+<a href=3D"http://www.bioscentral.com/misc/bda.htm">
+ROM-BIOS Data Area</a> (online)=20
+
+</li><li> Online documentation: <a href=3D"http://www.phoenix.com/en/Custom=
+er+Services/White+Papers-Specs/pc+industry+specifications.htm">
+PC Industry Specifications</a> hosted by Phoenix Technologies, Inc.
+
+</li><li> Online reference:=20
+<a href=3D"http://www.win.tue.nl/~aeb/partitions/partition_types-1.html">
+List of Hard Disk Partition Identifiers</a> by Andries Brouwer
+
+</li><li> Online industry document:=20
+<a href=3D"http://www.intel.com/design/pentium/datashts/24201606.pdf">
+Intel Multiprocessor Specification (version 1.4)</a>
+(.pdf format)
+
+</li><li> Online book-chapters:=20
+<a href=3D"http://lwn.net/Kernel/LDD3/">
+Linux Device Drivers, Third Edition</a>, (O'Reilly Media, Inc., 2005)
+
+</li><li> The official GNU Assembler manual:
+<a href=3D"http://sourceware.org/binutils/docs/as/index.html">
+<i>Using as</i></a> (online)
+
+</li><li> <a href=3D"http://www.delorie.com/djgpp/doc/brennan/brennan_att_i=
+nline_djgpp.html">
+Brennan's Guide to Inline Assembly</a>
+
+</li><li> Official Data Sheet for the <a href=3D"https://www.cs.usfca.edu/~=
+cruse/cs630f08/8259.pdf">
+Intel 8259A Programmable Interrupt Controller</a>
+(.pdf file-format)
+
+</li><li> Documentation for the Linux Executable and Linkable Format (ELF) =
+files:
+	<a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/elf.pdf">elf.pdf</a>
+
+</li><li> Official Data Sheet for the <a href=3D"https://www.cs.usfca.edu/~=
+cruse/cs630f08/82C54.pdf">
+Intel 82C54 Programmable Interval Timer</a>
+(.pdf file-format)
+
+</li><li> Official datasheet for the=20
+<a href=3D"http://www.national.com/ds/PC/PC16550D.pdf">
+16550 Serial UART</a> (.pdf format), National Semiconductor, Inc
+
+
+</li><li> Online guide to=20
+<a href=3D"http://ascii-table.com/ansi-escape-sequences.php">
+ANSI terminal escape-sequences</a>
+
+
+</li><li> Online article:=20
+<a href=3D"http://www.win.tue.nl/~aeb/linux/kbd/A20.html">
+A20 - a pain from the past</a> by Andries Brouwer
+
+
+</li><li> Official Data Sheet for the=20
+<a href=3D"http://www.intel.com/design/chipsets/datashts/307013.htm">
+Intel I/O Controller Hub (ICH7) Family Datasheet</a>
+(.pdf file-format)
+
+
+</li><li>Website for ATA Disk-Drive Interface
+<a href=3D"http://www.t13.org/#Documents%202004">
+Draft ANSI Standards Documentation</a> by INCITS Technical Committee T13
+
+
+</li><li> De facto standard: <a href=3D"https://www.cs.usfca.edu/~cruse/cs6=
+30f08/idems100.pdf">
+Programming Interface for Bus Master IDE Controller</a>
+(1994), by Brad Hosler (.pdf file-format)
+
+</li><li> Industry document: Video Electronics Standards Association (VESA)=
+<br>
+
+     Video BIOS Extension: Core Functions Standard 3.0
+     <a href=3D"http://www.vesa.org/public/VBE/vbe3.pdf">vbe3.pdf</a>=20
+     (1998)<br>
+by MonsterSoft, Inc.
+
+</li><li>
+Online tutorial:=20
+<a href=3D"http://www.monstersoft.com/tutorial1/VESA_intro.html">
+Introduction to VESA Programming</a> hosted by MonsterSoft, Inc.=20
+
+</li><li> Online tutorial on the <a href=3D"https://www.cs.usfca.edu/~cruse=
+/cs630f08/UEFI_Primer_FINAL.pdf">
+Unified Extensible Firmware Interface</a>(.pdf)
+
+</li><li> Official Data Sheet for the=20
+<a href=3D"http://www.intel.com/design/chipsets/datashts/313953.htm">
+Intel 3000 and 3010 Chipset Memory Controller Hub (MCH) Datasheet</a>
+(.pdf)
+
+
+<!--
+<LI> Online article:=20
+<a href=3D"http://www.linuxgazette.com/issue64/kohli.html">
+The GNU GRUB Boot Loader</a>=20
+by Jaswinder Singh Kohli (Linux Gazette #64, 2001)
+
+<LI> Homepage for H. Peter Anvin's SYSLINUX Project online at
+<a href=3D"http://syslinux.zytor.com/">
+http://syslinux.zytor.com/</a>
+
+<LI> Official Data Sheet for the <a href=3D"ds12887.pdf">
+Dallas Semiconductor DS12887 Real-Time Clock and CMOS Memory</a>
+
+<LI> BiosCentral's CMOS Memory Map online at
+<a href=3D"http://bioscentral.com/misc/cmosmap.htm">
+http://bioscentral.com/misc/cmosmap.htm</a>
+
+<LI> Official Data Sheet for the <a href=3D"em84502.pdf">
+EM84502 PS/2 Mouse Controller</a> by Elan Microelectronics Corp.
+
+<LI> Online article:=20
+<a href=3D"http://panda.cs.ndsu.nodak.edu/~achapwes/PICmicro/mouse/mouse.ht=
+ml">
+The PS/2 Mouse Interface</a> by Adam Chapweske
+
+<LI> Online tutorial on writing <a href=3D
+"http://www.redhat.com/docs/manuals/enterprise/RHEL-3-Manual/gnu-linker/ind=
+ex.html">
+Linker Scripts</a>
+for the GNU linker 'ld' (FSF and RedHat, Inc.)=20
+
+-->
+<br>
+</li></ul>
+
+
+<h1>
+<hr width=3D"100%"><font size=3D"+2">Systems Software</font>
+</h1>
+
+<ul type=3D"SQUARE">
+
+<li> Linker script: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lds=
+cript">ldscript</a>=20
+        allows the GNU linker 'ld' to produce a 'binary-format' executable=
+=20
+
+</li><li> Utility program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630=
+f08/ljpages.cpp">ljpages.cpp</a>
+(a tool that submits your program source to a laser printer)
+<font color=3D"green"><i> &lt;-- modified on 11/02/2008 </i></font>
+
+</li><li> Utility program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630=
+f08/dump.cpp">dump.cpp</a>
+(a tool that displays the contents of any file in hex and ascii)
+
+</li><li> Utility program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630=
+f08/fileview.cpp">fileview.cpp</a>
+(a navigation tool for viewing the contents of binary files)
+
+</li><li> Device-driver: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f0=
+8/dram.c">dram.c</a>
+(used to allow reading from a workstation's physical memory)
+
+</li><li> Device-driver: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f0=
+8/vram.c">vram.c</a>
+(used for accessing the workstation's graphics frame-buffer)
+
+</li><li> Utility program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630=
+f08/mmake.cpp">mmake.cpp</a>
+(a tool for compiling our own Linux 2.6 kernel modules)
+
+</li><li> Development tool: <a href=3D"https://www.cs.usfca.edu/~cruse/cs63=
+0f08/newproc.cpp">newproc.cpp</a>
+builds the sketeton for an LKM that creates a '/proc' file
+
+</li><li> Development tool: <a href=3D"https://www.cs.usfca.edu/~cruse/cs63=
+0f08/newasapp.cpp">newasapp.cpp</a>
+builds the sketeton for a boot-time assembly application=20
+
+<!--
+<LI> Utility program: <a href=3D"iopl3.cpp">iopl3.cpp</a>
+(a tool by Alex Fedosov that lets user programs do direct I/O)
+
+<LI> Device-driver: <a href=3D"8086.c">8086.c</a>
+needed for addressing I/O ports and accessing 8086 memory
+
+<LI> Support files: <a href=3D"int86.h">int86.h</a> and=20
+        <a href=3D"int86.cpp">int86.cpp</a>
+        (we link these with programs that call BIOS routines)=20
+-->
+
+</li></ul>
+
+
+<h1>
+<hr width=3D"100%"><font size=3D"+2">Handouts</font>
+</h1>
+
+<ul type=3D"BOX">
+<li> 0203-630-01: Course syllabus <a href=3D"https://www.cs.usfca.edu/~crus=
+e/cs630f08/syllabus630.pdf">(.PDF)</a><br>
+
+<!-- CLASS 01 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson01.ppt"=
+>lesson1.ppt</a> (PowerPoint Slides)  =20
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/welcome.s">welcome.s</a>
+a boot-sector replacement that uses some ROM-BIOS function-calls=20
+
+<!-- CLASS 02 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson02.ppt"=
+>lesson2.ppt</a> (PowerPoint Slides)  =20
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/memsize.s">memsize.s</a>
+a boot-sector program showing the amount of memory in real-mode=20
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/viewrbda.s">viewrbda.s</a>
+this program offers a 'dynamic' view of the ROM-BIOS DATA-AREA
+
+<!-- CLASS 03 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson03.ppt"=
+>lesson3.ppt</a> (PowerPoint Slides)  =20
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/tickdemo.s">tickdemo.s</a>
+illustrating basic elements of a (real-mode) Interrupt Service Routine
+
+<!-- CLASS 04 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson04.ppt"=
+>lesson4.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/cs630ipl.s">cs630ipl.s</a>=20
+a 'boot-loader' that launches binary-executables from our disk-partition
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/ourfirst.s">ourfirst.s</a>=20
+an application that shows a message, to confirm our boot-loader worked
+
+<!-- CLASS 05 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson05.ppt"=
+>lesson5.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/pmhello.s">pmhello.s</a>=20
+shows how to set up segment-descriptors, needed for 'protected-mode'
+
+<!-- CLASS 06 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson06.ppt"=
+>lesson6.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/tryring1.s">tryring1.s</a>=20
+showing how a processor's privilege-level transitions are accomplished
+
+<!-- CLASS 07 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson07.ppt"=
+>lesson7.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/twotasks.s">twotasks.s</a>=20
+shows context-switching and code-sharing among two program-threads=20
+
+<!-- CLASS 08 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson08.ppt"=
+>lesson8.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/pmtimer.s">pmtimer.s</a>=20
+shows how you could handle the 'timer-tick' interrupts in protected-mode
+
+
+<!-- CLASS 09 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson09.ppt"=
+>lesson9.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/whycrash.s">whycrash.s</a>=20
+uses a protected-mode fault-handler to show some 'crash' diagnostics
+
+<!-- CLASS 10 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson10.ppt"=
+>lesson10.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/notready.s">notready.s</a>=20
+uses the 'Segment-Not-Present' fault for a 'load-on-demand' simulation
+
+<!-- CLASS 11 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson11.ppt"=
+>lesson11.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/minikybd.s">minikybd.s</a>=20
+illustrates the handling of interrupts from the PC's Keyboard Controller=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/haltdemo.s">haltdemo.s</a>
+explores effects of the 'hlt'-instruction in a new version of 'tickdemo.s'=
+=20
+ =20
+<!-- MIDTERM I -->
+<br><br>
+</li><li> Exercise solution: <a href=3D"https://www.cs.usfca.edu/~cruse/cs6=
+30f08/kybdplus.s">kybdplus.s</a>
+showing one possible way to answer Question V on Midterm Exam I
+<br><br>
+
+
+<!-- CLASS 12 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson12.ppt"=
+>lesson12.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/arrowpad.s">arrowpad.s</a>=20
+illustrates "polled-mode" programming and movement of CRT's cursor =20
+
+
+<!-- CLASS 13 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson13.ppt"=
+>lesson13.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/reporter.s">reporter.s</a>=20
+showing steps in reprogramming of the two 8259A Interrupt Controllers
+<font color=3D"green"><i> &lt;-- bug fixed on 09/17/2008 </i></font>
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/trymouse.s">trymouse.s</a>=20
+uses ROM-BIOS services to enable interrupts for PS/2 mouse-events=20
+=20
+<!-- CLASS 14 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson14.ppt"=
+>lesson14.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/manydots.s">manydots.s</a>
+a Linux application, which we propose to execute without using Linux
+
+</li><li> CS630 utility: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f0=
+8/loadmap.cpp">loadmap.cpp</a>
+our own tool for studying the sections in a 'relocatable' Elf32 object-file
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/linuxapp.s">linuxapp.s</a>=20
+source-text for a Linux program we'll execute with our 'tryelf32.s' demo=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/tryelf32.s">tryelf32.s</a>
+it can execute the 32-bit code in the linkable ELF-file named 'linuxapp.o'
+
+
+<!-- CLASS 15 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson15.ppt"=
+>lesson15.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/wait10ms.s">wait10ms.s</a>
+illustrates programming of the 8254 Timer for a ten-milliseconds delay
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/timeoday.s">timeoday.s</a>
+implements arithmetical steps that convert 'tick_count' into time-of-day
+
+
+<!-- CLASS 16 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson16.ppt"=
+>lesson16.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/usedebug.s">usedebug.s</a>
+illustrates 'single-stepping' through the code in our 'linuxapp.o' demo
+
+</li><li> Program listing: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630=
+f08/linuxapp.lst">linuxapp.lst</a>
+shows instruction-addresses and opcode-mnemonics for 'linuxapp.o'
+
+
+<!-- CLASS 17 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson17.ppt"=
+>lesson17.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Kernel module: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f0=
+8/uart.c">uart.c</a>
+a character-mode device-driver that supports the PC's 16550 serial-UART=20
+
+</li><li> Utility program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630=
+f08/kb2cable.cpp">kb2cable.cpp</a>
+transmits keyboard-input to another PC using its null-modem cable
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/remotedb.s">remotedb.s</a>
+revises our 'usedebug.s' single-stepping demo to use serial-port input=20
+
+</li><li> In-class exercise: <a href=3D"https://www.cs.usfca.edu/~cruse/cs6=
+30f08/addkbisr.s">addkbisr.s</a>
+uses UART for 'single-stepping' through a keyboard interrupt-handler
+
+
+<!-- CLASS 18 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson18.ppt"=
+>lesson18.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/xmitvram.s">xmitvram.s</a>
+it reimplements 'console redirection' in protected-mode (for 'anchor's) =20
+
+
+<br><br>
+<!-- MIDTERM II -->
+</li><li> Debugging exercise: <a href=3D"https://www.cs.usfca.edu/~cruse/cs=
+630f08/exambugs.s">exambugs.s</a>
+for you to use when answering Question V on Midterm Exam II
+<br><br>
+
+<!-- CLASS 19 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson19.ppt"=
+>lesson19.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/queryA20.s">queryA20.s</a>
+for finding out whether the A20 address-line is 'disabled' at boot-time
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/usingbss.s">usingbss.s</a>
+for seeing how the GNU linker handles unitialized data-section ('.bss')
+
+</li><li> CS630 utility: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f0=
+8/elfinfo.cpp">elfinfo.cpp</a>
+for reporting the sections in a 'relocatable' or an 'executable' ELF_32 fil=
+e
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/elfexec.s">elfexec.s</a>
+simulates 'on-demand' loading and execution of an 'executable' ELF file
+
+<!-- CLASS 20 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson20.ppt"=
+>lesson20.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/vrampage.s">vrampage.s</a>
+offers a simple example of how we can create and use a page-table
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/pgfaults.s">pgfaults.s</a>
+illustrates the CPU's page-fault error-codes for a few paging violations
+
+<!-- CLASS 21 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson21.ppt"=
+>lesson21.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/genuine.s">genuine.s</a>
+this Linux program executes the x86's (unprivileged) 'cpuid' instruction
+
+</li><li> Utility program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630=
+f08/cpuid.cpp">cpuid.cpp</a>
+uses the processor's 'cpuid' instruction to report processor capabilities
+
+
+</li><li> Utility program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630=
+f08/mpinfo.cpp">mpinfo.cpp</a>
+shows the system-information stored in the 'MP Configuration Table'
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/apictick.s">apictick.s</a>
+illustrates programming of the processor's Local-APIC timer interrupts
+
+<!-- CLASS 22 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson22.ppt"=
+>lesson22.ppt</a> (PowerPoint Slides)=20
+<font color=3D"green"><i> &lt;-- new slide added on 11/19/2008 </i></font>
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/betaworm.s">betaworm.s</a>
+created for our future use in a multitasking or multiprocessing demo
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/mphello.s">mphello.s</a>
+illustrates Intel's 'MP Protocol' for awakening any auxilliary processors
+
+
+<!-- CLASS 23 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson23.ppt"=
+>lesson23.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Linux module: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/satainfo.c">satainfo.c</a>
+creates a pseudo-file to let us discover some vital i/o-port assignments =
+=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/satademo.s">satademo.s</a>
+illustrates hardware programming of the SATA disk-drive controller=20
+
+
+<!-- CLASS 24 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson24.ppt"=
+>lesson24.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Linux module: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/svgainfo.c">svgainfo.c</a>
+creates a pseudo-file to let us see the graphics frame-buffer's address  =
+=20
+
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/vesademo.s">vesademo.s</a>
+illustrates use of the VESA BIOS Extensions for truecolor graphics =20
+
+
+<!-- CLASS 25 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson25.ppt"=
+>lesson25.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/trymoves.s">trymoves.s</a>
+shows that changing lower-half of a 64-bit register affects upper-half =20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/try64bit.s">try64bit.s</a>
+takes the processor from 'real-mode' to '64-bit mode' (and back again)
+
+
+<!-- CLASS 26 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson26.ppt"=
+>lesson26.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/vm86demo.s">vm86demo.s</a>
+showing steps required to enter and leave the 'Virtual-8086 mode'
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/usevm86.s">usevm86.s</a>
+for demonstrating software emulation of some i/o-sensitive opcodes
+
+
+<!-- CLASS 27 -->
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/lesson27.ppt"=
+>lesson27.ppt</a> (PowerPoint Slides)=20
+
+</li><li> Linux module: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/smram.c">smram.c</a>
+(used to allow access to a workstation's System Management Memory)
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/issuesmi.cpp">issuesmi.cpp</a>
+lets a user trigger the delivery of a System Management Interrupt
+
+</li><li> Development tool: <a href=3D"https://www.cs.usfca.edu/~cruse/cs63=
+0f08/smlayout.cpp">smlayout.cpp</a>
+locates the assigned entry-points of our SMI interrupt-handlers
+
+</li><li> Experimentation tool: <a href=3D"https://www.cs.usfca.edu/~cruse/=
+cs630f08/smiload.cpp">smiload.cpp</a>
+loads an SMI interrupt-handler into SMRAM (classroom only)=20
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/smidemo.s">smidemo.s</a>
+(experimental interrupt-handler for System Management Interrupts)
+
+<br><br>
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/showcr4.s">showcr4.s</a>
+for you to use when answering Question V on the Final Examination=20
+<br><br>
+
+</li><li> Demo program: <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08=
+/conform.s">conform.s</a>
+illustrating a direct far procedure-call to a 'conforming' code-segment=20
+<font color=3D"green"><i> &lt;-- added on 8/29/2010 </i></font>
+
+</li></ul>
+
+
+
+<h1>
+<hr width=3D"100%"><font size=3D"+2">Announcements</font>
+</h1>
+
+<ul type=3D"SQUARE">
+<li> Enrolled students may join the class mailing-list
+        <a href=3D"http://cs.usfca.edu/mailman">here</a>
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/project1.f08"=
+>Project 1:</a> Due by Tuesday, September 30, 7:30pm
+</li><li> Midterm Exam 1: Tuesday, October 7
+</li><li> <a href=3D"https://www.cs.usfca.edu/~cruse/cs630f08/project2.f08"=
+>Project 2:</a> Due by Thursday, October 30, 7:30pm
+</li><li> Midterm Exam 2: Tuesday, November 4
+</li><li> FINAL EXAMINATION: Thursday, 18 December 2008, 7:30pm <br>
+</li></ul>
+
+
+
+<hr width=3D"100%">
+Last updated on 08/29/2010
+<br>
+</font>
+
+
+</font></body></html>
+------MultipartBoundary--greynX1yEN5wCXaUnvSPkYGm4jYDGoZ59ueXQTJeHb------

@@ -169,3 +169,26 @@ ATA是一种常见的硬盘接口标准，用于连接计算机主板和硬盘�
 
 总之，ata_init函数的作用是在操作系统启动时，对ATA硬盘驱动进行初始化，包括探测ATA控制器、识别连接的硬盘、初始化驱动程序等。这样操作系统就能够正确地与硬盘进行数据交互，并实现文件系统的读写功能。
 ```
+
+
+
+### sata primary drive secondary drive
+```
+SATA (Serial ATA) is a computer bus interface that connects storage devices such as hard drives and solid-state drives (SSDs) to the motherboard of a computer. The terms "primary drive" and "secondary drive" refer to the different SATA connections available on a motherboard.
+
+Typically, a motherboard will have multiple SATA ports to which you can connect SATA drives. The primary drive is usually connected to the SATA port labeled "SATA1" or "SATA0". This is the main drive that contains the operating system and other critical files.
+
+The secondary drive, on the other hand, is connected to another available SATA port, usually labeled "SATA2", "SATA3", and so on. This drive can be used for additional storage, such as storing personal files, media, or backup data.
+
+It's important to note that the terms "primary" and "secondary" are not fixed and can vary depending on the motherboard manufacturer. Some motherboards may use different naming conventions, such as "Primary Master" and "Primary Slave" for older IDE (Integrated Drive Electronics) connections.
+
+If you have any specific questions or need further clarification, please let me know!
+```
+
+
+
+### Tom Shanley, Protected Mode Software Architecture, Addison-Wesley (1996), 
+
+
+
+Master和Slave分别是“主”和“从”的意思。早期主板只支持并口（ATA）硬盘和光驱，板上标配2个ATA插槽，每个插槽可以用同一条数据线连接2个并口设备，这2个设备之间就要通过设置“主”和“从”来区别，即一个设备是Master，则另一个必须是Slave，反之亦然，否则就会发生冲突。这个都是在硬盘和光驱上通过跳线来实现的，设备上会用Master和Slave标注跳线的接法。
