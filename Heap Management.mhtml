@@ -1,0 +1,1160 @@
+From: <Saved by Blink>
+Snapshot-Content-Location: https://pages.cs.wisc.edu/~fischer/cs536.s06/course.hold/html/NOTES/12.HEAP-MANAGEMENT.html
+Subject: Heap Management
+Date: Wed, 27 Sep 2023 13:42:16 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----MultipartBoundary--xm7nBZc9MwStxwBx9YVh7G4PfGX2F6idoSyDxzQOLV----"
+
+
+------MultipartBoundary--xm7nBZc9MwStxwBx9YVh7G4PfGX2F6idoSyDxzQOLV----
+Content-Type: text/html
+Content-ID: <frame-E153AA1BAA4AB73E9754B19D58517B5E@mhtml.blink>
+Content-Transfer-Encoding: quoted-printable
+Content-Location: https://pages.cs.wisc.edu/~fischer/cs536.s06/course.hold/html/NOTES/12.HEAP-MANAGEMENT.html
+
+<html><head><meta http-equiv=3D"Content-Type" content=3D"text/html; charset=
+=3Dwindows-1252"> <title>Heap Management</title> </head>
+
+<body><p><a name=3D"top"> </a></p><h1><a name=3D"top">Heap Management</a></=
+h1>
+
+<hr>
+<h2>Contents</h2>
+
+<ul>
+  <li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/course.hold/h=
+tml/NOTES/12.HEAP-MANAGEMENT.html#overview">Overview</a>
+  </li><li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/course.h=
+old/html/NOTES/12.HEAP-MANAGEMENT.html#basic">Basic Techniques</a>
+  <ul>
+      <li> <a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/course.h=
+old/html/NOTES/12.HEAP-MANAGEMENT.html#freelist">Operations on the Freelist=
+</a>
+      <ul>
+           <li> <a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/cou=
+rse.hold/html/NOTES/12.HEAP-MANAGEMENT.html#alloc">Techniques for allocatio=
+n</a>
+           </li><li> <a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s0=
+6/course.hold/html/NOTES/12.HEAP-MANAGEMENT.html#coal">Techniques for coale=
+scing</a>
+      </li></ul>
+      </li><li> <a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/cou=
+rse.hold/html/NOTES/12.HEAP-MANAGEMENT.html#fixed">Freelists for Fixed-Size=
+ Chunks</a>
+  </li></ul>
+  </li><li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/course.h=
+old/html/NOTES/12.HEAP-MANAGEMENT.html#dealloc">Deallocation</a>
+  <ul>
+      <li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/course.ho=
+ld/html/NOTES/12.HEAP-MANAGEMENT.html#user">Problems with Explicit Dealloca=
+tion</a>
+      <ul>
+          <li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/cours=
+e.hold/html/NOTES/12.HEAP-MANAGEMENT.html#leak">Storage leaks</a>
+          </li><li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/=
+course.hold/html/NOTES/12.HEAP-MANAGEMENT.html#dangle">Dangling Pointers</a=
+>
+          </li><li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/=
+course.hold/html/NOTES/12.HEAP-MANAGEMENT.html#lock">A technique for detect=
+ing uninitialized and dangling pointers</a>
+      </li></ul>
+      </li><li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/cour=
+se.hold/html/NOTES/12.HEAP-MANAGEMENT.html#auto">Automatic Deallocation</a>
+      <ul>
+        <li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/course.=
+hold/html/NOTES/12.HEAP-MANAGEMENT.html#rc">Reference counting</a>
+        </li><li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/co=
+urse.hold/html/NOTES/12.HEAP-MANAGEMENT.html#gc">Garbage collection</a>
+        <ul>
+          <li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/cours=
+e.hold/html/NOTES/12.HEAP-MANAGEMENT.html#markAndSweep">Mark and Sweep</a>
+          </li><li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/=
+course.hold/html/NOTES/12.HEAP-MANAGEMENT.html#stopAndCopy">Stop and Copy</=
+a>
+        </li></ul>
+        </li><li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/co=
+urse.hold/html/NOTES/12.HEAP-MANAGEMENT.html#db">Deutsch-Bobrow Deferred Re=
+ference Counting</a>
+	</li><li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/course.ho=
+ld/html/NOTES/12.HEAP-MANAGEMENT.html#ptrs">How to Identify Pointers</a>
+      </li></ul>
+  </li></ul>
+  </li><li><a href=3D"https://pages.cs.wisc.edu/~fischer/cs536.s06/course.h=
+old/html/NOTES/12.HEAP-MANAGEMENT.html#summary">Summary</a>
+</li></ul>
+
+<p>
+<a name=3D"overview">
+</a></p><h1><a name=3D"overview">Overview</a></h1><a name=3D"overview">
+<p>
+In general, the heap is used for dynamically allocated objects.
+However, it might be used for other kinds of objects, too.
+For example, activation records might be allocated on the heap
+for a multi-threaded language, where calls and returns do not
+follow a stack protocol (i.e., a "return" is not necessarily
+from the most recently called subprogram, because the most recently
+called subprogram could be in one thread, while the return was
+in another).
+
+</p><p>
+Different languages use different syntax for the
+allocation of storage for dynamically created objects:
+</p><ul>
+  <li> Pascal, C++, and Java use <em>new</em>.
+  </li><li> C uses calls to special allocation functions:
+       <em>malloc, calloc,</em> etc.
+</li></ul>
+
+<p>
+In some languages, deallocation is done by the programmer:
+</p><ul>
+  <li> Pascal uses <em>dispose</em>,
+  </li><li> C uses <em>free</em>,
+  </li><li> C++ uses <em>dispose</em>.
+</li></ul>
+In other languages (e.g., Java), deallocation is done "automatically"
+(not under the programmer's control): storage is reclaimed (for later
+reuse) when is it "dead"; i.e., when it is no longer accessible via
+some variable in the program.
+
+<p>
+We will first look at basic techniques for implementing the low-level
+operations on the heap (how to satisfy requests for storage, and what
+to do when storage is freed).
+Then will we consider some of the problems of programmer-controlled
+and of automatic deallocation.
+Finally, we will look at some different techniques for doing automatic
+deallocation.
+
+</p></a><p><a name=3D"overview">
+</a><a name=3D"basic">
+</a></p><h1><a name=3D"basic">Basic Techniques</a></h1><a name=3D"basic">
+<p>
+Available storage is managed using a <em>free list</em>: a list of
+available "chunks" of free storage.
+Some special location is used to hold the address of the first item
+on the list;
+each item includes:
+</p><ol>
+  <li> the size of the chunk,
+  </li><li> the address of the next item on the list, and
+  </li><li> the chunk itself.
+</li></ol>
+Actually, the field that holds the address of the next list item is
+also part of the chunk itself.
+The size field, however, is not;
+that field stays "attached" to the chunk, but should not be overwritten
+by the programmer's code.
+(In some languages, like C, the programmer can actually overwrite the
+value in this field;
+this is usually the result of a logical error, but could also be a
+deliberate attempt to breach some kind of security.)
+
+<p>
+Here is a series of pictures to illustrate the way the freelist works.
+Note that alignment issues are ignored in this example (we assume that
+an allocated chunk of storage can start at any address).
+Also, we assume that the heap starts at location 0, which is not a
+realistic assumption, but is fine for the purposes of this example.
+
+</p><p>
+Initially, the freelist might look like this:
+</p><pre>              0    4   ...                         103
++---+      +------------------------------------------+
+|   |      |     |   |                                |
+| o-------&gt;| 100 | \ | ...                            |
+|   |      |     |   |                                |
++---+      +------------------------------------------+
+
+first       size  next
+free
+</pre>
+Now assume that a request to allocate 20 bytes is received.
+The first 20 bytes (<em>after</em> the size field) would be used
+to satisfy the request (i.e., the address "4" would be returned),
+and the heap updated to look like this:
+<pre>              0    4 ...    23   24    28 ...          103
++---+      +------------------+ +-------------------------+
+|   |      |     |            | |    |   |                |
+| o---+    |  20 |            | | 76 | \ |                |
+|   | |    |     |            | |    |   |                |
++---+ |    +------------------+ +-------------------------+
+first |     size                 size next
+free  |                           ^
+      |                           |
+      +----------------------------
+</pre>
+The single chunk of available storage has been split into two parts:
+the first part was used to satisfy the storage request;
+it still has a "size" field, but the value has been updated to reflect
+the size of the allocated chunk.
+The second part is the storage that is now available.
+The "first free" pointer has been updated to point to this chunk, and
+its "size" and "next" fields have been set.
+<p>
+Now assume that a request for 10 bytes is received.
+Here is the situation after that request has been satisfied:
+</p><pre>              0    4 ...    23   24   28 ... 37   38   42  46...10=
+3
++---+      +------------------+ +--------------+ +---------------+
+|   |      |     |            | |    |         | |    |   |      |
+| o---+    |  20 |            | | 10 |         | | 62 | \ |      |
+|   | |    |     |            | |    |         | |    |   |      |
++---+ |    +------------------+ +--------------+ +---------------+
+first |     size                 size             size next
+free  |                                            ^
+      |                                            |
+      +---------------------------------------------
+</pre>
+Finally, assume that the first chunk of storage that was allocated is
+now freed (the chunk starting at location 4).
+That chunk of storage would be added to the <em>front</em> of the
+freelist (since that is cheaper than adding it to the middle or the
+end), and the picture would be like this:
+<pre>              0    4   8 ... 23  24   28 ... 37   38   42  46...103
++---+      +------------------+ +--------------+ +---------------+
+|   |      |     |   |        | |    |         | |    |   |      |
+| o---+    |  20 | o |        | | 10 |         | | 62 | \ |      |
+|   | |    |     | | |        | |    |         | |    |   |      |
++---+ |    +-------|----------+ +--------------+ +---------------+
+first |     size  next           size             size next
+free  |      ^     |                               ^
+      |      |     |                               |
+      +------+     +-------------------------------+
+</pre>
+</a><p><a name=3D"basic">
+</a><a name=3D"freelist">
+</a></p><h2><a name=3D"freelist">Operations on the Freelist</a></h2><a name=
+=3D"freelist">
+</a>
+The operations on the freelist that need to be supported are:
+<ol>
+  <li> When space is requested, find a satisfactory chunk.
+  </li><li> When space is freed, return it to the freelist.
+</li></ol>
+A good implementation of those operations should satisfy the following goal=
+s:
+<ol>
+  <li> Only fail to satisfy a request for a chunk of n bytes of storage if
+       there fewer than n free bytes.
+  </li><li> Do both operations quickly.
+</li></ol>
+<p>
+Some questions to consider are:
+</p><ol>
+  <li> Given a request for n bytes, <em>which</em> n bytes to return?
+  </li><li> Given a "free" of a chunk, how to coalesce it with neighboring
+       free chunks?  (This issue would arise, for example, if the chunk
+       of size 10 in the above example were freed.)
+</li></ol>
+<p>
+<a name=3D"alloc">
+</a></p><h3><a name=3D"alloc">Techniques for allocation</a></h3><a name=3D"=
+alloc">
+</a>
+The answer to the first question is that there are a number of different
+schemes for deciding how to allocate a chunk of size n:
+<p>
+<b>Best Fit</b>: Find the chunk on the freelist with the smallest size
+greater than or equal to n.
+The idea is to preserve larger chunks (i.e., do not break them up if
+it is not necessary).
+However, it has several disadvantages:
+</p><ol>
+  <li> It may require a search of the entire freelist (so may be slow).
+  </li><li> It tends to leave lots of little pieces of free storage on the
+       list, which may be useless until coalesced.
+</li></ol>
+<p>
+<b>First Fit</b>:Use the <em>first</em> chunk with size greater than
+or equal to n.
+This technique will generally be faster than Best-Fit;
+however, it may produce little pieces of free storage at the <em>front</em>
+of the list, which will slow down later searches.
+</p><p>
+<b>Circular First Fit</b>: Make the freelist circular
+(i.e., have the last item point back to the first item).
+When a request for n bytes is made, satisfy it using the first chunk
+with size greater than or equal to n, but then change the "first free"
+pointer to point to the chunk <em>following</em> the one that was returned.
+</p><p>
+Note: if the list is singly linked, then it will not, in general be
+possible to return the very first chunk, because there will be no way
+to fix the "next" pointer of the previous item.
+This problem can be solved by making the list doubly linked
+(which does not lower the amount of available storage, since the pointer
+fields are part of the chunk used to satisfy an allocation request).
+Another possibility is to have special-case code for the case where
+there is just one item on the list, and otherwise to start the search
+from the second item, keeping a "trailing" pointer to permit the previous
+item's "next" field to be updated.
+</p><p>
+<a name=3D"coal">
+</a></p><h3><a name=3D"coal">Techniques for coalescing</a></h3><a name=3D"c=
+oal">
+</a>
+<p>
+There are also several possible ways to solve the second problem (how to
+coalesce freed storage).
+One approach is to use a <em>doubly</em> linked list (i.e., each list
+item has a "previous" as well as a "next" pointer).
+Also, one bit of the "size" field is reserved to indicate whether the
+chunk is "free" or "in-use".
+Now when a chunk is freed, we can check the "free-bit" of the storage
+that immediately follows the freed chunk (using the freed chunk's
+"size" bit to locate the "size" field of the following chunk of storage).
+If that following storage is free, then the two chunks can be
+coalesced.
+For example, suppose the situation is like this:
+</p><pre>           +------------------------------------+   +--------+
+           |                                    |   |        |
+           v                                    |   |        v
++---+    +-----------------+ +---------+ +------|---|----+ +--------------+
+|   |    |   |   |   |     | |    |    | |    | | | | |  | |   |   |   |  |=
+  =20
+| o---+  |   | \ | o |     | | 10 |    | | 20 | o | o |  | |   | o | \ |  |
+|   | |  |   |   | | |     | |    |    | |    |   |   |  | |   | | |   |  |
++---+ |  +---------|-------+ +---------+ +---------------+ +-----|--------+
+first |  size prev next       size       size prev next    size prev next
+free  |    ^       |                      ^ ^                    |
+      |    |       |                      | |                    |
+      +----+       +----------------------+ +--------------------+
+</pre>
+and now the chunk of size 10 is freed.
+That chunk can be coalesced with the following chunk (of size 20),
+producing this situation:
+<pre>             +------------------------+    +--------------+
+             |                        |    |              |
+             v                        |    |              v
++---+      +-----------------+ +------|----|----------+ +----------------+
+|   |      |   |   |   |     | |    | | |  | |        | |   |    |   |   | =
+ =20
+| o---+    |   | \ | o |     | | 34 | o |  o |        | |   | o  | \ |   |
+|   | |    |   |   | | |     | |    |   |    |        | |   | |  |   |   |
++---+ |    +---------|-------+ +----------------------+ +-----|----------+
+first |    size prev next       size prev next          size prev next
+free  |      ^       |          ^ ^                           |
+      |      |       |          | |                           |
+      +------+       +----------+ +---------------------------+
+</pre>
+Note:
+<ul>
+  <li> Four pointers have changed:
+    <ul>
+      <li> The "next" pointer of the first item on the list (the one
+           before the item that got coalesced with the newly freed chunk).
+           It now points to the beginning of the newly freed chunk.
+           That pointer was found (to be updated) by following the
+           "prev" field of the chunk of size 20 (the one that got
+           coalesced).
+      </li><li> The "prev" pointer of the last item on the list (the one
+           after the item that got coalesced).  It also now points to
+           the beginning of the newly freed chunk.  That pointer was
+           found (to be updated) by following the "next" field of the
+           chunk of size 20.
+      </li><li> The "prev" and "next" fields of the newly freed chunk (whic=
+h
+           are now the "prev" and "next" fields of the coalesced chunk).
+    </li></ul>
+  </li><li> The size of the coalesced chunk is 34: four more than the sum o=
+f
+       the sizes of the chunks that got coalesced.  This is because we
+       "recovered" the "size" field of the second chunk when the two
+       chunks were coalesced.
+</li></ul>
+<p>
+To allow a newly freed chunk to be coalesced with a free chunk that
+<em>precedes</em> it in memory (as well as with one that follows it)
+we need to maintain two "size" fields in every chunk: one at the end
+of the chunk as well as the one at the beginning.
+In that case, when a chunk is freed, we will know that the immediately
+preceding 4 bytes are a "size" field (with a "free-bit");
+we can use the free-bit to tell whether the preceding memory is available
+for coalescing, and we can use the value of the size field to know the
+extent of the previous list item.
+</p><p>
+Here is an example. Assume that we start with this situation:
+</p><pre>           +-------------------------------------+ =20
+           |                                     | =20
+           v                                     | =20
++---+    +-----------------+ +-----------+ +-----|-----------+ +-----------=
++
+|   |    |  |   |   |   |  | |   |   |   | |   | | |   |  |  | |   |   |   =
+|
+| o---+  |  | \ | o |   |  | |   |   |   | |20 | o | \ |  |20| |16 |   |16 =
+|
+|   | |  |  |   | | |   |  | |   |   |   | |   |   |   |  |  | |   |   |   =
+|
++---+ |  +--------|--------+ +-----------+ +-----------------+ +-----------=
++
+first | size prev next  size  size    size size prev next  size size     si=
+ze
+free  |    ^      |                          ^
+      |    |      |                          |
+      +----+      +--------------------------+
+</pre>
+Now assume that the last chunk of memory in the picture is freed.
+The "free-bit" in the 4 bytes immediately to the left of the size field of =
+the
+newly freed chunk will indicate that the preceding chunk is also free, and =
+can
+be coalesced.
+The result is shown below.
+<pre>           +-------------------------------------+ =20
+           |                                     | =20
+           v                                     | =20
++---+    +-----------------+ +-----------+ +-----|-------------------------=
++
+|   |    |  |   |   |   |  | |   |   |   | |   | | |   |               |   =
+|
+| o---+  |  | \ | o |   |  | |   |   |   | |44 | o | \ |               |44 =
+|
+|   | |  |  |   | | |   |  | |   |   |   | |   |   |   |               |   =
+|
++---+ |  +--------|--------+ +-----------+ +-------------------------------=
++
+first | size prev next  size  size    size size prev next               siz=
+e
+free  |    ^      |                          ^
+      |    |      |                          |
+      +----+      +--------------------------+
+</pre>
+Note that doing the coalesce only requires updating two size fields (the le=
+ft
+field of the preceding chunk, and the right field of the newly freed chunk)=
+.
+The new size is the sum of the two old sizes + 8 (because the right size
+field of the first chunk and the left size field of the second chunk get
+"reclaimed").
+No pointers need to be changed at all, so this is a faster operation than
+coalescing with a following chunk.
+However, it has the disadvantage of requiring an extra size field in every
+chunk.
+<p>
+<a name=3D"fixed">
+</a></p><h2><a name=3D"fixed">Freelists for Fixed-Size Chunks</a></h2><a na=
+me=3D"fixed">
+</a>
+For languages like Pascal, storage is allocated for fixed-size
+chunks whose sizes correspond to the pointer types in the program.
+It is possible to determine at compile time exactly what size
+chunks may be requested when the program runs.
+In this case, another strategy can be used:
+If there are N different possible chunk sizes,
+divide the heap into n "mini-heaps".
+Maintain a separate freelist for each possible chunk size, and return
+the first chunk from that freelist when a chunk of the appropriate size
+is requested.
+The freelists can be maintained us usual (using a linked list), or
+a set of bitmaps can be kept (one for each "mini-hap") with each bit
+corresponding to one chunk.
+<p>
+This has the following advantages over the previously discussed approaches:
+</p><ul>
+  <li> There is no need to search the freelist (thus, allocation can be
+       faster).
+  </li><li> There is no need to coalesce chunks when one is freed
+       (thus, deallocation can be faster).
+  </li><li> There is no need for any "size" fields (thus, less space is
+       wasted, and some time is saved because there is no need to
+       update those fields).
+</li></ul>
+<p>
+<a name=3D"dealloc">
+</a></p><h1><a name=3D"dealloc">Deallocation</a></h1><a name=3D"dealloc">
+</a><p><a name=3D"dealloc">
+</a><a name=3D"user">
+</a></p><h1><a name=3D"user">Problems with Explicit Deallocation</a></h1><a=
+ name=3D"user">
+<p>
+Recall that in some languages (Pascal, C, C++), deallocation is
+"explicit" (under programmer control), while in other languages (Java)
+it is done "automatically".
+The main reason to prefer automatic deallocation is that it is easy for
+the programmer to make mistakes in their deallocation code, which can
+lead to errors that are very hard to track down.
+</p></a><p><a name=3D"user">
+</a><a name=3D"leak">
+</a></p><h3><a name=3D"leak">Storage Leaks</a></h3><a name=3D"leak">
+</a>
+One potential problem is <em>storage leaks</em>;
+i.e., some storage is never freed, although it is inaccessible
+(and so will never be used again by the program).
+The problems with storage leaks are that they can cause a program
+to use more memory than necessary.
+This can slow down execution, or, in the worst case, if the program
+runs out of memory completely, can cause it to crash.
+<p>
+Here is an example of C code that causes a storage leak:
+</p><pre>    Listnode *p =3D malloc( sizeof(Listnode) );
+          .
+          .   // no copy from p in this code
+          .
+    p =3D ...;
+</pre>
+When the second assignment to <tt>p</tt> is executed it over-writes
+the address of the allocated chunk of storage that was stored in <tt>p</tt>=
+.
+That storage becomes inaccessible;
+the program can no longer use it, but it cannot be freed for reuse.
+<p>
+<a name=3D"dangle">
+</a></p><h3><a name=3D"dangle">Dangling pointers</a></h3><a name=3D"dangle"=
+>
+</a>
+A second potential problem is the use of <em>dangling pointers</em>.
+A dangling pointer is one that points to storage that has been freed.
+This is a problem because if the pointer is dereferenced for reading,
+garbage may be read (causing incorrect behavior at some future point
+in the execution);
+if the pointer is dereferenced for writing, it may mess up the freelist,
+or (if the storage has been re-allocated since it was freed) may corrupt
+other, seemingly unrelated values.
+This kind of error is especially difficult to track down.
+<p>
+Here is an example of C code that illustrates a dangling pointer:
+</p><pre>    Listnode *p, *q;
+    p =3D malloc( sizeof(Listnode) );
+    q =3D p;
+       .
+       . // no assignment to q in this code
+       .
+    free(p);
+       .
+       . // no assignment to q in this code
+       .
+    *q =3D ...
+</pre>
+In this example, <tt>q</tt> becomes a dangling pointer when <tt>p</tt>
+is freed.
+The final write into the memory pointed to by <tt>q</tt> might corrupt
+the freelist, or (if the storage was reallocated between the free of
+<tt>p</tt> and the dereference of <tt>q</tt>) might corrupt some object
+pointed to by another pointer.
+<p>
+<a name=3D"lock">
+</a></p><h3><a name=3D"lock">A technique for detecting uninitialized and da=
+ngling pointers</a></h3><a name=3D"lock">
+</a>
+In some languages,
+the compiler can generate code to detect (at run time) an attempt to
+dereference an uninitialized or dangling pointer.
+One way to do this is by including a new "invisible" field (like the
+size field) as part of every chunk of storage, as well as including
+a new "invisible" field associated with every pointer.
+The two fields are called the <em>lock</em> and the <em>key</em>,
+respectively.
+<p>
+The technique works as follows:
+</p><ul>
+  <li> The local field of each free chunk of storage is set to 0.
+  </li><li> When storage is allocated, both its lock field and the key fiel=
+d
+       of the pointer into which its address is assigned are given a new
+       value (a global counter is used to keep track of the next value to u=
+se).
+  </li><li> When storage is freed its lock is set back to 0.
+  </li><li> When a pointer is dereferenced, the compiler generates code tha=
+t first
+       checks whether that pointer's key matches the lock on the storage
+       pointed to.
+       If not, this is an error!
+       (If the storage has not been reallocated since being freed, its
+       lock will have value 0, which will not match the pointer's key;
+       if it has been reallocated, it will
+       have been given a new lock value, so again it will not match the
+       pointer's key.)
+</li></ul>
+Note that uninitialized pointers can either have their keys set to some
+special value (e.g., -1), or the key fields can be uninitialized.
+In the former case, we are sure to catch an attempt to dereference an
+uninitialized pointer (since a -1 key won't match any lock);
+in the latter case we may miss some errors (if by coincidence the value
+in the uninitialized pointer is an address whose "lock" field happens to
+match the value in the pointer's (uninitialized) key field.
+However, that is unlikely, and it may be preferable to save the
+time that would be needed to initialize all key fields.
+<p>
+Note also that this technique requires that <em>every pointer
+have a key field, including pointers that are inside dynamically
+allocated objects.
+This means that allocation must be done according to the type of
+the object being allocated (as is done in Pascal, C++, and Java)
+so that space for the key fields can be included.
+In C, it is not only possible to allocate storage by requesting
+a specific number of bytes (rather than using the "sizeof" operator),
+it is also possible to store pointers in non-pointer variables such
+as integers (via casting).
+These kinds of language features make it difficult for a compiler
+to ensure that techniques like this lock-and-key approach work
+correctly.
+</em></p><p><em>
+<a name=3D"auto">
+</a></em></p><h2><em><a name=3D"auto">Automatic Deallocation</a></em></h2><=
+em><a name=3D"auto">
+</a>
+There are two basic problems that must be solved in order to do
+automatic storage deallocation:
+<ol>
+  <li> How to determine whether a chunk of storage is no longer
+       accessible to the program, and
+  </li><li> How to make deallocation as efficient as possible; in particula=
+r
+       how to avoid long pauses in the program's execution when
+       deallocation is being done.
+</li></ol>
+And there are two basic approaches to doing automatic deallocation:
+<ol>
+  <li> Reference counting, and
+  </li><li> Garbage Collection.
+</li></ol>
+<p>
+<a name=3D"rc">
+</a></p><h3><a name=3D"rc">Reference counting</a></h3><a name=3D"rc">
+</a>
+Reference counting involves including yet another "invisible" field
+in every chunk of storage: its <em>reference count</em> field.
+The value of that field is the number of pointers that point to
+the chunk.
+The value is initialized to 1 when the chunk is allocated, and is
+updated as follows:
+<ul>
+  <li> When a pointer is copied, a new reference is created, so the
+       reference count of the object pointed to must be incremented.
+  </li><li> When a non-null pointer's value is over-written, a reference
+       is removed,
+       so the reference count of the object pointed to (before the
+       over-write) must be decremented.
+       (Note that this means that pointers must be initialized to
+       null; otherwise, the reference count of some random piece
+       of storage -- whose address happened to be in the uninitialized
+       pointer -- would erroneously be decremented.)
+</li></ul>
+When a reference count becomes zero, it means that <em>no</em> pointers
+are pointing to the object, so it can be returned to free storage.
+At that time, if the object itself contains pointers, then the
+reference counts of the objects that they point to must in turn be
+decremented.
+Note that this requires being able to recognize pointers in a
+chunk of storage (e.g., by knowing its type).
+<p>
+There are two important problems with reference counting:
+</p><ol>
+  <li> Every write into a pointer requires a test to see whether the
+       old value was null, and also requires that one or two
+       reference counts be updated; this may slow the program
+       down quite a bit.
+  </li><li> Cyclic structures cannot be deallocated.
+       This is illustrated by the following (Pascal) code:
+       <pre>       var p: Nodeptr;  /* p is a pointer to a node */
+       new(p);          /* p points to newly allocated storage
+                           for one node; its reference count is 1 */
+       p^.next =3D p;     /* the next field of the node also points to the
+                           node itself, so now its reference count is 2 */
+       p =3D nil;         /* p's value is over-written, so the node's
+                           reference count is decremented (from 2 to 1)
+                           In fact, it is inaccessible (it points to itself=
+,
+                           no other pointer points to it), but we can't tel=
+l
+                           that just from the reference count. */
+       </pre>
+      =20
+</li></ol>
+<p>
+<a name=3D"gc">
+</a></p><h3><a name=3D"gc">Garbage collection</a></h3><a name=3D"gc">
+</a>
+The basic idea behind garbage collection is to wait until there is
+little or no storage left, then:
+<ul>
+  <li> Find all accessible objects.
+  </li><li> Free all other (inaccessible) objects.
+</li></ul>
+There are many different approaches to doing garbage collection
+(this is an active area of current research).
+We will discuss two:
+<ol>
+  <li> Mark and Sweep
+  </li><li> Stop and Copy
+</li></ol>
+<p>
+<a name=3D"markAndSweep">
+</a></p><h4><a name=3D"markAndSweep">Mark and Sweep</a></h4><a name=3D"mark=
+AndSweep">
+</a>
+<p>
+The Mark and Sweep technique has two phases:
+</p><ol>
+  <li> The <b>mark</b> phase finds and marks all <em>accessible</em>
+       object.
+  </li><li> The <b>sweep</b> phase sweeps through the heap, collecting
+       all of the garbage (the inaccessible objects) and putting them
+       back on the freelist.
+</li></ol>
+The mark and sweep technique requires a new "invisible" bit in each
+chunk of storage: its <b>mark</b> bit (this can be one bit of the
+chunk's "size" field).
+This bit is:
+<ul>
+  <li> Initialized to 0.
+  </li><li> Set to 1 if the chunk is reached during the mark phase.
+</li></ul>
+The mark phase works as follows:
+<ul>
+  <li> Start by putting all "active" pointers on a worklist.
+       A pointer is active if it is on the stack
+       (anywhere on the stack, not just in the topmost activation record)
+       or in the static-data area.
+  </li><li> While the worklist is non-empty, select and remove a pointer, a=
+nd
+       look at the object pointed to:
+       If its mark bit is zero, then
+       <ul>
+         <li> change it to 1, and
+         </li><li> put all pointers contained in that object on the worklis=
+t
+              (note that this requires being able to recognize pointers;
+              more on that later).
+       </li></ul>
+When the mark phase has finished, all accessible objects have mark bits
+set to one, and all inaccessible object have mark bits set to zero.
+<p>
+The sweep phase starts with an empty freelist.
+It looks at every chunk of storage in the heap in order
+(note that those chunks can be recognized because we know where the
+heap starts, and each chunk starts with a "size" field).
+If the mark bit for a chunk is 0, it means that it is inaccessible.
+The chunk can simply be added to the freelist, but a better idea
+(to reverse fragmentation) is to first check the following chunks.
+If there is a sequence of two or more free chunks, then they can be coalesc=
+ed,
+and the coalesced chunk is then added to the freelist.
+</p><p>
+If the mark bit for a chunk is 1, it means that it <em>is</em> accessible.
+Therefore, it is not added to the freelist, but its mark bit is set
+back to zero so that it will be processed the next time the
+mark-and-sweep garbage collector is started up again.
+</p><p>
+Below is an example to illustrate the mark-and-sweep process.
+Assume that memory looks like this when the garbage collector
+is called;
+the numbers in the chunks are mark bits, all initially 0.
+Note that there is just one free chunk
+and that some of the (non-free) objects contain pointers.
+</p><pre>        +---------------------------------------------+
+        |       +----------------+                    |
+        |       |                v                    v
+  +-----|-+ +---|---+ +-------+ +-------+ +-------+ +-------+=20
+  | 0   o | | 0 o   | | o  0  | | 0     | | 0     | | 0     |=20
+  +-------+ +-------+ +-|-----+ +-------+ +-------+ +-------+=20
+     ^                  | ^                   ^
+     |                  | |                   |
+     +------------------+ |                   |
+                          |                   |
+  ptr on stack: ----------+              first-free
+
+</pre>
+Here's the situation after just the mark phase (note that all
+chunks reachable from the stack pointer now have mark-bits =3D 1):
+<pre>        +---------------------------------------------+
+        |       +----------------+                    |
+        |       |                v                    v
+  +-----|-+ +---|---+ +-------+ +-------+ +-------+ +-------+=20
+  | 1   o | | 0 o   | | o  1  | | 0     | | 0     | | 1     |=20
+  +-------+ +-------+ +-|-----+ +-------+ +-------+ +-------+=20
+     ^                  | ^                   ^
+     |                  | |                   |
+     +------------------+ |                   |
+                          |                   |
+  ptr on stack: ----------+              first-free
+
+</pre>
+Finally, here's the situation after the sweep phase has finished;
+the second inaccessible chunk has been coalesced with the chunk
+that was free all along, all inaccessible chunks are now on the freelist,
+and all of the mark bits have been set to 0.
+<pre>        +---------------------------------------------+
+        |                                             |
+        |    +------------------------+               |
+        |    v                        |               v
+  +-----|-+ +-------+ +-------+ +-----|-----------+ +-------+=20
+  | 0   o | | 0 |\| | | o  0  | | 0 | o |         | | 0     |=20
+  +-------+ +-------+ +-|-----+ +-----------------+ +-------+=20
+     ^                  | ^      ^         =20
+     |                  | |      |     =20
+     |                  | |      +----------+
+     +------------------+ |                 |=20
+                          |                 |=20
+  ptr on stack: ----------+              first-free
+
+</pre>
+</li></ul>
+<p>
+<a name=3D"stopAndCopy">
+</a></p><h4><a name=3D"stopAndCopy">Stop and Copy</a></h4><a name=3D"stopAn=
+dCopy">
+</a>
+<p>
+For the Stop and Copy technique, the heap is divided into two parts:
+"old" space and "new" space.
+Old space is used for allocation, and new space is used for garbage
+collection.
+There is no free list;
+instead, a "first-free" pointer is maintained that points to the
+first free location in "old" space.
+When a chunk of n bytes is requested, the location pointed
+to by the first-free pointer is returned, and the first-free pointer
+is incremented by n (actually, "invisible" size fields are still
+maintained as part of each allocated chunk, so allocating a chunk
+would have to include maintaining that field).
+</p><p>
+When the "old" space is full, or almost full, the stop and copy
+garbage collection begins.
+It finds all accessible objects (by following pointers from the
+static-data area, etc. as for the mark and sweep technique),
+but instead of marking them, it <em>copies</em> them to "new" space.
+Once all accessible objects have been copied, the roles of the
+"old" and "new" space are reversed;
+the first-free pointer points to the first free location in the
+"old" space (the location just after the last copied object).
+</p><p>
+Below are two picture to illustrate the idea.
+The stack is shown on the left; it contains 2 pointers to
+heap objects.
+The heap is shown on the right.
+Initially, it contains 6 chunks of allocated storage (labeled A - F)
+in the "old" space.
+(The first-free pointer points to the small remaining chunk of
+storage in the "old" space.)
+Chunk C itself contains a pointer (pointing to chunk D).
+In the second picture, the three accessible chunks have been
+copied to what used to be "new" space, leaving behind all garbage.
+The first-free pointer now points to the first free location
+in what used to be "new" space, and is now "old" space.
+
+</p><pre>        &lt;-------- old space --------&gt; &lt;-------- new space=
+ --------&gt;
+
+        +---------------------------------------------------------+
+        | A | B | C o | D | E | F |  |                            |
+        +-----------|---------------------------------------------+
+                 ^  |  ^       ^  ^
+ |   |           |  |  |       |  |
+ | o-------------+  +--+       |  first
+ |   |                         |  free
+ | o---------------------------+
+ |   |
+ +---+
+ stack
+
+
+           &lt;------ new space -------&gt; &lt;------- old space ------&gt=
+;
+
+           +---------------------------------------------------+
+           |                         | C o | D | F |           |
+           +---------------------------------------------------+
+                                       ^  |  ^  ^   ^
+ |   |                                 |  |  |  |   |
+ | o-----------------------------------+  +--+  |   first
+ |   |                                          |   free
+ | o--------------------------------------------+
+ |   |
+ +---+
+ stack
+</pre>
+We have glossed over an important part of the stop-and-copy approach:
+when a chunk of accessible storage is copied, it is vital that <em>all</em>
+pointers pointing to that storage be updated (to point to its new
+location in "new" space).
+It is easy enough to update the pointer that we follow to find the
+accessible chunk, but what about other pointers (either on the stack,
+or in accessible heap objects) that point to the same object?
+The answer is that when an object is copied from "old" to "new"
+space, a <b>forwarding pointer</b> is left behind; i.e., the address
+of the object in "new" space.
+When we follow a pointer P that points to the same object, we must
+recognize that it has been replaced with a forwarding pointer, and
+we must copy the value of the forwarding pointer into pointer P.
+One way to distinguish an object from a forwarding pointer is to
+set the invisible size field to 0 to indicate a forwarding pointer
+(this works because an object will never have size 0, and because we
+don't need the size field in "old" space any more once the object has
+been copied to "new" space).
+<p>
+The example given above is repeated below, but this time we assume that
+object F contains a pointer to C (as well as there being a pointer to C
+from the stack).
+The first picture shows the situation before garbage collection.
+The second picture shows the situation after the top-most stack
+pointer (the one pointing to C) has been followed;
+C has been copied to "new" space, a forwarding pointer has
+been left behind, and the stack pointer has been updated.
+The third picture shows the final situation after garbage
+collection has finished;
+all accessible storage has been copied,
+all pointers to accessible storage have been updated, and the roles
+of "old" and "new" space reversed.
+</p><pre>        &lt;-------- old space ---------&gt; &lt;------ new space =
+------&gt;
+
+                 +----------------+
+                 |                |
+                 v                |
+        +-------------------------|----------------------------+
+        | A | B | C o | D | E | F o | |                        |
+        +-----------|------------------------------------------+
+                 ^  |  ^       ^     ^
+ |   |           |  |  |       |     |
+ | o-------------+  +--+       |    first
+ |   |                         |    free
+ | o---------------------------+
+ |   |
+ +---+
+ stack
+
+       &lt;--------- old space ---------&gt; &lt;------ new space ------&gt=
+;
+
+                 +---------------+
+                 |    +----------|-----+
+                 v    v          |     |
+        +------------------------|-------|---------------------+
+        | A | B |  o | D | E | F o | | C o |                   |
+        +----------|-------------------------------------------+
+                   |          ^       ^^    ^
+                   +----------|-------+|    |
+                              |        |   first
+ |   |                        |        |   free
+ | o--------------------------|--------+
+ |   |                        |
+ | o--------------------------+
+ |   |
+ +---+
+ stack
+
+       &lt;-------- new space --------&gt; &lt;-------- old space ------&gt=
+;
+
+                                     +------------+
+                                     |            |
+                                     |  +--+      |
+                                     v  |  v      |
+        +-------------------------------|---------|--------------+
+        |                           | C o | D | F o |            |
+        +--------------------------------------------------------+
+                                     ^         ^     ^
+                                     |         |     |
+                                     |         |     first
+ |   |                               |         |     free
+ | o---------------------------------+         |
+ |   |                                         |
+ | o-------------------------------------------+
+ |   |
+ +---+
+ stack
+
+</pre>
+Stop and Copy garbage collection is currently considered the best approach.
+It has a number of advantages compared to mark and sweep:
+<ul>
+  <li> Allocation is cheaper (no need to search the freelist, just
+       advanced the first-free pointer).
+  </li><li> The fact that there is no freelist (instead, at any moment,
+       available storage is in one big chunk, pointed to by the
+       first-free pointer), means that there is no problem with fragmentati=
+on,
+       and no need to coalesce storage when it is discovered to be
+       garbage.
+  </li><li> In general, stop and copy is faster than mark and sweep;
+       this is because there is no phase that scans the <em>entire</em>
+       heap; instead, it requires time proportional only to
+       the number of accessible chunks.
+  </li><li> The fact that accessible storage is compacted (copied into a
+       contiguous chunk in the "new" space) leads to better performance
+       by the program after garbage collection; for example, having
+       accessible objects close together may mean fewer cache misses
+       and/or fewer page faults.
+</li></ul>
+<p>
+<a name=3D"db">
+</a></p><h3><a name=3D"db">Deutsch-Bobrow deferred reference counting</a></=
+h3><a name=3D"db">
+</a>
+There is a technique called <em>deferred</em> reference counting
+that combines some of the features of (normal) reference counting and
+garbage collection.
+An important insight behind this technique is that much of the (time)
+overhead of reference counting happens because of traversals of
+heap data structures, using a local variable as a "temporary" pointer.
+For example, consider the following code that traverses the linked list
+pointed to by L:
+<pre>Listptr tmp =3D L;
+while (tmp !=3D null) {
+   ... do something with tmp-&gt;data ...
+   tmp =3D tmp-&gt;next;
+}
+</pre>
+(Note: "tmp-&gt;next" is C syntax; it refers to the "next" field of
+the object pointed to by tmp.)
+<p>
+If normal reference counting is used, then before the loop (when the
+value in L is copied in to tmp), the reference count of the first item
+on the list is incremented.
+The assignment "tmp =3D tmp-&gt;next" inside the loop causes the following
+changes to be made on each iteration:
+</p><ol>
+  <li> The reference count of the list item pointed to by tmp is
+       decremented (because tmp is about to be over-written).
+  </li><li> The reference count of the next item on the list is
+       incremented (because tmp now points to it, as well as the
+       "next" field of the previous item on the list).
+  </li><li>
+</li></ol>
+After the loop finishes, all reference counts are back to where
+they started;
+a lot of extra work has been done for nothing!
+<p>
+To avoid this kind of extra work, deferred reference counting works
+as follows:
+</p><ul>
+  <li> An object's reference count reflects only the number of pointers
+       <em>in the heap</em> that are pointing to it; pointers from the
+       stack and static-data area are ignored.
+  </li><li> Therefore, when an object's reference count becomes zero, it is
+       <em>not</em> safe to free it (since it may still be pointed to by on=
+e
+       or more pointers from the stack/static-data area).
+  </li><li> Therefore, when an object's reference count becomes zero, it is
+       not freed; instead it is put on a special "zero-count" list.
+  </li><li> When free space gets low, or when the zero-count list gets long=
+,
+       garbage collection begins; each object whose <em>true</em>
+       reference count is zero is identified and freed as follows:
+       <ol>
+         <li> For each pointer on the stack or in the static-data area,
+              increment the reference count of the pointed-to object.
+              Note that when this step is finished, all objects have
+              their true reference counts.
+         </li><li> For each item on the zero-count list: if the reference
+              count is still zero, then it is garbage; put it on the
+              freelist (and decrement the reference counts of any objects
+              that it points to, putting them at the end of the freelist
+              if their reference counts become zero).
+         </li><li> For each pointer on the stack or in the static-data area=
+,
+              <em>decrement</em> the reference count of the pointed-to obje=
+ct.
+              Note that when this step is finished, all objects are back
+              to having their reference counts reflect only heap pointers.
+       </li></ol>
+</li></ul>
+Note that this approach requires the compiler to generate different
+code for different kinds of assignments:
+<ul>
+  <li> For an assignment into a program variable (i.e., an assignment into
+       a location on the stack or in the static-data area), <em>no</em>
+       code is generated to update reference counts (since references
+       from the stack/static-data area are ignored until garbage collection=
+=20
+       starts).
+  </li><li> However, an assignment into a pointer on the heap must involve
+       the overhead of reference-count manipulation.
+</li></ul>
+For example, if p is a local variable of type "pointer to list", then
+assignments to p itself (e.g., "p =3D new list;", or "p =3D q;") do <em>not=
+</em>
+involve any updates to reference counts.
+However, assignments like "p-&gt;next =3D new list;" <em>do</em>
+require reference count updates, since "p-&gt;next" is a location in
+the heap.
+<p>
+<a name=3D"ptrs">
+</a></p><h3><a name=3D"ptrs">How to identify pointers</a></h3><a name=3D"pt=
+rs">
+</a>
+Most of the automatic deallocation techniques discussed above require
+that it be possible to recognize pointers at runtime.
+There are several possible ways to do this:
+<ol>
+  <li> Every word includes a one-bit tag (0 means "not a pointer, and
+       1 means "is a pointer).
+       This has a number of consequences:
+       <ul>
+         <li> Values (including addresses) cannot use this bit, so
+	      the ranges of possible values are smaller than normal.
+	 </li><li> Operations must preserve this bit.  This means that
+	      hardware support is necessary.
+	 </li><li> On method entry, this bit must be initialized for
+	      all local variables.
+	 </li><li> When a chunk of storage is allocated, this bit must be
+	      initialized for all of the fields in the allocated object.
+       </li></ul>
+  </li><li> Again, every word has a tag, but instead of storing the tag in =
+the
+       word itself, it is maintained in a separate bit-map (that includes
+       one bit for every word in the heap, the stack, and the static-data
+       area).  In this case, no bit is "stolen" (so the range of values
+       is not restricted, and nothing special needs to be done to make
+       sure that operations don't clobber the special bit).  However, it
+       is still necessary to initialize the bit on method entry and on
+       storage allocation.
+  </li><li> A final possibility is to associate with each variable and each
+       allocated object (rather than with each word) a tag telling its type
+       (which could be implemented as an index into an array of type
+       descriptors, maintained at runtime).
+       While the tag would require more than a single bit, this approach
+       might save space because only one tag is required for an entire
+       object, rather than one bit per word.
+</li></ol>
+<p>
+<a name=3D"summary">
+</a></p><h1><a name=3D"summary">Summary</a></h1><a name=3D"summary">
+<p>
+The important concepts covered in this set of notes are:
+</p><ul>
+  <li> There are two possible approaches to storage deallocation:
+       explicit (programmer-controlled) and automatic.
+  </li><li> Because it is often difficult for the programmer to implement
+       explicit deallocation correctly, programs written in languages
+       that require explicit deallocation often have logical
+       errors that can lead to problems:
+       <ul>
+       <li> storage leaks, and
+       </li><li> corrupted memory via dangling pointers.
+       </li></ul>
+  </li><li> There are two basic approaches to automatic deallocation:
+       <ol>
+       <li> reference counting, and
+       </li><li> garbage collection.
+       </li></ol>
+  </li><li> Reference counting has several disadvantages:
+       <ol>
+         <li> It has high space and time overheads.
+	 </li><li> It cannot free cyclic structures.
+       </li></ol>
+       But it has the advantage over garbage collection that the cost is
+       "distributed" over the execution of the program; there are no long
+       pauses as there are for garbage collection (which are intolerable
+       for real-time systems).
+  </li><li> There are many different kinds of garbage collection; we looked
+       at two:
+       <ol>
+         <li> Mark and sweep: The mark phase finds and marks all accessible
+	      storage (starting from the "roots": pointers on the stack and
+	      in the static-data area).
+	      The sweep phase makes a pass over the entire heap, putting all
+	      unmarked chunks of storage on the freelist.
+	 </li><li> Stop and Copy: Accessible chunks of storage are identified
+	      as for mark and sweep, but instead of being marked, they are
+	      copied to the currently unused half of the heap.
+	      Forwarding pointers are left behind so that additional pointers
+	      to the same object can be updated.
+       </li></ol>
+</li></ul>
+
+</a></em></body></html>
+------MultipartBoundary--xm7nBZc9MwStxwBx9YVh7G4PfGX2F6idoSyDxzQOLV------
